@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>alyssa frazee</title>
+
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
+        <div class="title"><a href="/">alyssa frazee </a></div>
+        <div class="sub-title"></div>
+
+        <p>
+      <div class="view"><a href="/pages/about.html">about</a></div>
+      <div class="view"><a href="/pages/contact.html">contact</a></div>
+      <div class="view"><a href="/pages/publications.html">publications</a></div>
+      <div class="view"><a href="/pages/teaching.html">teaching</a></div>
+    <div class="view"><a href="/archives.html">archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>follow me</h4>
+<ul>
+      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+  </ul>
+</div>
+
+      </header>
+      <section>
+      <section id="content" class="body">
+
+<dl>
+    <dt>Thu 27 June 2013</dt>
+    <dd><a href="/linkscheatsheets-galore.html">links/cheatsheets galore</a></dd>
+    <dt>Wed 19 June 2013</dt>
+    <dd><a href="/hacker-school-day-11.html">hacker school: day 11</a></dd>
+    <dt>Sun 02 June 2013</dt>
+    <dd><a href="/summer-2013-hacker-school.html">summer 2013: Hacker School!</a></dd>
+    <dt>Mon 18 March 2013</dt>
+    <dd><a href="/ideas-for-super-awesome-conferences.html">Ideas for Super Awesome Conferences</a></dd>
+    <dt>Thu 08 November 2012</dt>
+    <dd><a href="/merry-statisticians-christmas.html">Merry Statistician's Christmas!</a></dd>
+    <dt>Thu 25 October 2012</dt>
+    <dd><a href="/working-interactively-on-a-remote-computer.html">working interactively on a remote computer</a></dd>
+    <dt>Fri 21 September 2012</dt>
+    <dd><a href="/the-power-of-the-default.html">the power of the default</a></dd>
+    <dt>Fri 31 August 2012</dt>
+    <dd><a href="/failure-grit-and-big-thinking.html">failure, grit, and big thinking</a></dd>
+    <dt>Thu 23 August 2012</dt>
+    <dd><a href="/software-setup.html">my software/hardware setup</a></dd>
+</dl>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; alyssa frazee &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
