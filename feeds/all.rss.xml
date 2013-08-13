@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>alyssa frazee</title><link>/</link><description></description><atom:link href="alyssafrazee.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 13 Aug 2013 12:14:00 -0400</lastBuildDate><item><title>finally: my ideal text editor setup</title><link>/sublime-plugin.html</link><description>&lt;p&gt;Ever since I bought a Mac two years ago, I've been dreaming of a text editor that compares to the Windows-only &lt;a href="http://notepad-plus-plus.org/"&gt;Notepad++&lt;/a&gt;.  What a delight.  My favorite thing about Notepad++ was how easy it was to run code in a REPL with a keyboard shortcut (e.g., F8 would run the current line/selection of R code on your local machine, F9 would run code in a Putty SSH session...). I searched high and low for something similar for OSX.  The best I could come up with was a rather involved &lt;a href="working-interactively-on-a-remote-computer.html"&gt;Emacs configuration&lt;/a&gt;.  It was fine, just fine.  I settled.  It worked.&lt;/p&gt;
+&lt;p&gt;But I've found/made/hacked something better. Here is &lt;a href="https://github.com/alyssafrazee/Line-by-line"&gt;line-by-line&lt;/a&gt;, a &lt;a href="http://www.sublimetext.com/2"&gt;Sublime Text 2&lt;/a&gt; plugin for OSX that executes the current line/selection in whatever REPL is running in the Terminal, with the keystroke Command-Enter.  It's &lt;a href="http://www.youtube.com/watch?v=is6gtilerPk"&gt;all I ever wanted&lt;/a&gt; (in a text editor).  With this plugin, I'd say Sublime is at least equivalent to, and possibly better than, Notepad++, because the keystroke isn't specific to any coding language.  It just runs whatever's highlighted in Terminal.  It also works with iTerm, if you're into that kind of thing.  It's up to you to decide what REPL is running in the Terminal - which means you have the flexibility to run things in ipython, bpython, R, any REPL in an SSH session...the possibilities are endless!&lt;/p&gt;
+&lt;p&gt;All I did was &lt;em&gt;slightly&lt;/em&gt; modify Randy Lai's &lt;a href="https://github.com/randy3k/Enhanced-R"&gt;Enhanced-R&lt;/a&gt; Sublime plugin - he's the real brains behind this operation. I mostly just removed the part where Enhanced-R specifies that it's only active in R mode.  &lt;/p&gt;
+&lt;p&gt;Please download/use/enjoy if you, like me, were searching for something like this!  &lt;/p&gt;
+&lt;h4&gt;hey, you could just use Emacs for that!&lt;/h4&gt;
+&lt;p&gt;Of course I could. You can pretty much use Emacs to do anything and everything; &lt;a href="http://en.wikipedia.org/wiki/Editor_war"&gt;it's an operating system&lt;/a&gt;.  But I already have an OS, I just want a text editor that sends lines of code to the Terminal.  Also, I don't know very much Lisp, so properly customizing Emacs is totally possible but pretty painful.  And I don't want to have to configure my editor separately for each language of code I'm writing.  &lt;/p&gt;
+&lt;h4&gt;hey, you could just use Vim for that!&lt;/h4&gt;
+&lt;p&gt;Please.  I'm nowhere near hardcore enough to use Vim.  &lt;/p&gt;
+&lt;h4&gt;hey, Sublime Text 2 isn't free.&lt;/h4&gt;
+&lt;p&gt;And it isn't open source either.  Huge bummer.  This doesn't change the fact that it's a beautiful piece of software.  If it helps, they offer an unlimited free trial period.  &lt;/p&gt;
+&lt;h4&gt;will my R graphics look as awesome as if I made them using the default OSX IDE? Or &lt;a href="http://www.rstudio.com/"&gt;RStudio&lt;/a&gt;?&lt;/h4&gt;
+&lt;p&gt;Totally.  If you issue a Terminal session of R a plot command, graphics are rendered in Quartz by default.  I'm a fan of Quartz.  Also, now that you mention RStudio, that was another inspiration for this plugin: one of my favorite things about R IDEs is that you can just send the code directly from your script to the REPL with Command-Enter.  Line-by-line effectively gives you something like "*Studio".  &lt;/p&gt;
+&lt;h4&gt;How does Line-by-line work?&lt;/h4&gt;
+&lt;p&gt;The one-sentence version: Just like Enhanced-R, Line-by-line calls &lt;a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/osascript.1.html"&gt;Applescript&lt;/a&gt; from Python to execute the given line of code in the front-most Terminal window.&lt;/p&gt;
+&lt;h4&gt;How do I install a Sublime plugin?&lt;/h4&gt;
+&lt;p&gt;Just stick the folder with all the plugin's files in it into &lt;code&gt;~/Library/Application Support/Sublime Text 2/Packages/&lt;/code&gt;.  You can also install &lt;a href="https://sublime.wbond.net/"&gt;Package Control&lt;/a&gt;, which gives you point-and-click menu options from inside Sublime.  If you have Package Control installed, you can just do Sublime Text 2 &amp;gt; Preferences &amp;gt; Package Control &amp;gt; Install Packages, and click the name of the package you want.  (This works for all ST2 plugins that have been made public on the Package Control website.  Line-by-line is not there.  Yet.)  &lt;/p&gt;
+&lt;h4&gt;How do I write a Sublime plugin?&lt;/h4&gt;
+&lt;p&gt;I'm planning to write another post about this soon, because I found the documentation to be kind of scattered.  The gist of it is that you write some Python (for what you want your thing to do) and some JSON (for defining keyboard shortcuts and other menu-ish things).  Being able to write/understand little extensions like this is one of the reasons I'm glad I spent a bunch of time with Python this summer.  Anyway, stay tuned!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Tue, 13 Aug 2013 12:14:00 -0400</pubDate><guid>tag:,2013-08-13:sublime-plugin.html</guid></item><item><title>links/cheatsheets galore</title><link>/linkscheatsheets-galore.html</link><description>&lt;p&gt;Here are some great pages I've found myself referring to a lot in the
+past few weeks, or pages I want to remember (without bookmarking, since
+I never look at my bookmarks).  I'm collecting them here so I can have a
+somewhat reasonable number of tabs open in my browser at one time.
+ (Things are getting insane at the moment).  They've helped me, so maybe
+they'll help you too.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"&gt;Markdown basics&lt;/a&gt; - useful for writing README.md 's for github
+    repos, among many other things: &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://guides.macrumors.com/Image:224px-Mac_keyboard_symbols.jpg"&gt;Mac keyboard shortcut symbols&lt;/a&gt; - I never know what those crazy
+    characters mean.  This is what they mean.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://support.google.com/chrome/answer/165450?hl=en"&gt;Chrome keyboard shortcuts&lt;/a&gt; - I have now successfully been able to
+    navigate between Sublime, Terminal, and two separate Chrome tabs
+    without using my mouse.  AWESOME. (The above link is for Mac;
+    &lt;a href="https://support.google.com/chrome/answer/157179?hl=en"&gt;this&lt;/a&gt; is the link for Windows).&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://scottchacon.com/2011/08/31/github-flow.html"&gt;A good git workflow&lt;/a&gt; - I haven't read this through but would
+    really like to, since I need a more structured way of coding,
+    committing, and pushing to github&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://mxcl.github.io/homebrew/"&gt;Homebrew&lt;/a&gt; - easy software installation for OS X!  yeah!  I
+    finally got wget properly installed thanks to this magical world.
+     And if something fails, you can start with "brew doctor" as a way
+    to find the problem.  &lt;/li&gt;
+&lt;li&gt;I installed &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text 2&lt;/a&gt; the other day (a really
+    beautiful/powerful text editor), and then I decided to try out
+    &lt;a href="https://github.com/wuub/SublimeREPL"&gt;SublimeREPL&lt;/a&gt; for running code right there in Sublime.  I didn't
+    want to lose the link to the SublimeREPL documentation, so it's
+    here.  So far I think SublimeREPL is okay, but there are a few
+    things I don't like, or maybe just haven't figured out yet: (1) I've
+    had problems importing my libraries (i.e., if I'm in a folder with a
+    script thelibrary.py, and I type import thelibrary.py, it complains
+    that it can't find thelibrary).  (2) I haven't been able to ctrl-C
+    or ctrl-D to escape functions while they're being evaluated.  (3)
+    sometimes the syntax highlighting in the REPL is annoying - e.g.,
+    there will be big strips of bright pink at the end of certain lines.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.w3schools.com/tags/ref_httpmethods.asp"&gt;An intro to HTTP&lt;/a&gt; - I'd love to read this soon, since I've
+    started to do a bit of web development&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"&gt;Flask mega tutorial&lt;/a&gt; - I'm working through this right now&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://statuscode.org/"&gt;statuscode&lt;/a&gt; - news for programmers!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;more to come!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Thu, 27 Jun 2013 11:15:00 -0400</pubDate><guid>tag:,2013-06-27:linkscheatsheets-galore.html</guid><category>hacker school</category><category>technical</category></item><item><title>hacker school: day 11</title><link>/hacker-school-day-11.html</link><description>&lt;p&gt;Today is the 11th official day of my summer at &lt;a href="https://www.hackerschool.com/"&gt;Hacker School&lt;/a&gt;.  It.
+is. awesome.  By day, I get to surround myself with great people and
+work on &lt;em&gt;whatever project I want&lt;/em&gt;.  Seriously, no rules.  It's been so
+easy to get in the zone: I start coding and lose track of time, in the
+best way.  And if I get sick of coding, there are other great things to
+do, like help other people with their code, go to little
+student-organized working groups, get a book from the Hacker School
+library and do some reading, or pair with another person on his or her
+project.  Or I can take my code to one of the eight gazillion experts
+here and have them review it - I've done this a couple of times and I
+already feel like I know how to write neater code than I wrote a month
+ago.  I really love it here - it's so awesome to go to "work" in the
+morning and be able to work on whatever whims and fancies occur to me,
+as long as they are sort of programming-related.  (And honestly, a lot
+of my whims and fancies are programming-related.  Nerd alert.)&lt;/p&gt;
+&lt;p&gt;And by night, I get to explore New York City!!!!!!  More on that later.&lt;/p&gt;
+&lt;p&gt;For these first few weeks, I've been having a blast coding up my
+favorite game, &lt;a href="http://bit.ly/10Ax0SL"&gt;500&lt;/a&gt;, in both R and python, which is a surprisingly great exercise.  It lends itself well to object-oriented stuff, and the
+logic is totally sensible but complex enough to make the implementation
+a fun project.  I've also been working through the &lt;a href="http://www.matasano.com/articles/crypto-challenges/"&gt;Matasano Crypto
+Challenges&lt;/a&gt;, because cryptography is awesome, and because it's nice to
+have little self-contained problems to work on, and because it's another
+fun way to improve my python skillz.  Also, they're based on real-world
+security problems, so the application is interesting and relevant.  I'm
+almost through number 6 (of 48...).  &lt;em&gt;&lt;br /&gt;
+&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I'm storing all of my Hacker School code and notes in my &lt;a href="https://github.com/alyssafrazee/hackerschool"&gt;hackerschool
+github repo&lt;/a&gt;.  You can source and play my 500 game, but sadly I can't
+post my solutions to the crypto challenges (it's against their rules).
+ To make up for it, I've been keeping a little journal of sorts about my
+experiences with them in the README.md file :) &lt;/p&gt;
+&lt;p&gt;It's already day 11 and I don't have a Big Summer Project With A
+Deliverable that I'm working on at the moment.  However, I think I would
+like to study a bit of web development - I'm excited about making
+software that non-programmers/non-statisticians can use, and that
+definitely involves making some kind of user interface.  I've dipped my
+pinky toe in these waters with things like &lt;a href="http://www.rstudio.com/shiny/"&gt;shiny&lt;/a&gt; (for R) and &lt;a href="http://d3js.org/"&gt;d3&lt;/a&gt;
+(for JavaScript, which I don't know), but I've never actually jumped in
+and made anything with these, and I'd like to figure out how to make
+things that aren't necessarily focused on data analysis.  To be clear, I
+think data analysis is awesome and I want to be some kind of data
+scientist someday, but there are so many other cool tools to be made.
+ People casually throw out software ideas all the time:  "I wish I could
+&lt;a href="http://techpp.com/2011/06/09/block-distracting-websites/"&gt;block certain websites&lt;/a&gt; during my study times", "I wish there were a
+better to-do-list app than Google Tasks, I want to categorize my to-do
+list",  "I wish I could automate the process of checking whether my
+dissertation committee follows the school's rules", "I wish there were
+software that would turn people's crappy slides into good slides", "I
+wish there were a bot that would to search Craigslist for me and email
+me with promising ads" -- people have mentioned &lt;em&gt;all &lt;/em&gt;these ideas to me
+in the past few months.  The thing about being at Hacker School is that
+you start to believe anything's possible...all I'd need is a little bit
+of ______, and I could definitely make that with a [language I
+already know] backbone.  I've been feeling like "all I'd need is some
+practice doing web development, and I could definitely make some of this
+software wtih R/python/HTML/CSS."  So we'll see what happens!  Stay
+tuned for Alyssa's Awesome Web App.  (Now I'm accountable.)&lt;/p&gt;
+&lt;p&gt;Also, New York.  NEW YORK IS SO COOL.  For reference, I'm living in
+central Brooklyn and working in lower Manhattan.  I've been here for
+just under 3 weeks, and I haven't been above 34th Street (!) so I have a
+LOT left to explore.  But &lt;em&gt;based on these three weeks&lt;/em&gt;, here are my New
+York thoughts.&lt;/p&gt;
+&lt;p&gt;THINGS I LIKE ABOUT NYC:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;amazing food&lt;/li&gt;
+&lt;li&gt;bagel sandwiches&lt;/li&gt;
+&lt;li&gt;parks everywhere&lt;/li&gt;
+&lt;li&gt;you can totally eat on the subway&lt;/li&gt;
+&lt;li&gt;sublime coffee and espresso&lt;/li&gt;
+&lt;li&gt;I can ride a subway "home" from "work" that goes over the East River
+    (above ground) and watch Manhattan twinkle in the twilight&lt;/li&gt;
+&lt;li&gt;sweet concerts/events/secret science club meetings happen all the
+    time&lt;/li&gt;
+&lt;li&gt;you can get &lt;a href="http://www.amplehills.com/"&gt;vanilla malted ice cream in a pretzel cone&lt;/a&gt;.  no
+    biggie.&lt;/li&gt;
+&lt;li&gt;etc. (to be continued)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;THINGS I DO NOT LIKE ABOUT NYC&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the Yankees&lt;/li&gt;
+&lt;li&gt;smells vaguely of trash sometimes&lt;/li&gt;
+&lt;li&gt;a guy looked me in the eye and threw his nasty garbage in my
+    shopping bag in the subway station last week.  &lt;em&gt;what is that
+    about?!&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And finally, some pictures! &lt;/p&gt;
+&lt;p&gt;One time we went to Washington Square Park after work to eat ice cream,
+and it looked like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image" src="http://alyssafrazee.files.wordpress.com/2013/06/wash_square_park.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Another time, my friend &lt;a href="http://mandymejia.wordpress.com/"&gt;Mandy&lt;/a&gt; came to visit - it was a beautiful
+day, and we went to the Hudson River Park!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image" src="http://alyssafrazee.files.wordpress.com/2013/06/mandy.jpg?w=650" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image" src="http://alyssafrazee.files.wordpress.com/2013/06/hudson_river_park.jpg?w=650" /&gt;&lt;/p&gt;
+&lt;p&gt;The tallest shiniest building in that last picture is the new World
+Trade Center - one of four planned.&lt;/p&gt;
+&lt;p&gt;Mandy and I also went to the &lt;a href="http://www.thehighline.org/"&gt;High Line&lt;/a&gt;, which we really enjoyed -
+the High Line is this park that's built on an old railroad track that
+runs about a story above the streets of NYC, over neighborhoods like
+Chelsea and the Meatpacking District.  She insisted on taking this
+picture of me while we were having dinner there:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image" src="http://alyssafrazee.files.wordpress.com/2013/06/terroir.jpg?w=650" /&gt;&lt;/p&gt;
+&lt;p&gt;And here is a picture of the street I live on.  I don't live in one of
+these (I'm a few blocks over, where the brownstones are less brown), but
+I enjoyed the picturesque-ness of this area.  Plus it was a great
+opportunity to use instagram's vintage-y filters.  So artsy ;) &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image" src="http://alyssafrazee.files.wordpress.com/2013/06/brownstones.jpg?w=650" /&gt;&lt;/p&gt;
+&lt;p&gt;stay tuned for updates!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Wed, 19 Jun 2013 16:07:00 -0400</pubDate><guid>tag:,2013-06-19:hacker-school-day-11.html</guid><category>hacker school</category></item><item><title>summer 2013: Hacker School!</title><link>/summer-2013-hacker-school.html</link><description>&lt;p&gt;Hello from New York!&lt;/p&gt;
+&lt;p&gt;Tomorrow morning, my summer adventure begins: I'm a student in the
+summer 2013 batch of &lt;a href="https://www.hackerschool.com/"&gt;Hacker School&lt;/a&gt;!  Basically, Hacker School is
+three months of learning about programming, in a
+bring-your-own-project-ideas-or-enthusiasm, collaborative, friendly,
+flexible, awesome environment.  I haven't actually been yet, so that's
+my one-sentence interpretation of what it is based on the website, and
+from my three Skype sessions with facilitators (so definitely check out
+the website if you want to know more).&lt;/p&gt;
+&lt;p&gt;I'm really excited about this, for many reasons.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I'm guessing I'll meet some amazing, smart, friendly, enthusiastic
+    people who like learning stuff, which I look forward to because I'm
+    pretty passionate about learning stuff too, and I really like
+    meeting people who share that passion.  &lt;/li&gt;
+&lt;li&gt;I really like coding/programming, but rarely have the time during
+    research to think very hard about the best way to program my methods&lt;ul&gt;
+&lt;li&gt;it seems like getting the results quickly is always more important
+than getting the results in the optimal, most organized, most
+efficient way.  I figure that practicing programming will make it
+easier to write good code faster.  This is becoming a huge challenge
+for statisticians, since new statistical methods are being deemed
+&lt;a href="http://simplystatistics.org/2013/01/23/statisticians-and-computer-scientists-if-there-is-no-code-there-is-no-paper/"&gt;useless without good software&lt;/a&gt; -- so I'm excited to   really dig
+in to coding!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Some &lt;a href="https://www.hackerschool.com/blog/17-peter-norvig-and-eight-others-are-hacker-school-residents"&gt;pretty famous people&lt;/a&gt; are going to be at Hacker School...I'm
+    a little star struck.  I'm beyond excited to meet them, and also to
+    meet my fellow students and the facilitators.  (I just like &lt;em&gt;meeting
+    people!!!&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;I get to live in New York for three months.  So pumped.  I know, I
+    know, there's no air conditioning, washers/dryers, or space in any
+    of the apartments I can afford (I mean seriously, the shower in my
+    current place is shaped like a triangle, and my roommates tell me
+    it's totally normal if the curtain just falls down after you
+    shower...) but the food is delicious, the public transit is so good,
+    and it's very leafy.  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I've been interested in learning JavaScript for a while, mainly because
+of a pretty &lt;a href="http://healthvis.org/"&gt;neat tool&lt;/a&gt; that some of my friends/colleagues developed
+for interactive data visualization, using d3. So, one of the Hacker
+School facilitators recommended starting by reading the book &lt;a href="http://eloquentjavascript.net/"&gt;Eloquent
+JavaScript&lt;/a&gt;.  It's free and it's actually delightful to read (I've
+chuckled out loud several times in the first few chapters).  So that's
+where I'll be starting tomorrow!&lt;/p&gt;
+&lt;p&gt;Keep an eye out for more Hacker School/New York musings this summer!
+ AND ALSO, if you have ideas for useful software projects, I (and I
+suspect my fellow Hacker Schoolers) would love to hear them.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Sun, 02 Jun 2013 23:08:00 -0400</pubDate><guid>tag:,2013-06-02:summer-2013-hacker-school.html</guid><category>hacker school</category></item><item><title>Ideas for Super Awesome Conferences</title><link>/ideas-for-super-awesome-conferences.html</link><description>&lt;p&gt;At this time last week, I was experiencing my first &lt;a href="http://enar.org/meetings.cfm"&gt;ENAR&lt;/a&gt;!  Overall I
+had a great time  - met some cool people, went to some cool sessions,
+hung out by the pool and went to Epcot, etc.  But as we were hanging out
+over the course of the conference, I found myself in more than one
+discussion with friends about how stat conferences could be so much more
+awesome.  I thought to myself  last Monday: "Alyssa!  You haven't
+written in your blog since Election Day.  'Ideas for Super Awesome
+Conferences' would be a fabulous post!"  And then I was beaten to the
+punch by &lt;a href="http://yihui.name/en/2013/03/on-enar-or-statistical-meetings-in-general/"&gt;Yihui's post on conferences&lt;/a&gt;.  Read it, it's good.  But I
+have some different (and sometimes conflicting) ideas, so I decided to
+write "Ideas for Super Awesome Conferences" anyway.&lt;/p&gt;
+&lt;p&gt;DISCLAIMER:  I'm no expert.  I've only been to two big stat conferences
+(ENAR 2013 and &lt;a href="http://www.amstat.org/meetings/jsm/2012/program.cfm"&gt;JSM 2012&lt;/a&gt; in San Diego).  I'm a TOTAL CONFERENCE
+NEWBIE (since I'm a third-year student).  Also, I have also never
+planned a conference so I most likely have no idea what goes in to such
+a huge endeavor.  Bearing this in mind...&lt;/p&gt;
+&lt;p&gt;&lt;span style="text-decoration:underline;"&gt;Ideas for Conference
+Organizers&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span style="line-height:13px;"&gt;&lt;strong&gt;(1)&lt;/strong&gt; Choose a good venue.  This is
+probably the first thing that happens after the city is chosen, so I'm
+sure a lot of thought goes in to this, but the venue at ENAR left a lot
+to be desired.  For one thing, the conference was held in a giant
+conference-center/hotel megacomplex with pretty much &lt;em&gt;nothing &lt;/em&gt;outside
+the complex.  This meant:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style="line-height:13px;"&gt;there weren't really any options for
+    food except for the megacomplex restaurants, which all served the
+    same food and charged \$14 for chicken fingers (which is either a
+    totally ridiculous thing to submit for reimbursement, if you're
+    lucky enough to have that, or a totally outlandish way to spend your
+    graduate student stipend)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;There was one convenient hotel choice, so if you missed the February
+    15 deadline for booking a room, wanted a cheaper option, or wanted
+    to rack up your hotel rewards points for some other chain, or
+    anything like that, you had to stay in a hotel at least a few
+    non-walkable miles from the conference center.  The solution to this
+    was I guess to just stay in the conference hotel (which is where I
+    was, and it was convenient and nice), but then I realized on Tuesday
+    that I hadn't been outside in three days that that made me sad.&lt;/li&gt;
+&lt;li&gt;Evening activities were limited to whatever was in the megacomplex,
+    unless you wanted to spring for a several-mile cab ride.  (We did
+    get bused to Epcot, which totally rocked except for the fact that we
+    only got to stay for a couple of hours, most of which were spent
+    eating dinner.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also found it somewhat hilarious that the conference material plugged
+the venue by saying that this conference center has the "largest
+pillar-free resort ballroom" in the country (which is oddly specific,
+but whatever) - and then saying that ENAR wouldn't actually
+be &lt;em&gt;using &lt;/em&gt;this ballroom but that we were free to go take a look at it!
+ Okay...&lt;/p&gt;
+&lt;p&gt;Anyway, my ideal venue would be located within walking distance of
+several hotels, restaurants, bars, convenience or grocery stores, etc -
+the key to me is &lt;em&gt;having options&lt;/em&gt;.  I think this is where Yihui and I
+diverge a little bit, because I don't think a college campus like Iowa
+State would be a good place to have a conference at all.  For one thing,
+most college dorms are occupied with college kids during the school
+year, so the whole dorm option seems unlikely, and if you're in a
+small-ish town with limited hotel space (like Ames, or like the small
+town I went to college in), it just won't be possible to fit all the
+participants in. For another, I don't think forced interaction between
+participants because there's literally nothing else to do is very
+healthy - I've found that having somewhere to go (an interesting
+restaurant or bar) is a fun way to socialize/network with people you've
+just met.  It takes away some of the tension.  Also, Ames is 41 miles
+from the nearest major airport - I know that's specific to Iowa State,
+but it's true for a lot of more rural universities, and I think it would
+be a major inconvenience.  For an example of a venue I really liked,
+take last summer's JSM in San Diego - nice conference center, many hotel
+choices, good food around, the beach was accessible by public transit...&lt;/p&gt;
+&lt;p&gt;Also, the venue should have good wifi.  Accessible within the entire
+conference center, including the session rooms (in case presenters need
+to upload their slides from Dropbox because their favorite flashdrives
+mysteriously went missing the day before they needed to leave and their
+backup flashdrives suddenly decide to be "malformed" or whatever.  Not
+that this happened to anyone I know...).  The cost of such wifi could
+probably be included in the registration fee.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2)  &lt;/strong&gt;Have a conference app!  It's 2013.  We work in a tech-y field.
+ Lots of people have smartphones and would use the app.  It would
+include most of what is in the printed program (which would solve the
+excessive program-printing problem) in addition to a scheduler - so you
+could plan out the talks/sessions you want to go to that day (thanks to
+my friend &lt;a href="http://biostat.jhsph.edu/~jmuschel/"&gt;John&lt;/a&gt; for this idea, which I LOVE).  It could also include
+things like a live twitter feed, an "announcement area" for room changes
+and lost-and-found issues and whatnot, and some of the social networking
+features that Yihui was talking about (e.g., search for participants by
+name or by university, so you could see whether anyone you know from
+years ago will be coming).  This app could probably get made cheaply and
+quickly if it were a contest (in a word: crowdsource!)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(3) &lt;/strong&gt;Like Yihui said, have the nametags be printed front and back.
+ Such a good, simple idea.  Also, potentially ask for first and last
+names in separate boxes on the registration form...my friend got a
+printed badge that said her last name in giant letters instead of her
+first name, which was kind of hilarious and also kind of unfortunate.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(4)  &lt;/strong&gt;Think carefully about placement of the poster session, because
+it's often hard to get people to go to that part of the conference.  I
+had a couple discussions about this.  I tend to agree with &lt;a href="http://www.biostat.wisc.edu/~kbroman/"&gt;Karl&lt;/a&gt;, who
+suggested having it as the only thing happening during an afternoon
+session in the middle of the conference.  This way: everybody's around.
+ They've all arrived and they aren't leaving yet.  (The one at this
+conference was Sunday night - the first day - so a lot of people weren't
+there yet).  Nobody has another session they really wanted to be at that
+conflicts with it.  I talked a little more about it with &lt;a href="http://www.biostat.jhsph.edu/~tlouis/"&gt;Tom&lt;/a&gt;, a
+conference vet who says that people still don't really go if it's
+scheduled like that.  All I'll say is this:  even if it's in the
+afternoon, have food and drinks.  Kind of a happy hour situation.  Maybe
+not open bar, but cash bar would be awesome (though a beer should cost
+less than \$11...).  And advertise the happy hour nature of the session.&lt;/p&gt;
+&lt;p&gt;Now, the responsibility making a conference awesome does not fall only
+on the shoulders of the organizers....&lt;/p&gt;
+&lt;p&gt;&lt;span style="text-decoration:underline;"&gt;Ideas for Conference
+Participants&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I really only have one, and it's this.  &lt;strong&gt;Give a great talk.  &lt;/strong&gt;I know
+not everyone likes giving talks, but either someone thought you'd do a
+good job and that you have interesting work (invited sessions) or you
+thought your work was worth sharing (contributed sessions), so in either
+case, you kind of owe it to the attendees to at least &lt;em&gt;try&lt;/em&gt; to engage
+them in your research.  The ability to clearly communicate your research
+is an integral part of being a good scientist, I think, so it's part of
+the job, and conferences are a good way to practice this.  ENAR actually
+puts out a &lt;a href="http://enar.org/presentationguidelines.cfm"&gt;list of guidelines for giving an effective presentation&lt;/a&gt;!
+ The most engaging talks I've seen have these qualities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style="line-height:13px;"&gt;They stay in the time limit
+    &lt;em&gt;comfortably,&lt;/em&gt;so the presenter isn't completely rushed.
+     The 1-slide-per-minute guideline seems to work surprisingly well
+    for me.  (This means that if I see that "1/40" footer on Beamer
+    slides at the beginning of your 15-minute talk, I will inwardly shed
+    a tiny tear)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;They explain the big picture well, but might leave out some details.
+     I think this is awesome because then if people are intrigued by the
+    general idea, they'll ask the speaker afterward about the details.
+     If people are confused about the concept, they kind of just forget
+    about it and move on to listening to the next talk.  Leaving out
+    details is a great way to stay within the time limit.&lt;/li&gt;
+&lt;li&gt;They practice their talk at least once.  Maybe they even invite
+    someone to listen - someone who knows stuff, but doesn't know about
+    their research.  Then they'll be able to tell whether their talk is
+    appropriately timed, or whether they've left out too many details.
+    (This actually just what I try to do - but I like to imagine that
+    I'm not a crazy person and that my favorite speakers also practice
+    their talks.)&lt;/li&gt;
+&lt;li&gt;They use slides to &lt;em&gt;remind&lt;/em&gt;them what to talk about rather than
+    to &lt;em&gt;tell &lt;/em&gt;them.  Which means they don't &lt;em&gt;read slides full of text as
+    they point at the words they are reading with a laser pointer&lt;/em&gt;.  The
+    "reminder slides" are usually diagrams or pictures.&lt;/li&gt;
+&lt;li&gt;They tell a joke or two (Yihui mentioned this in his post and
+    actually told jokes at his talk, which I really appreciated.  My
+    favorite quote of his was something along the lines of "I included
+    some funny stuff in here.  I'm sorry if it offends you.  You may
+    think this is not ENAR."  Ha!  But the larger point is that &lt;em&gt;having
+    a joke in your presentation absolutely should not make it
+    un-ENAR-like!  &lt;/em&gt;That's just sad!  Statistics is fun!  We should be
+    able to laugh about it!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I'd be super pumped to go to a stat conference in a cool city with a
+sweet app, a happy hour poster session, and some really awesome talks -
+keeping my fingers crossed!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Mon, 18 Mar 2013 17:42:00 -0400</pubDate><guid>tag:,2013-03-18:ideas-for-super-awesome-conferences.html</guid></item><item><title>Merry Statistician's Christmas!</title><link>/merry-statisticians-christmas.html</link><description>&lt;p&gt;My advisor told me today, in a fit of excitement and enthusiasm, that
+"the real winners in this election were statisticians."  (He later went
+on to joyfully declare, "Man, I LOVE being a statistician!"  The guy is
+living the dream.)  According to him, today is statistician's Christmas.
+ What a great metaphor!  Check it out: all year long, we predict and
+model and analyze and see if we can figure out what will happen.
+ Everything goes down on Tuesday night, and we wake up Wednesday morning
+to the best gift of all: the real data.  And this lets us figure out how
+well our models and predictions and analyses did.&lt;/p&gt;
+&lt;p&gt;This year, the stat nerds did awesome.  Nate Silver (of
+&lt;a href="http://fivethirtyeight.blogs.nytimes.com/"&gt;fivethirtyeight&lt;/a&gt;) is Mr. Popular in geek circles right now.  Should
+Florida officially go Obama, he will have predicted every state's vote
+correctly.  That's really hard to do, since so many factors influence
+how people vote and not all of them are measurable, but man, he and some
+other awesome people &lt;a href="http://simplystatistics.org/post/35187901781/nate-silver-does-it-again-will-pundits-finally-accept"&gt;rocked it&lt;/a&gt;.  Check out this &lt;a href="https://twitter.com/search?q=%23natesilverfacts&amp;amp;src=typd"&gt;amazing Twitter
+hashtag&lt;/a&gt; it spawned. &lt;/p&gt;
+&lt;p&gt;It's also kinda cool to look at the data visualization stuff that comes
+after elections.  I "watched" a lot of the election coverage on
+&lt;a href="http://elections.huffingtonpost.com/2012/results"&gt;Huffpost&lt;/a&gt; - their &lt;a href="http://elections.huffingtonpost.com/2012/results/minnesota"&gt;state-by-state graphics&lt;/a&gt; were really nice.  I
+liked the interactive parts - e.g., how hovering over a dot on the
+county scatterplot told you which county it was.  On another note, the
+main way we visualize US election data is with the results map, where
+states are colored red if they went Republican and blue if they went
+Democrat.  This caused my roommate (who isn't from the US) to comment
+"That map is looking pretty red...Romney must be winning?"  And that's
+the problem with the election map - big, unpopulated, 3-vote states are
+usually red.  &lt;a href="http://www.npr.org/blogs/itsallpolitics/2012/11/01/163632378/a-campaign-map-morphed-by-money"&gt;NPR did some fun stuff&lt;/a&gt; that addressed this issue by
+making the sizes and colors of states on the map a bit more informative.&lt;/p&gt;
+&lt;p&gt;So, merry stat-mas to all!  Enjoy the peace and quite of the &lt;a href="http://www.youtube.com/watch?v=OjrthOPLAKM&amp;amp;feature=related"&gt;election
+being over&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Thu, 08 Nov 2012 04:17:00 -0500</pubDate><guid>tag:,2012-11-08:merry-statisticians-christmas.html</guid></item><item><title>working interactively on a remote computer</title><link>/working-interactively-on-a-remote-computer.html</link><description>&lt;p&gt;In my &lt;a href="http://alyssafrazee.wordpress.com/2012/08/23/hello-world/"&gt;software/hardware setup post&lt;/a&gt;, I talked a little bit about
+working on a remote machine.  As promised, here are the details about
+how I make interactive coding easy for me.&lt;/p&gt;
+&lt;p&gt;Let's start from the very very beginning.  Our department has a pretty
+sweet set of really powerful computers ("the cluster") available for us
+to use.  Because the computers are so awesome, they have to be kept in a
+room that is specially cooled and maintained, and they don't have
+desktops that we can sit down and interact with.  As such, you need to
+use a different computer (i.e., a laptop) to remotely log in to the
+cluster and either (a) start an interactive session, in which you can
+type commands into the Linux shell, or open up an interactive version of
+(say) R or python and type commands there, or (b) submit a batch job or
+shell script to run without user interaction.&lt;/p&gt;
+&lt;p&gt;Batch jobs and scripts are pretty straightforward, so I'm not going to
+yammer on about that in this post.  But working interactively is a
+little trickier, mostly because it's good practice (in the name of
+reproducible research, scientific integrity, and organization) to keep a
+record of the commands you run to get your results.  If you get results
+interactively on the remote machine, there's not a built-in way to do
+this.  But never fear!  Software and shortcuts exist that allow you to
+save a script on your local computer, but run each line of that script
+interactively on the remote machine.  Since statisticians like me
+usually do most interactive work in &lt;a href="http://www.r-project.org/"&gt;R&lt;/a&gt;, I'll describe here how I run
+a local R script interactively on the cluster.&lt;/p&gt;
+&lt;p&gt;I'm currently a Mac user, so my main tool for this purpose
+is &lt;a href="http://aquamacs.org/"&gt;Aquamacs&lt;/a&gt;.  This is basically a version of an &lt;a href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; text
+editor.  My opinion on Emacs is that it's a really powerful tool, but
+requires a lot of customization to access all that power, and it has
+pretty funky keyboard shortcuts.  Aquamacs allows you to use either
+Emacs keyboard shortcuts OR common Mac keyboard shortcuts (e.g.,
+command-Z for undo) in an Emacs session, which I find really useful.
+ Aquamacs makes use of &lt;a href="http://ess.r-project.org/"&gt;ESS&lt;/a&gt; (Emacs Speaks Statistics) when
+interacting with R.&lt;/p&gt;
+&lt;p&gt;So let's get to the point: here are the steps!&lt;/p&gt;
+&lt;p&gt;​(1)  Install Aquamacs.&lt;/p&gt;
+&lt;p&gt;​(2)  Open your local R script inside Aquamacs.&lt;/p&gt;
+&lt;p&gt;​(3)  Type &lt;strong&gt;M-x shell&lt;/strong&gt; (M means escape key), which will basically open
+up a Terminal window inside Aquamacs.  (Once you hit M-x, you won't be
+typing in the R script anymore, but will see your stuff appear at the
+bottom of the window).&lt;/p&gt;
+&lt;p&gt;​(4)  In the Terminal window that just opened up, log in to the remote
+machine. (I'm making the assumption here that the login process to the
+remote machine involves some variant of an "ssh" command in the
+terminal.)&lt;/p&gt;
+&lt;p&gt;​(5)  Click &lt;strong&gt;Window &gt; Move tab to new frame&lt;/strong&gt;.  The terminal window
+will slide over to the other side of your computer, so you're now seeing
+the R script and the prompt of the remote machine simultaneously.&lt;/p&gt;
+&lt;p&gt;​(6)  Start R on the remote machine.&lt;/p&gt;
+&lt;p&gt;​(7)  Staying in the remote-machine-R window, type &lt;strong&gt;M-x ess-remote&lt;/strong&gt;.
+ You'll then be prompted for a dialect - type &lt;strong&gt;r &lt;/strong&gt;- the line
+"options(STERM='iESS')" will have been run inside your R session.&lt;/p&gt;
+&lt;p&gt;​(8)  Move back to the local R script.  You can now run line-by-line on
+the remote machine either using &lt;strong&gt;control-n&lt;/strong&gt; to run just the current
+line, or using &lt;strong&gt;control-r &lt;/strong&gt;to run a block of highlighted lines.&lt;/p&gt;
+&lt;p&gt;This has worked pretty well for me, but I am definitely interested in
+hearing others' ideas if someone knows of a more efficient way to do
+this from a Mac.  I use Aquamacs almost exclusively for this, which
+feels a little like using a sledgehammer for a tiny little nail, since
+I'm not really harnessing all the power of Aquamacs/Emacs or using it
+for any of its other intended purposes, and I haven't put a lot of time
+into customizing it.  But it does get the job done, and it's definitely
+better than the ol' copy-paste trick.&lt;/p&gt;
+&lt;p&gt;I'm incredibly happy with my Macbook (it's a delightfully fast,
+beautiful, efficient computer), but I really really miss &lt;a href="http://notepad-plus-plus.org/"&gt;Notepad++&lt;/a&gt;,
+the best text editor I've ever known - it's Windows-only.  Running
+interactively on a PC is smoother than the Mac workflow I described
+above: it basically involves (1) logging into the remote machine using
+something like &lt;a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html"&gt;PuTTY&lt;/a&gt; and opening R, (2) opening up your local R
+script in Notepad++, and (3) hitting F9 to run a line or highlighted set
+of lines.  So much more elegantly simple!  Something for Mac software
+developers to aspire to, I suppose...&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Thu, 25 Oct 2012 23:20:00 -0400</pubDate><guid>tag:,2012-10-25:working-interactively-on-a-remote-computer.html</guid></item><item><title>the power of the default</title><link>/the-power-of-the-default.html</link><description>&lt;p&gt;Our tendency to stick with what's right in front of us
+is &lt;a href="http://en.wikipedia.org/wiki/Status_quo_bias"&gt;well-documented&lt;/a&gt;.  (I know it's Wikipedia, but check out the fat
+list of references and further reading!).  I was at a lecture on obesity
+a few weeks ago, and I learned that in 2006, Disney World's fast food
+places changed the kids' meal default sides to carrots and milk (rather
+than french fries and pop) - and the majority of people&lt;em&gt; actually got
+the carrots and milk&lt;/em&gt;, even though fries are way tastier and are still
+available if you ask for them. &lt;a href="http://www.whitehouse.gov/the-press-office/2012/06/05/first-lady-joins-walt-disney-company-announce-new-standards-food-adverti"&gt;Michelle Obama was pleased&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I think we can harness the power of the default.  I'm talking about
+something on a slightly smaller scale than the national obesity
+epidemic.  I'm talking about the problem of really terrible academic
+talks.  As most of my school friends can attest, I'm pretty opinionated
+when it comes to talks.  I'm really impressed when someone gives a good
+presentation, and I'm irked every time someone shows up and reads their
+slides (full of bullet points and equations) to a room full of smart,
+literate people - &lt;em&gt;WHY OH WHY!? &lt;/em&gt; There is so much advice out there on
+how to give a good talk.  It's &lt;a href="http://lmgtfy.com/?q=giving+a+good+research+talk"&gt;absurdly easy to find&lt;/a&gt;.  So what
+gives?  I think a major part of the problem is PowerPoint's default.&lt;/p&gt;
+&lt;p&gt;That sounds so simple, but I seriously believe that if PowerPoint's
+default slide layout was "blank slide" rather than "header and bullet
+point box," the overall quality of presentations worldwide would
+increase significantly.  People wouldn't be initially prompted, over and
+over, to fit their research into a bullet-point framework. People would
+feel freer to add pictures, graphs, schematic diagrams, videos, etc etc,
+if that bullet point box wasn't cramping their style.  With less text on
+slides, people might run through their talk once or twice before giving
+it, just to make sure they know what they're saying and that they aren't
+going over time.&lt;/p&gt;
+&lt;p&gt;Don't underestimate the power of the default.  I think it could do
+magical things for the academic and business world.&lt;/p&gt;
+&lt;p&gt;p.s.  http://lmgtfy.com/ - "let me google that for you."  So hilariously
+snarky.  &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Fri, 21 Sep 2012 18:06:00 -0400</pubDate><guid>tag:,2012-09-21:the-power-of-the-default.html</guid></item><item><title>failure, grit, and big thinking</title><link>/failure-grit-and-big-thinking.html</link><description>&lt;p&gt;Last fall, I read an article in the New York Times called "&lt;a href="http://www.nytimes.com/2011/09/18/magazine/what-if-the-secret-to-success-is-failure.html?pagewanted=all"&gt;What if the
+Secret to Success is Failure?&lt;/a&gt;"  It's a pretty long read, but I really
+enjoyed it.  The article centers around Dominic Randall, headmaster of a
+New York City private K-12 school, and a few other prominent figures who
+thought hard about what qualities are most important for students'
+success in school and how to teach and develop those qualities in their
+students.&lt;/p&gt;
+&lt;p&gt;They were figuring out how to predict student success in high school and
+college, but I have no trouble believing that that the conclusions and
+findings presented in the article probably extrapolate immediately to
+graduate school success.  The question was "what kinds of people succeed
+in academic situations that are extremely challenging, often to the
+point of discouraging?"&lt;/p&gt;
+&lt;p&gt;What they came up with as the answer was...inspiring.  Their list of the
+qualities necessary to really succeed was as follows: &lt;strong&gt;zest, grit,
+self-control, social intelligence, gratitude, optimism and curiosity.
+ &lt;/strong&gt;I call this list "inspiring" mostly because of what
+it &lt;em&gt;doesn't&lt;/em&gt; contain:  competitiveness, supergenius IQ, hardness...the
+qualities of the uber-smart but really intimidating people I've met and
+don't ever feel like I can measure up to.  But no -- the big-thinking
+educators and psychologists mentioned in the article found other
+qualities more important.  Qualities I've found and really value in
+people I deeply respect.  Qualities that show "character is at least as
+important as intellect." Zest, grit, self-control, social intelligence,
+gratitude, optimism, curiosity.  The kinds of people that have those
+qualities are the kinds that succeed.&lt;/p&gt;
+&lt;p&gt;The most discussed quality on that list (and I believe the one that gave
+the article its title) was &lt;strong&gt;grit&lt;/strong&gt;, described as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;"a passion for a single mission [combined] with an unswerving
+dedication to achieve that mission, whatever the obstacles and however
+long it might take."&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So grit is mostly developed through failure. It's hypothesized that kids
+who have never failed, who haven't really faced obstacles, who have
+&lt;em&gt;always&lt;/em&gt; been told "great job!", never develop one of the key elements
+to success: grit.&lt;/p&gt;
+&lt;p&gt;But...that means that the most successful academics - the ones with
+zest, grit, self-control, social intelligence, gratitude, optimism,
+curiosity, the ones I look up to - developed grit at some point.  They
+failed at some point.  They FAILED!  This was such an eye-opening
+realization to me.  Even the best fail.  A lot.  Most successful people
+I've met don't really advertise their failures, but I think (at some
+point) they should.  For example: My advisor wrote a whole public &lt;a href="http://simplystatistics.org/post/29067196398/a-non-exhaustive-list-of-things-i-have-failed-to"&gt;blog
+post on his failures&lt;/a&gt;, which I thought was awesome.  When smart,
+successful people share their setbacks, it teaches students that if you
+fail at something, it (a) doesn't mean you're not smart enough, (b)
+doesn't mean you'll never be successful, and (c) doesn't mean you should
+give up or play it safe.  It just means you have to stay motivated, stay
+confident, and figure something else out.&lt;/p&gt;
+&lt;p&gt;Then the question becomes this:  how do people develop those traits?
+ Are they personality traits?  Should they somehow be taught?  (One of
+the main topics of the NYT article was how the school should go about
+developing kids' character).  When you're in your 20s, how do you work
+on developing your character?  I don't really have answers.  I have some
+ideas - ideas that I don't implement perfectly, but that I think would
+help develop zest, grit, self-control, social intelligence, gratitude,
+optimism, and/or curiosity:&lt;/p&gt;
+&lt;p&gt;​(1)  Hang around people who already exhibit those traits.  Get to know
+them.  If they're your peers, be friends with them.  People with zest
+and gratitude and optimism and social intelligence are often really fun
+people to hang out with anyway.&lt;/p&gt;
+&lt;p&gt;(2).  Read.  Word on the street is that &lt;a href="http://lifehacker.com/5936493/want-to-be-a-great-leader-start-reading"&gt;successful people read a
+ton&lt;/a&gt;.  Check out &lt;a href="http://www.goodreads.com/"&gt;Goodreads&lt;/a&gt; to turn reading into social networking
+(a great way to get recommendations!).&lt;/p&gt;
+&lt;p&gt;(3).  Work hard, play hard.  Like your work enough to spend a good
+amount of time on it - enough time to try out crazy ideas (that might
+fail spectacularly) and to do quality work.  And be social - build
+relationships, make friends, enjoy your city.&lt;/p&gt;
+&lt;p&gt;(4).  Be a big thinker.  All my favorite people in our department are
+what I consider big thinkers: people who have big ideas - ideas that
+sometimes seem crazy (and sometimes are), people who LOVE what they do,
+people who aren't afraid to get enthused about statistics or
+bioinformatics or computer science, people who proudly and loudly geek
+out, people who set really lofty goals (and often don't meet them, but
+accomplish significant things while trying!), people who speak up when
+they have an idea or a question, people who encourage others, people who
+listen to those who are smarter than them.  Be one of those people.&lt;/p&gt;
+&lt;p&gt;We'll see how this goes for the rest of grad school (and beyond)!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Fri, 31 Aug 2012 18:43:00 -0400</pubDate><guid>tag:,2012-08-31:failure-grit-and-big-thinking.html</guid></item><item><title>my software/hardware setup</title><link>/software-setup.html</link><description>&lt;p&gt;Inspired by the awesome &lt;a href="http://hilaryparker.com/2012/08/16/the-setup-part-1/"&gt;Hilary Parker&lt;/a&gt; and the dawn of a new academic
+year, I've put together a rundown of tools I find essential in my
+day-to-day as a biostatistics graduate student.  None of this was
+formally taught to me - much has been recommended, learned on the fly,
+or found via the "just Google it" method - but I hope to inject some
+sense of coherence into the whole situation with this post.  We thought
+something like this would be especially useful for incoming students or
+anybody looking to change or optimize their setup.  So let's begin!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hardware&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;My personal computer is a 15" MacBook Pro, which I got in October 2011.
+ I was hesitant to make the switch over to the Mac (I had owned only PCs
+before then), but I've never been happier with a laptop.  The work I do
+on a daily basis is much better streamlined on the Mac.  However, either
+platform works in our field, so I'll be sure to note when a piece of
+software I discuss is Mac- or PC-specific.  The laptop is my main piece
+of hardware (not counting our departmental computing cluster, which I'll
+mention later) - the only other thing I'd mention is my 300GB external
+hard drive, which I use to back up my computer with &lt;a href="http://support.apple.com/kb/HT1427"&gt;Time Machine&lt;/a&gt;.
+ Backups are absolutely essential - I choose to use an external drive,
+but backing things up in the cloud has become common practice.  I use
+&lt;a href="http://www.dropbox.com"&gt;Dropbox&lt;/a&gt; (you get 2GB for free) for backing up my most important
+files and for creating shared folders.  Other common cloud storage
+solutions are &lt;a href="http://aws.amazon.com/s3/"&gt;Amazon S3&lt;/a&gt; and &lt;a href="https://www.sugarsync.com/"&gt;SugarSync&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Software&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;By far, my favorite piece of software is &lt;a href="http://www.r-project.org/"&gt;R&lt;/a&gt; - every statistician's
+best friend.  It rocks.  In the genomics world, most R packages are
+published on &lt;a href="http://bioconductor.org"&gt;Bioconductor&lt;/a&gt;.  The R GUI on the Mac is pretty awesome,
+so working with R and Bioconductor locally required almost no setup for
+me.&lt;/p&gt;
+&lt;p&gt;What was a bit more challenging was figuring out my R situation when
+working on our departmental computing cluster - i.e., when working on a
+remote machine that I've logged into from my laptop via ssh.  There are
+two pieces of software I've found really useful when working remotely:
+&lt;a href="http://cyberduck.ch/"&gt;Cyberduck&lt;/a&gt; (for file transfers) and &lt;a href="http://aquamacs.org/"&gt;Aquamacs&lt;/a&gt; (for running code
+interactively from my machine to the cluster - Mac-specific).  I'm not
+fully convinced that Aquamacs is the best way to go for the interactive
+code - in fact, the thing I miss most about having a PC is the text
+editor &lt;a href="http://notepad-plus-plus.org/"&gt;Notepad++&lt;/a&gt;.  Notepad++ is a PC-specific editor that connects
+beautifully to R (with &lt;a href="http://sourceforge.net/projects/npptor/"&gt;NppToR&lt;/a&gt; - just hit F8 to run a line in R
+locally!) or to an ssh client (just hit F9 to run a line remotely!).
+ However, I have a pretty good system worked out using Aquamacs and ESS
+- I'll post the specifics in another post.  And, speaking of text
+editors - I've come to like &lt;a href="http://www.barebones.com/products/TextWrangler/"&gt;TextWrangler&lt;/a&gt; (Mac-specific) quite a bit.&lt;/p&gt;
+&lt;p&gt;For typesetting anything with more than one equation in it, I (and most
+of the mathematical/statistical community) use LaTeX.  I use
+&lt;a href="http://pages.uoregon.edu/koch/texshop/index.html"&gt;TeXShop&lt;/a&gt; as my frontend and &lt;a href="http://www.tug.org/mactex/2011/"&gt;MacTeX&lt;/a&gt; as my TeX distribution. This
+setup works like a dream on my Mac - it's incredibly fast, and it took
+NO customization to get the two features that are really important to
+me: (1) automatic PDF refresh when you change your TeX code and (2) a
+backward search feature where I can click on the PDF and be taken
+directly to that point in the TeX code.  When I used a PC, I used
+&lt;a href="http://www.texniccenter.org/"&gt;TeXnicCenter&lt;/a&gt; as my frontend and &lt;a href="http://miktex.org/"&gt;MiKTeX&lt;/a&gt; as my TeX distribution,
+but I also found that I needed &lt;a href="http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader.html"&gt;Sumatra&lt;/a&gt; (an alternative to Adobe for
+reading PDFs) and some extra customization to get my two required
+features.&lt;/p&gt;
+&lt;p&gt;I use PowerPoint for presentations containing zero or one equation(s),
+and I use Beamer (a LaTeX class) for anything with two or more
+equations.  I have PowerPoint 2008, which is pretty slow on a Mac, so
+I've been considering trying &lt;a href="http://www.apple.com/iwork/keynote/"&gt;Keynote&lt;/a&gt;.  (Thoughts, anyone?).  I've
+also tried to get the best of both the PowerPoint and Beamer worlds
+(&lt;a href="http://en.wikipedia.org/wiki/WYSIWYG"&gt;WYSIWYG&lt;/a&gt; + nice equations) by using &lt;a href="http://pierre.chachatelier.fr/latexit/latexit-home.php?lang=en"&gt;LaTeXiT&lt;/a&gt;.  There's a
+PC-equivalent called &lt;a href="http://elevatorlady.ca/"&gt;Aurora&lt;/a&gt;, which I used once for 30 days until my
+free trial expired.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Anything else?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;That's pretty much all I use on a daily basis.  I'll mention a couple
+other miscellaneous things:  I'm just starting to use &lt;a href="http://github.com"&gt;github&lt;/a&gt; to
+manage and share my code - git has great mechanisms for keeping track of
+all the craziness that comes with doing a shared project.  Lots of
+people in my department use &lt;a href="http://www.statistik.lmu.de/~leisch/Sweave/"&gt;Sweave&lt;/a&gt;, a cool way to integrate R and
+LaTeX.  I am not one of those people.  Sweave is especially good for
+putting together manuals, but not so good for working with analyses that
+take a while to run or that need to be very specifically formatted.&lt;/p&gt;
+&lt;p&gt;I'd love to hear about any setup tips that you find useful - do share!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Thu, 23 Aug 2012 20:29:00 -0400</pubDate><guid>tag:,2012-08-23:software-setup.html</guid></item></channel></rss>
