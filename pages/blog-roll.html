@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>alyssa frazee</title>
+
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
+    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
+        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
+        <div class="sub-title"></div>
+
+        <p>
+      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/blog-roll.html">blog roll</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/contact.html">contact</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/archives.html">archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>follow me</h4>
+<ul>
+      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+  </ul>
+</div>
+
+      </header>
+      <section>
+      <section id="content" class="body">    
+    <h1 class="entry-title">blog roll</h1>
+        
+        <p>Here are a few blogs, all related to statistics, data science, coding, or tech in general, that I sometimes read (in no particular order):</p>
+<ul>
+<li><a href="http://simplystatistics.org/">Simply Statistics</a></li>
+<li><a href="http://www.hilarymason.com/">Hilary Mason</a></li>
+<li><a href="http://jakevdp.github.io/">Pythonic Perambulations</a></li>
+<li><a href="http://akaptur.github.io/">Of Interest</a></li>
+<li><a href="https://www.hackerschool.com/blog">Hacker School</a></li>
+<li><a href="http://www.garann.com/dev/">Garann Means</a></li>
+<li><a href="http://hilaryparker.com/">Hilary Parker</a></li>
+<li><a href="http://hopstat.wordpress.com/">John Muschelli</a></li>
+<li><a href="http://jfortinbiostats.com/blog/">Jean-Philippe Fortin</a></li>
+<li><a href="http://yihui.name/en/">Yihui Xie</a></li>
+<li><a href="http://lcolladotor.github.io/">Leonardo Collado Torres</a></li>
+<li><a href="http://elizabethmargaretsweeney.wordpress.com/blog/">Elizabeth Sweeney</a></li>
+<li><a href="http://joythebaker.com">Joy the Baker</a> - admittedly not statistical, but incredibly awesome.</li>
+</ul>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; alyssa frazee &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
