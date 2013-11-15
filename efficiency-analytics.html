@@ -112,6 +112,11 @@
 
 <p>The Python and R code for this analysis is <a href="https://github.com/alyssafrazee/efficiency_analytics">available on GitHub</a>.  A generalized Python script is also available and documented, so if you have Sun Grid Engine-formatted emails you'd like to scrape efficiency statistics from, you can use that script.  All you need to do is download a context.io API key (it's free) and set up your email account to work with that.  Remember to store your "consumer_key" and "consumer_secret" values in column 2 of a tab-separated file called "client_secrets" located in the same directory as the python script.  This probably goes without saying, but keep that file private (i.e. DO NOT commit it to GitHub) or your email account will be hackable. </p>
 <p>My hope is that a generalizable pipeline like this one will make it easier for me to quickly answer the (formerly-dreaded) question "how long did that take?"</p>
+<hr />
+<p><strong>Update, 11/15/13</strong>: By <a href="https://twitter.com/acfrazee/status/401119198023151616">request</a>, here are some more statistics for the example described above.  Specifically, a reader was interested in how input size affected efficiency.  For these transcript assembly jobs, the input was a file of RNA-seq read alignments, so I took input size to be the size of that file.  One line of bash gave me those input sizes (in the folder with the alignments, I ran:  <code>ls -lh | sed 1d &gt; bams.txt</code>).  Input size was indeed correlated with efficiency!  Turns out the correlation is stronger for input size and wallclock time (r=0.8) than it is for input size and memory footprint (r=0.3).</p>
+<p align="center">
+    <img src="static/images/inputsize.png" alt="Image"/>
+</p>
           </div><!-- /.entry-content -->
       </article>
 </section>
