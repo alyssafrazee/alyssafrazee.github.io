@@ -65,10 +65,18 @@
 </abbr> | 
  -- (<a href="http://alyssafrazee.com/namespaces.html" rel="bookmark">permalink</a>)
 </small>
-</p>      <p>Writing R packages is fun. Some people say you should start making your R code into a package <a href="https://github.com/jtleek/rpackages">as soon as you have two functions</a> (just two!!). Making a package involves:
-1.  Putting your function definitions into separate files and putting those files in a folder called <code>R</code>
-2.  Documenting your functions in .Rd files and putting those doc files in a folder called <code>man</code>
-3.  Making <code>DESCRIPTION</code> and <code>NAMESPACE</code> files</p>
+</p>      <p>Writing R packages is fun. Some people say you should start making your R code into a package <a href="https://github.com/jtleek/rpackages">as soon as you have two functions</a> (just two!!). Making a package involves:</p>
+<ol>
+<li>
+<p>Putting your function definitions into separate files and putting those files in a folder called <code>R</code></p>
+</li>
+<li>
+<p>Documenting your functions in .Rd files and putting those doc files in a folder called <code>man</code></p>
+</li>
+<li>
+<p>Making <code>DESCRIPTION</code> and <code>NAMESPACE</code> files</p>
+</li>
+</ol>
 <p>And that's it! Awesome. Mostly. (1) is pretty easy, but (2) gets snarly if you try to do it manually (never fear! <a href="http://www.rstudio.com/ide/docs/packages/documentation">roxygen2</a> is here), and (3) confused me for about a year. </p>
 <p>Sometimes when you are confused about <code>DESCRIPTION</code> and <code>NAMESPACE</code> files, or package development in general, people and/or Google will tell you to read <a href="http://cran.r-project.org/doc/manuals/R-exts.html#Creating-R-packages">the official documentation</a>. Those people are wrong, unless you're really into things I don't understand, like "F95 code", "Makevars", and "pthreads". If instead you want to know what R namespaces are/why they're important and see some illustrative examples, you should read <a href="http://adv-r.had.co.nz/Namespaces.html">Hadley Wickham's page about them</a>, and then you should read <a href="http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/">this delightful post</a>. If you want to know about R package development in general, you should read pretty much all of <a href="http://adv-r.had.co.nz/">Advanced R programming</a>, Hadley's internet book, and then check out <a href="https://github.com/jtleek/rpackages">Jeff Leek's guide to R package development</a>.</p>
 <p>Sometimes, even if you've read about package development, you make mistakes in your <code>DESCRIPTION</code> and <code>NAMESPACE</code> files. These kinds of mistakes can cause some really weird problems. I have made so many of these mistakes that I'm starting to recognize them as namespace mistakes (learning FTW!). In hopes of helping other people (including future Alyssa!) avoid those mistakes, here are some of the things that I've learned might indicate namespace issues:</p>
