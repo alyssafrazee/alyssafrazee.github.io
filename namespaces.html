@@ -67,15 +67,9 @@
 </small>
 </p>      <p>Writing R packages is fun. Some people say you should start making your R code into a package <a href="https://github.com/jtleek/rpackages">as soon as you have two functions</a> (just two!!). Making a package involves:</p>
 <ol>
-<li>
-<p>Putting your function definitions into separate files and putting those files in a folder called <code>R</code></p>
-</li>
-<li>
-<p>Documenting your functions in .Rd files and putting those doc files in a folder called <code>man</code></p>
-</li>
-<li>
-<p>Making <code>DESCRIPTION</code> and <code>NAMESPACE</code> files</p>
-</li>
+<li>Putting your function definitions into separate files and putting those files in a folder called <code>R</code></li>
+<li>Documenting your functions in .Rd files and putting those doc files in a folder called <code>man</code></li>
+<li>Making <code>DESCRIPTION</code> and <code>NAMESPACE</code> files</li>
 </ol>
 <p>And that's it! Awesome. Mostly. (1) is pretty easy, but (2) gets snarly if you try to do it manually (never fear! <a href="http://www.rstudio.com/ide/docs/packages/documentation">roxygen2</a> is here), and (3) confused me for about a year. </p>
 <p>Sometimes when you are confused about <code>DESCRIPTION</code> and <code>NAMESPACE</code> files, or package development in general, people and/or Google will tell you to read <a href="http://cran.r-project.org/doc/manuals/R-exts.html#Creating-R-packages">the official documentation</a>. Those people are wrong, unless you're really into things I don't understand, like "F95 code", "Makevars", and "pthreads". If instead you want to know what R namespaces are/why they're important and see some illustrative examples, you should read <a href="http://adv-r.had.co.nz/Namespaces.html">Hadley Wickham's page about them</a>, and then you should read <a href="http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/">this delightful post</a>. If you want to know about R package development in general, you should read pretty much all of <a href="http://adv-r.had.co.nz/">Advanced R programming</a>, Hadley's internet book, and then check out <a href="https://github.com/jtleek/rpackages">Jeff Leek's guide to R package development</a>.</p>
@@ -83,13 +77,15 @@
 <h3>symptom: R can't find my function even though I loaded my package</h3>
 <p>diagnosis: failure to export. If you want a package function to be directly callable by users, you need <code>export(functionName)</code> in the <code>NAMESPACE</code> file. If you're using roxygen2, you need a <code>@export</code> tag in the docs for <code>functionName</code>. Probably you know this if you read any introductory material about package development, but it's easy to forget, especially if you have more than a few internal functions.</p>
 <h3>symptom: error(s) when I use my function, but not when I run its lines to debug</h3>
-<p>The following frustrating sequence of events has happened to me lots of times (including earlier this afternoon):
-1.  I load my brand new package
-2.  I call one of its functions
-3.  There's an error
-4.  I find which line in the function is throwing the error with a <code>traceback()</code> 
-5.  I grab that function's source, make variables with the same name as the function arguments, and run each line of the function interactively (in the global scope) so I can look at the objects and figure out what's breaking and where
-6.  but everything works TOTALLY FINE IN THE GLOBAL SCOPE</p>
+<p>The following frustrating sequence of events has happened to me lots of times (including earlier this afternoon):</p>
+<ol>
+<li>I load my brand new package</li>
+<li>I call one of its functions</li>
+<li>There's an error</li>
+<li>I find which line in the function is throwing the error with a <code>traceback()</code> </li>
+<li>I grab that function's source, make variables with the same name as the function arguments, and run each line of the function interactively (in the global scope) so I can look at the objects and figure out what's breaking and where</li>
+<li>but everything works TOTALLY FINE IN THE GLOBAL SCOPE</li>
+</ol>
 <p>diagnosis: either (a) failure to import a dependency, but having that dependency loaded in your workspace because you've called <code>library()</code> earlier in your session, or (b) relying on the <code>Depends</code> field of the <code>DESCRIPTION</code> file to specify your package's dependencies rather than the <code>Imports</code> field. There are several helpful discussions (e.g. <a href="http://stackoverflow.com/questions/8637993/better-explanation-of-when-to-use-imports-depends">this</a> and <a href="http://stackoverflow.com/questions/9893791/imports-and-depends">this</a>) about the difference between <code>Imports</code> and <code>Depends</code> on StackOverflow, and I'm still like 8% confused about what that difference is, but I do know this: it's usually better to put your package's dependencies in the <code>Imports</code> field. <a href="http://stackoverflow.com/questions/8637993/better-explanation-of-when-to-use-imports-depends">The first answer here</a> gives a nice explanation centering around the "search path" (i.e. the order of the scopes in which R looks for function definitions when they are called; see <a href="http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/">this post</a> for even more details). From what I understand, using <code>Imports</code> rather than <code>Depends</code> to specify dependencies has two big benefits: (1) the order in which users load your package compared to any other packages doesn't matter, and (2) loading your package won't mess up the way functions are called from other packages. Also, we wouldn't have these problems if everyone would just use <code>Imports</code> instead of <code>Depends</code>, but no such luck because please, we are R programmers, so sometimes life is hard. There are always caveats, like the <a href="http://stackoverflow.com/questions/8637993/better-explanation-of-when-to-use-imports-depends">edit to the nice SO answer</a>.</p>
 <p>Anyway, to summarize this diagnosis: your package's namespace might be missing a function from a dependency. Did you forget to import a dependency? Did you specify your dependencies with <code>Depends</code> instead of <code>Imports</code>? (stop that.)</p>
 <h3>symptom: your friends get errors when using your package on their machines, but everything works fine for you</h3>
