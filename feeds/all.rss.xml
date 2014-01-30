@@ -1,26 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>alyssa frazee</title><link>http://alyssafrazee.com/</link><description></description><atom:link href="alyssafrazee.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 28 Jan 2014 18:43:00 -0500</lastBuildDate><item><title>insight, wit, and wisdom</title><link>http://alyssafrazee.com/iww.html</link><description>&lt;h1&gt;insight, wit, and wisdom&lt;/h1&gt;
-&lt;h2&gt;tl;dr&lt;/h2&gt;
-&lt;p&gt;I have interesting thoughts on various topics! Likely this
-post will change the way you see the world and probably make you laugh
-so hard you cry, so you may want to be sitting down and not drinking
-any beverages while reading.&lt;/p&gt;
-&lt;h2&gt;insight&lt;/h2&gt;
-&lt;p&gt;Most people are pretty unhappy about the cold weather
-("polar vortex"), but I secretly kind of like it. First, it's about 10
-degrees here on the east coast, so it's not unreasonable. I'm from
-Minnesota, so it reminds me of home. I'm now appreciating my hot
-beverages more, and I've been able to pull out my "snuggly chic"
-wardrobe (consisting of sweaters, scarves, long underwear, and boots).&lt;/p&gt;
-&lt;h2&gt;wit&lt;/h2&gt;
-&lt;p&gt;Joke 1, joke 2, serious comments 1-5, joke 3.&lt;/p&gt;
-&lt;h2&gt;wisdom&lt;/h2&gt;
-&lt;p&gt;Look both ways before you cross. Always say thank you. Keep good 
-company.&lt;/p&gt;
-&lt;h2&gt;conclusions&lt;/h2&gt;
-&lt;p&gt;Awesome summary statement here! Fun dramatic emoji: :scream:&lt;/p&gt;
-&lt;h2&gt;the gist&lt;/h2&gt;
-&lt;p&gt;&lt;script src="https://gist.github.com/alyssafrazee/8678880.js"&gt;&lt;/script&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Tue, 28 Jan 2014 18:43:00 -0500</pubDate><guid>tag:alyssafrazee.com,2014-01-28:iww.html</guid></item><item><title>smells like a NAMESPACE problem</title><link>http://alyssafrazee.com/namespaces.html</link><description>&lt;p&gt;Writing R packages is fun. Some people say you should start making your R code into a package &lt;a href="https://github.com/jtleek/rpackages"&gt;as soon as you have two functions&lt;/a&gt; (just two!!). Making a package involves:&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>alyssa frazee</title><link>http://alyssafrazee.com/</link><description></description><atom:link href="alyssafrazee.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 29 Jan 2014 11:59:00 -0500</lastBuildDate><item><title>Today I read some code I wrote in 2007 and laughed</title><link>http://alyssafrazee.com/old-code.html</link><description>&lt;p&gt;A few weeks ago, I heard or read something like this: "if you look back at work you did a while ago and you think it was really awful, &lt;em&gt;this is a good thing&lt;/em&gt; because it means you're improving." &lt;/p&gt;
+&lt;p&gt;I remember thinking this was a great attitude to have toward old work that you now look upon with shame. Instead of getting caught up in how terrible it seems, get caught up in how far you've come since then! Positive thinking, encouragement, etc etc etc. I'm sorry I can't remember where I heard this (if it was you who said this to me, let me know and I'll give you the appropriate shout-out!).&lt;/p&gt;
+&lt;p&gt;Today I was doing a little re-organization of my hard drive when I came across some of the R code I wrote in college, when I was first learning about R and data analysis and statistics. I almost thought "oh my goodness I shouldn't put this on the internet! It's hilariously awful!" but then I thought maybe "it's hilariously awful!" was a great reason to put it on the internet: non-beginners will be entertained, and beginners might be encouraged! So, I give you: a script I wrote for my statistics class in the fall of 2007, which I had creatively- and informatively-titled &lt;code&gt;september12.R&lt;/code&gt;:&lt;/p&gt;
+&lt;script src="https://gist.github.com/alyssafrazee/8702020.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;Some fun features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;number of comments: 0&lt;/li&gt;
+&lt;li&gt;everything is saved, even my mistakes (cf. lines 8, 19, 31)&lt;/li&gt;
+&lt;li&gt;oh my, &lt;code&gt;attach()&lt;/code&gt; is used! ("bad form" in any non-trivial data analysis project)&lt;/li&gt;
+&lt;li&gt;the mystery of lines 25-28: This look likes some convoluted library loads that I evidently was using in order to make a dot plot...? And I'm calling &lt;code&gt;:::&lt;/code&gt;?! I guarantee you I had no idea what these lines were doing and had copy/pasted them from class notes to make &lt;code&gt;DOTplot&lt;/code&gt; work.&lt;/li&gt;
+&lt;li&gt;the use of R as a calculator in lines 21-24, with no explanation of why (though it looks like I was calculating outlier cutoffs using IQR)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So many feelings. :grimacing: :joy: :flushed: :worried:&lt;/p&gt;
+&lt;p&gt;Happily, I've improved as an R programmer since 2007. I was curious as to how much R code I've written since then, so I went on a little detour and did a quick analysis of my hard drive: how many lines of R do I have stored in the following folders: &lt;code&gt;Documents&lt;/code&gt;, &lt;code&gt;Google Drive&lt;/code&gt;, &lt;code&gt;Dropbox&lt;/code&gt;, and &lt;code&gt;Desktop&lt;/code&gt;? (I wanted to exclude R code from my installed libraries and applications - I'm interested in code that &lt;em&gt;I&lt;/em&gt; have written). By this metric, I estimate that I've written &lt;strong&gt;437,878&lt;/strong&gt; lines of R. In these folders, I also have 130,912 lines of Python (a lot of which is attributable to my Hacker School summer) and 1431 lines of C++ (from my college software design class!). &lt;/p&gt;
+&lt;p&gt;Anyway, after writing 437K lines of R, my code is now a little nicer! Here's something I wrote last month:&lt;/p&gt;
+&lt;script src="https://gist.github.com/alyssafrazee/8702510.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;Some things I apparently learned between writing that first bit of code and writing this bit:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;how to name files better (this one was named &lt;code&gt;first_simulation.R&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;how to write R packages&lt;/li&gt;
+&lt;li&gt;how to put those R packages on GitHub&lt;/li&gt;
+&lt;li&gt;how to write functions (kind of required for R package development)&lt;/li&gt;
+&lt;li&gt;how to comment code&lt;/li&gt;
+&lt;li&gt;how to create variables&lt;/li&gt;
+&lt;li&gt;what a FASTA file is&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also, as I looked for an example of "good" code to put in this post, I learned that in general, data analysis code is pretty ugly. There's a difference between writing &lt;em&gt;programs&lt;/em&gt; and &lt;em&gt;functions&lt;/em&gt; and writing code that &lt;em&gt;loads&lt;/em&gt;, &lt;em&gt;cleans&lt;/em&gt;, and &lt;em&gt;analyzes data&lt;/em&gt;. Right now, I'm finding it a lot easier to write nice, clean programs and functions than to write a beautiful data analysis script. Perhaps there's also a language component (I have some &lt;em&gt;really beautiful&lt;/em&gt; Python), but I do think data analysis is kind of a messy process. &lt;/p&gt;
+&lt;p&gt;Thanks for laughing at my code from 7 years ago with me :) &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Wed, 29 Jan 2014 11:59:00 -0500</pubDate><guid>tag:alyssafrazee.com,2014-01-29:old-code.html</guid></item><item><title>asking stupid questions</title><link>http://alyssafrazee.com/asking-stupid-questions.html</link><description>&lt;p&gt;I learn best in environments that support a lot of question-asking. &lt;/p&gt;
+&lt;p&gt;I've been thinking about this recently because I've been reflecting on how detrimental fear &lt;/p&gt;
+&lt;h3&gt;bad reasons to not ask a question&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;"the person I'm asking might think I'm stupid, and will say that to my face and not answer my question."  If this actually happens after you ask your question, that person is a jerk and you probably didn't really want to learn with them anyway. &lt;/li&gt;
+&lt;li&gt;"the person I'm asking might think I'm stupid, but won't say that to my face and will answer my question anyway." In the &lt;em&gt;worst-case scenario&lt;/em&gt; here, you'll look kinda silly in front of somebody for a little bit, but &lt;em&gt;you still get an answer to the question&lt;/em&gt;. In my experience, taking an ego bruise but still learning is ALWAYS a better choice than not learning.&lt;/li&gt;
+&lt;li&gt;"I can probably figure this out on my own (with several hours of research)." When this thought stops me from asking a question, my pride has gotten the best of me. Having a 10-minute conversation with somebody who knows about the topic will probably save me SEVERAL HOURS OF TIME because they can immediately explain only the confusing parts -- I don't have to wade through documentation, introductory essays, etc. If they're willing to give you those 10 minutes (or even 10 seconds! they can give you a resource recommendation!), absolutely do it. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;good reasons not to ask a question&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;"I can probably figure this out on my own with a quick Google search." Excellent. &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"There's a room full of people here, and my question is likely irrelevant to the majority of them." This happens a lot at talks. In this case, the ideal solution is to ask your question to the speaker on-on-one afterward. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;answerable: it's not an open research problem. The person being asked this question will likely know the answer immediately.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;basic: it reveals that the asker is still learning about the foundational concepts of the topic&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;externally&lt;/h3&gt;
+&lt;h3&gt;internally&lt;/h3&gt;
+&lt;h4&gt;(1) be egoless&lt;/h4&gt;
+&lt;p&gt;Realize that you're asking the question in order to learn something, not in order to impress anyone. Here's my story about this: every week at Hacker School ends with presentations: anybody can sign up for a 2- or 5-minute block of time to talk about a project or concept or tutorial or whatever. My thought process during presentations usually went something like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;that person's project is really cool&lt;/li&gt;
+&lt;li&gt;I wonder how she came up with that idea?&lt;/li&gt;
+&lt;li&gt;wait what, he made that in Python?! I didn't know Python could do that thing. That's awesome! I want to make Python do that thing.&lt;/li&gt;
+&lt;li&gt;[thoughts about how to make Python do the thing]&lt;/li&gt;
+&lt;li&gt;I have literally no idea where to start with making Python do that thing&lt;/li&gt;
+&lt;li&gt;but the &lt;em&gt;presenter&lt;/em&gt; knows where to start...she'd probably talk to me about it if I asked. We could get coffee tomorrow!&lt;/li&gt;
+&lt;li&gt;but holy crap, I know &lt;em&gt;so little&lt;/em&gt; about this. My questions will be at a beginner level. There are some major concepts I don't understand yet. He might laugh at me, or secretly think I'm stupid&lt;/li&gt;
+&lt;li&gt;...but I would rather learn to do that Python thing (even if it means looking kind of silly) than not learn the thing and save face&lt;/li&gt;
+&lt;li&gt;RESOLVED! I will approach this person tomorrow and ask her about the project! &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The "egoless" part enters in the second-to-last step in that process: deciding that I cared more about learning something new than I did about whether or not the other person would think I was stupid -- which would only happen in the &lt;em&gt;worst case scenario&lt;/em&gt; anyway: most good collaborators don't laugh or scoff at a genuine desire to learn.&lt;/p&gt;
+&lt;h4&gt;(2) be confident&lt;/h4&gt;
+&lt;p&gt;It's a lot easier to ask a stupid question when you &lt;em&gt;know you are not stupid&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;I've been thinking a lot about the following things over the past few months: fear, ego, impostor syndrome, arrogance, confidence, teachability, and resilience.  I basically spent 2013 doing a lot of unstructured learning (at PhD school and also at Hacker School), and &lt;/p&gt;
+&lt;p&gt;I started thinking about all of this because  &lt;/p&gt;
+&lt;blockquote class="twitter-tweet" lang="en"&gt;&lt;p&gt;If you don&amp;#39;t feel stupid, you are not learning fast enough.&lt;/p&gt;&amp;mdash; Erik Meijer (@headinthebox) &lt;a href="https://twitter.com/headinthebox/statuses/408899575852695552"&gt;December 6, 2013&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Wed, 29 Jan 2014 11:14:00 -0500</pubDate><guid>tag:alyssafrazee.com,2014-01-29:asking-stupid-questions.html</guid></item><item><title>smells like a NAMESPACE problem</title><link>http://alyssafrazee.com/namespaces.html</link><description>&lt;p&gt;Writing R packages is fun. Some people say you should start making your R code into a package &lt;a href="https://github.com/jtleek/rpackages"&gt;as soon as you have two functions&lt;/a&gt; (just two!!). Making a package involves:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Putting your function definitions into separate files and putting those files in a folder called &lt;code&gt;R&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Documenting your functions in .Rd files and putting those doc files in a folder called &lt;code&gt;man&lt;/code&gt;&lt;/li&gt;
