@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>alyssa frazee</title><link>http://alyssafrazee.com/</link><description></description><atom:link href="alyssafrazee.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 21 Jan 2014 23:13:00 -0500</lastBuildDate><item><title>smells like a NAMESPACE problem</title><link>http://alyssafrazee.com/namespaces.html</link><description>&lt;p&gt;Writing R packages is fun. Some people say you should start making your R code into a package &lt;a href="https://github.com/jtleek/rpackages"&gt;as soon as you have two functions&lt;/a&gt; (just two!!). Making a package involves:&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>alyssa frazee</title><link>http://alyssafrazee.com/</link><description></description><atom:link href="alyssafrazee.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 29 Jan 2014 11:59:00 -0500</lastBuildDate><item><title>Today I read some code I wrote in 2007 and laughed</title><link>http://alyssafrazee.com/old-code.html</link><description>&lt;p&gt;A few weeks ago, I heard or read something like this: "if you look back at work you did a while ago and you think it was really awful, &lt;em&gt;this is a good thing&lt;/em&gt; because it means you're improving." &lt;/p&gt;
+&lt;p&gt;I remember thinking this was a great attitude to have toward old work that you now look upon with shame. Instead of getting caught up in how terrible it seems, get caught up in how far you've come since then! Positive thinking, encouragement, etc etc etc. I'm sorry I can't remember where I heard this (if it was you who said this to me, let me know and I'll give you the appropriate shout-out!).&lt;/p&gt;
+&lt;p&gt;Today I was doing a little re-organization of my hard drive when I came across some of the R code I wrote in college, when I was first learning about R and data analysis and statistics. I almost thought "oh my goodness I shouldn't put this on the internet! It's hilariously awful!" but then I thought maybe "it's hilariously awful!" was a great reason to put it on the internet: non-beginners will be entertained, and beginners might be encouraged! So, I give you: a script I wrote for my statistics class in the fall of 2007, which I had creatively and informatively titled &lt;code&gt;september12.R&lt;/code&gt;:&lt;/p&gt;
+&lt;script src="https://gist.github.com/alyssafrazee/8702020.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;Some fun features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;number of comments: 0&lt;/li&gt;
+&lt;li&gt;everything is saved, even my mistakes (cf. lines 8, 19, 31)&lt;/li&gt;
+&lt;li&gt;oh my, &lt;code&gt;attach()&lt;/code&gt; is used! ("bad form" in any non-trivial data analysis project)&lt;/li&gt;
+&lt;li&gt;the mystery of lines 25-28: This looks like some convoluted library loads that I evidently was using in order to make a dot plot...? And I'm calling &lt;code&gt;:::&lt;/code&gt;?! I guarantee you I had no idea what these lines were doing and had copy/pasted them from class notes to make &lt;code&gt;DOTplot&lt;/code&gt; work.&lt;/li&gt;
+&lt;li&gt;the use of R as a calculator in lines 21-24, with no explanation of why (though it looks like I was calculating outlier cutoffs using IQR)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So many feelings. :grimacing: :joy: :flushed: :worried:&lt;/p&gt;
+&lt;p&gt;Happily, I've improved as an R programmer since 2007. I was curious as to how much R code I've written since then, so I went on a little detour and did a quick analysis of my hard drive: how many lines of R do I have stored in the following folders: &lt;code&gt;Documents&lt;/code&gt;, &lt;code&gt;Google Drive&lt;/code&gt;, &lt;code&gt;Dropbox&lt;/code&gt;, and &lt;code&gt;Desktop&lt;/code&gt;? (I wanted to exclude R code from my installed libraries and applications - I'm interested in code that &lt;em&gt;I&lt;/em&gt; have written). By this metric, I estimate that I've written &lt;strong&gt;437,878&lt;/strong&gt; lines of R. In these folders, I also have 130,912 lines of Python (a lot of which is attributable to my Hacker School summer) and 1431 lines of C++ (from my college software design class!). &lt;/p&gt;
+&lt;p&gt;Anyway, after writing 437K lines of R, my code is now a little nicer! Here's something I wrote last month:&lt;/p&gt;
+&lt;script src="https://gist.github.com/alyssafrazee/8702510.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;Some things I apparently learned between writing that first bit of code and writing this bit:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;how to name files better (this one was named &lt;code&gt;first_simulation.R&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;how to write R packages&lt;/li&gt;
+&lt;li&gt;how to put those R packages on GitHub&lt;/li&gt;
+&lt;li&gt;how to write functions (kind of required for R package development)&lt;/li&gt;
+&lt;li&gt;how to comment code&lt;/li&gt;
+&lt;li&gt;how to create variables&lt;/li&gt;
+&lt;li&gt;what a FASTA file is&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also, as I looked for an example of "good" code to put in this post, I learned that in general, data analysis code is pretty ugly. There's a difference between writing &lt;em&gt;programs&lt;/em&gt; and &lt;em&gt;functions&lt;/em&gt; and writing code that &lt;em&gt;loads&lt;/em&gt;, &lt;em&gt;cleans&lt;/em&gt;, and &lt;em&gt;analyzes data&lt;/em&gt;. Right now, I'm finding it a lot easier to write nice, clean programs and functions than to write a beautiful data analysis script. Perhaps there's also a language component (I have some &lt;em&gt;really beautiful&lt;/em&gt; Python), but I do think data analysis is kind of a messy process. &lt;/p&gt;
+&lt;p&gt;Thanks for laughing at my code from 7 years ago with me :) &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Wed, 29 Jan 2014 11:59:00 -0500</pubDate><guid>tag:alyssafrazee.com,2014-01-29:old-code.html</guid></item><item><title>smells like a NAMESPACE problem</title><link>http://alyssafrazee.com/namespaces.html</link><description>&lt;p&gt;Writing R packages is fun. Some people say you should start making your R code into a package &lt;a href="https://github.com/jtleek/rpackages"&gt;as soon as you have two functions&lt;/a&gt; (just two!!). Making a package involves:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Putting your function definitions into separate files and putting those files in a folder called &lt;code&gt;R&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Documenting your functions in .Rd files and putting those doc files in a folder called &lt;code&gt;man&lt;/code&gt;&lt;/li&gt;
