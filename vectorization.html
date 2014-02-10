@@ -71,33 +71,33 @@
 <p>In R, a "vector" refers to a one-dimensional array. A "vectorized" function <code>f()</code> takes a vector <code>[x1, x2, ... , xn]</code> as input and returns the vector <code>[f(x1), f(x2), f(x3), ... , f(xn)]</code>. If you'd like to read more about this, you should read Chapter 3 of the <a href="http://www.burns-stat.com/pages/Tutor/R_inferno.pdf">R Inferno</a>, where the third circle of R hell is "failing to vectorize."<sup>1</sup></p>
 <h2>why is vectorization important?</h2>
 <p>R takes a fair amount of heat from the hacker community because it's kind of slow at looping<sup>2</sup>. It compensates (somewhat) for this weakness by using vectorized functions! Vectorized functions usually involve a behind-the-scenes loop in a low-level language (C or Fortran), which runs way faster than a pure R loop. Here's an example using the <code>log()</code> function that illustrates the speedup you can get by exploiting the fact that <code>log()</code> is vectorized rather using a loop to calculate the log of all the values in a vector: </p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="err">#</span> <span class="nx">illustrating</span> <span class="nx">log</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">behavior</span><span class="o">:</span> <span class="nx">single</span> <span class="nx">values</span> <span class="nx">and</span> <span class="nx">vectors</span>
-<span class="o">&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="cp">[</span><span class="mi">1</span><span class="cp">]</span> <span class="mf">1.098612</span>
-<span class="o">&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">)</span>
- <span class="cp">[</span><span class="mi">1</span><span class="cp">]</span> <span class="mf">0.0000000</span> <span class="mf">0.6931472</span> <span class="mf">1.0986123</span> <span class="mf">1.3862944</span> <span class="mf">1.6094379</span> <span class="mf">1.7917595</span> <span class="mf">1.9459101</span>
- <span class="cp">[</span><span class="mi">8</span><span class="cp">]</span> <span class="mf">2.0794415</span> <span class="mf">2.1972246</span> <span class="mf">2.3025851</span>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="c"># illustrating log&#39;s behavior: single values and vectors</span>
+<span class="o">&gt;</span> <span class="n">log</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mf">1.098612</span>
+<span class="o">&gt;</span> <span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">)</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mf">0.0000000</span> <span class="mf">0.6931472</span> <span class="mf">1.0986123</span> <span class="mf">1.3862944</span> <span class="mf">1.6094379</span> <span class="mf">1.7917595</span> <span class="mf">1.9459101</span>
+ <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="mf">2.0794415</span> <span class="mf">2.1972246</span> <span class="mf">2.3025851</span>
 <span class="o">&gt;</span> 
-<span class="o">&gt;</span> <span class="err">#</span> <span class="nx">a</span> <span class="nx">vector</span> <span class="nx">of</span> <span class="mi">1</span> <span class="nx">million</span> <span class="nx">random</span> <span class="nx">numbers</span> <span class="nx">between</span> <span class="mi">1</span> <span class="nx">and</span> <span class="mi">10</span>
-<span class="o">&gt;</span> <span class="nx">nums</span> <span class="o">=</span> <span class="nx">sample</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span> <span class="nx">size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="nx">replace</span><span class="o">=</span><span class="nx">TRUE</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c"># a vector of 1 million random numbers between 1 and 10</span>
+<span class="o">&gt;</span> <span class="n">nums</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">TRUE</span><span class="p">)</span>
 <span class="o">&gt;</span> 
-<span class="o">&gt;</span> <span class="err">#</span> <span class="nx">my</span> <span class="kd">function</span> <span class="nx">to</span> <span class="nx">call</span> <span class="nx">log</span> <span class="nx">on</span> <span class="nx">each</span> <span class="nx">vector</span> <span class="nx">element</span> <span class="nx">separately</span><span class="o">:</span>
-<span class="o">&gt;</span> <span class="nx">log_novec</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">){</span>
-<span class="o">+</span>   <span class="nx">ret</span> <span class="o">=</span> <span class="nx">rep</span><span class="p">(</span><span class="nx">NA</span><span class="p">,</span> <span class="nx">length</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
-<span class="o">+</span>   <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">seq_along</span><span class="p">(</span><span class="nx">n</span><span class="p">)){</span>
-<span class="o">+</span>     <span class="nx">ret</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span> <span class="o">=</span> <span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c"># my function to call log on each vector element separately:</span>
+<span class="o">&gt;</span> <span class="n">log_novec</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">n</span><span class="p">){</span>
+<span class="o">+</span>   <span class="n">ret</span> <span class="o">=</span> <span class="n">rep</span><span class="p">(</span><span class="n">NA</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="o">+</span>   <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="n">seq_along</span><span class="p">(</span><span class="n">n</span><span class="p">)){</span>
+<span class="o">+</span>     <span class="n">ret</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="o">+</span>   <span class="p">}</span>
-<span class="o">+</span>   <span class="k">return</span><span class="p">(</span><span class="nx">ret</span><span class="p">)</span>
+<span class="o">+</span>   <span class="k">return</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 <span class="o">+</span> <span class="p">}</span>
 <span class="o">&gt;</span> 
-<span class="o">&gt;</span> <span class="err">#</span> <span class="nx">timing</span> <span class="nx">results</span><span class="o">:</span>
-<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">log_novec</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
-   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
+<span class="o">&gt;</span> <span class="c"># timing results:</span>
+<span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">log_novec</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
   <span class="mf">1.938</span>   <span class="mf">0.004</span>   <span class="mf">1.941</span> 
-<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">log</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
-   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
+<span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
   <span class="mf">0.017</span>   <span class="mf">0.002</span>   <span class="mf">0.019</span> 
-<span class="o">&gt;</span> <span class="err">#</span><span class="mi">100</span><span class="nx">x</span> <span class="nx">speedup</span><span class="o">!</span>
+<span class="o">&gt;</span> <span class="c">#100x speedup!</span>
 </pre></div>
 
 
@@ -180,8 +180,10 @@ because, on a 10,000 x 10,000 matrix:</p>
 </pre></div>
 
 
-<p>Note that recycling happens silently unless the length of the longer vector isn't a multiple of a length of the shorter vector. This is sometimes desirable (it makes it such that constant * vector multiplication behaves as expected, without warning), but it can make debugging hellish :smiling_imp:
-- <strong>if the longer "vector" was actually a matrix, a matrix gets returned</strong>:</p>
+<p>Note that recycling happens silently unless the length of the longer vector isn't a multiple of a length of the shorter vector. This is sometimes desirable (it makes it such that constant * vector multiplication behaves as expected, without warning), but it can make debugging hellish :smiling_imp:</p>
+<ul>
+<li><strong>if the longer "vector" was actually a matrix, a matrix gets returned</strong>:</li>
+</ul>
 <div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mat</span>
      <span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="p">[,</span><span class="mi">2</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,]</span>    <span class="mi">1</span>    <span class="mi">2</span>
@@ -214,19 +216,19 @@ because, on a 10,000 x 10,000 matrix:</p>
 <p>If you want to practice the principles of lesson 2, take the <strong>super fun puzzle challenge for readers</strong>: and using no loops or apply statements, given a matrix M, find the number of outliers in each row of M. An outlier for row <em>k</em> is defined as an entry that is more than 3 standard deviations above the mean of row <em>k</em>. </p>
 <h2>lesson 3: methods for S3/S4 class "foo" are often vectorized for class "fooList"</h2>
 <p>I've been doing a lot of work with the <a href="http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html">GenomicRanges</a> library lately. An object of class <code>GRanges</code> looks like this:</p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">x</span>   <span class="vi">#x</span> <span class="nx">is</span> <span class="nx">of</span> <span class="nb">class</span> <span class="nx">GRanges</span>
-<span class="nx">GRanges</span> <span class="k">with</span> <span class="mi">5</span> <span class="nx">ranges</span> <span class="ow">and</span> <span class="mi">2</span> <span class="nx">metadata</span> <span class="nx">columns</span><span class="p">:</span>
-      <span class="nx">seqnames</span>               <span class="nx">ranges</span> <span class="nx">strand</span> <span class="o">|</span>        <span class="nb">id</span> <span class="nx">transcripts</span>
-         <span class="o">&lt;</span><span class="nx">Rle</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="nx">IRanges</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="nx">Rle</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="kt">integer</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">character</span><span class="o">&gt;</span>
-  <span class="err">[</span><span class="mi">1</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16187163</span><span class="p">,</span> <span class="mi">16187278</span><span class="cp">]</span>      - |        15          13
-  <span class="cp">[</span><span class="mi">2</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16189032</span><span class="p">,</span> <span class="mi">16189143</span><span class="cp">]</span>      - |        16          13
-  <span class="cp">[</span><span class="mi">3</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16189264</span><span class="p">,</span> <span class="mi">16189411</span><span class="cp">]</span>      - |        17          13
-  <span class="cp">[</span><span class="mi">4</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16190681</span><span class="p">,</span> <span class="mi">16190791</span><span class="cp">]</span>      - |        18          13
-  <span class="cp">[</span><span class="mi">5</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16192906</span><span class="p">,</span> <span class="mi">16193047</span><span class="cp">]</span>      - |        19          13
-  ---
-  seqlengths:
-    1 11 12 13 14 18 19  2 22  4  6  7  8  X
-   NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">x</span>   <span class="c">#x is of class GRanges</span>
+<span class="n">GRanges</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">ranges</span> <span class="ow">and</span> <span class="mi">2</span> <span class="n">metadata</span> <span class="n">columns</span><span class="p">:</span>
+      <span class="n">seqnames</span>               <span class="n">ranges</span> <span class="n">strand</span> <span class="o">|</span>        <span class="nb">id</span> <span class="n">transcripts</span>
+         <span class="o">&lt;</span><span class="n">Rle</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">IRanges</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">Rle</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">character</span><span class="o">&gt;</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>       <span class="mi">22</span> <span class="p">[</span><span class="mi">16187163</span><span class="p">,</span> <span class="mi">16187278</span><span class="p">]</span>      <span class="o">-</span> <span class="o">|</span>        <span class="mi">15</span>          <span class="mi">13</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">]</span>       <span class="mi">22</span> <span class="p">[</span><span class="mi">16189032</span><span class="p">,</span> <span class="mi">16189143</span><span class="p">]</span>      <span class="o">-</span> <span class="o">|</span>        <span class="mi">16</span>          <span class="mi">13</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">]</span>       <span class="mi">22</span> <span class="p">[</span><span class="mi">16189264</span><span class="p">,</span> <span class="mi">16189411</span><span class="p">]</span>      <span class="o">-</span> <span class="o">|</span>        <span class="mi">17</span>          <span class="mi">13</span>
+  <span class="p">[</span><span class="mi">4</span><span class="p">]</span>       <span class="mi">22</span> <span class="p">[</span><span class="mi">16190681</span><span class="p">,</span> <span class="mi">16190791</span><span class="p">]</span>      <span class="o">-</span> <span class="o">|</span>        <span class="mi">18</span>          <span class="mi">13</span>
+  <span class="p">[</span><span class="mi">5</span><span class="p">]</span>       <span class="mi">22</span> <span class="p">[</span><span class="mi">16192906</span><span class="p">,</span> <span class="mi">16193047</span><span class="p">]</span>      <span class="o">-</span> <span class="o">|</span>        <span class="mi">19</span>          <span class="mi">13</span>
+  <span class="o">---</span>
+  <span class="n">seqlengths</span><span class="p">:</span>
+    <span class="mi">1</span> <span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">18</span> <span class="mi">19</span>  <span class="mi">2</span> <span class="mi">22</span>  <span class="mi">4</span>  <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span>  <span class="n">X</span>
+   <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span> <span class="n">NA</span>
 </pre></div>
 
 
@@ -238,8 +240,8 @@ because, on a 10,000 x 10,000 matrix:</p>
 
 
 <p>I had written a piece of code to operate on a list of 1296 <code>GRanges</code> objects. This type of list is conveniently classed as a <code>GRangesList</code>. Because <code>width</code> is a <code>GRanges</code> function, my immediate thought was that I would need to write an <code>lapply</code> statement to get a list of range widths for each of the <code>GRanges</code> objects in my <code>GRangesList</code>:</p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="err">#</span> <span class="n">grl</span> <span class="n">is</span> <span class="n">my</span> <span class="n">GRangesList</span>
-<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">grl</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="c"># grl is my GRangesList</span>
+<span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">grl</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span>
    <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
   <span class="mf">9.481</span>   <span class="mf">0.010</span>   <span class="mf">9.490</span> 
 </pre></div>
