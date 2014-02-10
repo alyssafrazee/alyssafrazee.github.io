@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>alyssa frazee</title>
+
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
+    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/emojify.min.css" type="text/css" /> 
+    <script src="http://alyssafrazee.com/theme/js/emojify.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45776614-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
+        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
+        <div class="sub-title"></div>
+
+        <p>
+      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/blog-roll.html">blog roll</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/contact.html">contact</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>follow me</h4>
+<ul>
+    <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+  </ul>
+</div>
+
+      </header>
+      <section>
+      <section id="content" class="body">
+  <article>
+      <div class="article-title">
+        let's talk about vectorization
+      </div>
+
+    <div class="entry-content">
+      <p>
+<small>
+<abbr class="published" title="2014-02-09T21:10:00">
+  Sun 09 February 2014
+</abbr> | 
+ -- (<a href="http://alyssafrazee.com/vectorization.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <h2>what's vectorization?</h2>
+<p>In R, a "vector" refers to a one-dimensional array. A "vectorized" function <code>f()</code> takes a vector <code>[x1, x2, ... , xn]</code> as input and returns the vector <code>[f(x1), f(x2), f(x3), ... , f(xn)]</code>. If you'd like to read more about this, you should read Chapter 3 of the <a href="http://www.burns-stat.com/pages/Tutor/R_inferno.pdf">R Inferno</a>, where the third circle of R hell is "failing to vectorize."<sup>1</sup></p>
+<h2>why is vectorization important?</h2>
+<p>R takes a fair amount of heat from the hacker community because it's kind of slow at looping<sup>2</sup>. It compensates (somewhat) for this weakness by using vectorized functions! Vectorized functions usually involve a behind-the-scenes loop in a low-level language (C or Fortran), which runs way faster than a pure R loop. Here's an example using the <code>log()</code> function that illustrates the speedup you can get by exploiting the fact that <code>log()</code> is vectorized rather using a loop to calculate the log of all the values in a vector: </p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="err">#</span> <span class="nx">illustrating</span> <span class="nx">log</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">behavior</span><span class="o">:</span> <span class="nx">single</span> <span class="nx">values</span> <span class="nx">and</span> <span class="nx">vectors</span>
+<span class="o">&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="cp">[</span><span class="mi">1</span><span class="cp">]</span> <span class="mf">1.098612</span>
+<span class="o">&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">)</span>
+ <span class="cp">[</span><span class="mi">1</span><span class="cp">]</span> <span class="mf">0.0000000</span> <span class="mf">0.6931472</span> <span class="mf">1.0986123</span> <span class="mf">1.3862944</span> <span class="mf">1.6094379</span> <span class="mf">1.7917595</span> <span class="mf">1.9459101</span>
+ <span class="cp">[</span><span class="mi">8</span><span class="cp">]</span> <span class="mf">2.0794415</span> <span class="mf">2.1972246</span> <span class="mf">2.3025851</span>
+<span class="o">&gt;</span> 
+<span class="o">&gt;</span> <span class="err">#</span> <span class="nx">a</span> <span class="nx">vector</span> <span class="nx">of</span> <span class="mi">1</span> <span class="nx">million</span> <span class="nx">random</span> <span class="nx">numbers</span> <span class="nx">between</span> <span class="mi">1</span> <span class="nx">and</span> <span class="mi">10</span>
+<span class="o">&gt;</span> <span class="nx">nums</span> <span class="o">=</span> <span class="nx">sample</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span> <span class="nx">size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="nx">replace</span><span class="o">=</span><span class="nx">TRUE</span><span class="p">)</span>
+<span class="o">&gt;</span> 
+<span class="o">&gt;</span> <span class="err">#</span> <span class="nx">my</span> <span class="kd">function</span> <span class="nx">to</span> <span class="nx">call</span> <span class="nx">log</span> <span class="nx">on</span> <span class="nx">each</span> <span class="nx">vector</span> <span class="nx">element</span> <span class="nx">separately</span><span class="o">:</span>
+<span class="o">&gt;</span> <span class="nx">log_novec</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">){</span>
+<span class="o">+</span>   <span class="nx">ret</span> <span class="o">=</span> <span class="nx">rep</span><span class="p">(</span><span class="nx">NA</span><span class="p">,</span> <span class="nx">length</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
+<span class="o">+</span>   <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">seq_along</span><span class="p">(</span><span class="nx">n</span><span class="p">)){</span>
+<span class="o">+</span>     <span class="nx">ret</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span> <span class="o">=</span> <span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="p">)</span>
+<span class="o">+</span>   <span class="p">}</span>
+<span class="o">+</span>   <span class="k">return</span><span class="p">(</span><span class="nx">ret</span><span class="p">)</span>
+<span class="o">+</span> <span class="p">}</span>
+<span class="o">&gt;</span> 
+<span class="o">&gt;</span> <span class="err">#</span> <span class="nx">timing</span> <span class="nx">results</span><span class="o">:</span>
+<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">log_novec</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
+   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
+  <span class="mf">1.938</span>   <span class="mf">0.004</span>   <span class="mf">1.941</span> 
+<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">log</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
+   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
+  <span class="mf">0.017</span>   <span class="mf">0.002</span>   <span class="mf">0.019</span> 
+<span class="o">&gt;</span> <span class="err">#</span><span class="mi">100</span><span class="nx">x</span> <span class="nx">speedup</span><span class="o">!</span>
+</pre></div>
+
+
+<p>So in conclusion: vectorization is important because it allows you to operate on vectors <em>quickly</em> (unlike looping). </p>
+<h3>side note: a small clarification</h3>
+<p>If you are acting as an <em>R user</em>, you don't need to worry about WRITING vectorized functions. But if you'd like to write R code that will run in a reasonable amount of time on large dataset (memory issues aside), it's good to think about USING vectorized functions, which consequently learning where and when to look for them. If, on the other hand, you are acting as an <em>R developer</em>, you might have to implement your own vectorized function, which will probably involve writing some C or Fortan.</p>
+<h2>how about those "apply" functions?</h2>
+<p>The <a href="http://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/">apply family of functions</a> provides some fairly clean syntax for <em>apply</em>-ing a function (any function) to each element of some data structure. The point I want to emphasize is this: <strong>apply functions are basically equivalent to loops in terms of speed</strong>. As the R Inferno puts it: apply "is not vectorization, it is loop-hiding." So using apply instead of loops might make for nicer/shorter code, but it won't make for <em>faster</em> code. </p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">sapply</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">log</span><span class="p">))</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
+  <span class="mf">1.847</span>   <span class="mf">0.025</span>   <span class="mf">1.871</span> 
+<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">vapply</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
+  <span class="mf">0.781</span>   <span class="mf">0.001</span>   <span class="mf">0.781</span>
+</pre></div>
+
+
+<p>(I did get a 2x speedup by using <code>vapply</code> and telling it that I knew the result would be numeric, but that's nothing compared to my 100x speedup from using vectorized log.)</p>
+<p>If you are working with data frames and find yourself using lots of apply statements, check out <a href="https://github.com/hadley/plyr">plyr</a>, which provides some really nice syntax, and <a href="https://github.com/hadley/dplyr">dplyr</a>, a superfast "next iteration" of plyr.</p>
+<h2>lesson 1: think twice about every loop or apply statement you write</h2>
+<p>This is what I've been doing recently: every time I write a loop or apply statement<sup>3</sup>, I think about whether I can do better. Am I calling a vectorized function inside that loop? Most functions that take a number or a string as input are vectorized. Can I somehow incorporate this into my loop code?</p>
+<h2>lesson 2: matrices sometimes behave like vectors</h2>
+<p>I've learned this lesson pretty recently. There are two ways in which matrices sometimes act like vectors:</p>
+<h4>way 1: rows (or columns) are the vector entries</h4>
+<p>Conceptualizing a matrix as a one-dimensional array of rows (or columns) lets us add a bunch of vectorized matrix functions to our quiver! The following vectorized matrix functions exist and are super fast and awesome: rowSums, colSums, rowMeans, colMeans (in base), rowSds, colSds, rowVars, colVars, rowttests, rowFtests (in <a href="http://www.bioconductor.org/packages/release/bioc/html/genefilter.html">genefilter</a>), colMedians, rowMedians (in <a href="http://www.inside-r.org/packages/cran/matrixStats/docs/matrixStats">matrixStats</a>). Because I think any serious R programmer should know about and use these functions whenever possible, I was surprised to see this around the Twitterverse the other day:
+<blockquote class="twitter-tweet" lang="en"><p>Compute row sums of a matrix, M, with apply(M, 1, sum) <a href="https://twitter.com/search?q=%23rstats&amp;src=hash">#rstats</a> <a href="http://t.co/Uqc5xgS5Im">http://t.co/Uqc5xgS5Im</a></p>&mdash; One R Tip a Day (@RLangTip) <a href="https://twitter.com/RLangTip/statuses/428212686359629824">January 28, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+because, on a 10,000 x 10,000 matrix:</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mat</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">TRUE</span><span class="p">),</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span><span class="p">))</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
+  <span class="mf">2.191</span>   <span class="mf">0.343</span>   <span class="mf">2.534</span> 
+<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">rowSums</span><span class="p">(</span><span class="n">mat</span><span class="p">))</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
+  <span class="mf">0.388</span>   <span class="mf">0.001</span>   <span class="mf">0.388</span> 
+</pre></div>
+
+
+<h4>way 2: matrices get converted to vectors when you call vector functions on them</h4>
+<p>Here's a line of code that was bottlenecking one of my functions a few weeks ago: </p>
+<div class="highlight"><pre><span class="nx">counts</span> <span class="o">=</span> <span class="nx">lapply</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="nx">nrow</span><span class="p">(</span><span class="nx">normedcounts</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+        <span class="p">(</span><span class="nx">lengths</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="nx">normedcounts</span><span class="cp">[</span><span class="nx">i</span><span class="p">,</span><span class="cp">]</span>
+<span class="p">})</span>
+<span class="nx">counts</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">(</span><span class="nx">unlist</span><span class="p">(</span><span class="nx">counts</span><span class="p">,</span> <span class="nx">use</span><span class="p">.</span><span class="nx">names</span><span class="o">=</span><span class="nx">FALSE</span><span class="p">),</span> <span class="nx">nrow</span><span class="o">=</span><span class="nx">length</span><span class="p">(</span><span class="nx">counts</span><span class="p">),</span> <span class="nx">byrow</span><span class="o">=</span><span class="nx">TRUE</span><span class="p">)</span>
+</pre></div>
+
+
+<p>I had a matrix, <code>normedcounts</code>, where each row had been normalized by a constant. I had stored that constant (times 1000) in the vector <code>lengths</code>. I wanted to generate the matrix of raw (un-normalized) counts. Upon seeing this code, my advisor said "wait...are you just multiplying each row of this matrix by a number? You can just use:"</p>
+<div class="highlight"><pre><span class="n">counts</span> <span class="o">=</span> <span class="n">lengths</span><span class="o">/</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">normedcounts</span>
+</pre></div>
+
+
+<p>This line of code is actually a little bit tricky. There are several concepts/R quirks floating around in here - I'll illustrate them with toy examples:</p>
+<ul>
+<li><strong>matrices get turned into vectors by column:</strong></li>
+</ul>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mat</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">mat</span>
+     <span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="p">[,</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,]</span>    <span class="mi">1</span>    <span class="mi">2</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,]</span>    <span class="mi">3</span>    <span class="mi">4</span>
+<span class="o">&gt;</span> <span class="n">as</span><span class="p">.</span><span class="n">vector</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">4</span>
+</pre></div>
+
+
+<ul>
+<li><strong>RECYCLING</strong> (a blessing and a curse): Here's an illustration of recycling, just with vectors:</li>
+</ul>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">10</span>
+<span class="o">&gt;</span> <span class="n">v1</span><span class="o">*</span><span class="n">v2</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="mi">2</span>  <span class="mi">6</span>  <span class="mi">6</span> <span class="mi">12</span> <span class="mi">10</span> <span class="mi">18</span> <span class="mi">14</span> <span class="mi">24</span> <span class="mi">18</span> <span class="mi">30</span>
+<span class="o">&gt;</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">v3</span><span class="o">*</span><span class="n">v2</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="mi">2</span>  <span class="mi">6</span> <span class="mi">12</span>  <span class="mi">8</span> <span class="mi">15</span> <span class="mi">24</span> <span class="mi">14</span> <span class="mi">24</span> <span class="mi">36</span> <span class="mi">20</span>
+<span class="n">Warning</span> <span class="n">message</span><span class="o">:</span>
+<span class="n">In</span> <span class="n">v3</span> <span class="o">*</span> <span class="n">v2</span> <span class="o">:</span>
+  <span class="n">longer</span> <span class="n">object</span> <span class="n">length</span> <span class="n">is</span> <span class="n">not</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">shorter</span> <span class="n">object</span> <span class="n">length</span>
+</pre></div>
+
+
+<p>Note that recycling happens silently unless the length of the longer vector isn't a multiple of a length of the shorter vector. This is sometimes desirable (it makes it such that constant * vector multiplication behaves as expected, without warning), but it can make debugging hellish :smiling_imp:
+- <strong>if the longer "vector" was actually a matrix, a matrix gets returned</strong>:</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mat</span>
+     <span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="p">[,</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,]</span>    <span class="mi">1</span>    <span class="mi">2</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,]</span>    <span class="mi">3</span>    <span class="mi">4</span>
+<span class="o">&gt;</span> <span class="n">c</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">mat</span>
+     <span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="p">[,</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,]</span>  <span class="mi">100</span>    <span class="mi">6</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,]</span>  <span class="mi">150</span>  <span class="mi">400</span>
+<span class="n">Warning</span> <span class="n">message</span><span class="o">:</span>
+<span class="n">In</span> <span class="n">c</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">mat</span> <span class="o">:</span>
+  <span class="n">longer</span> <span class="n">object</span> <span class="n">length</span> <span class="n">is</span> <span class="n">not</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">shorter</span> <span class="n">object</span> <span class="n">length</span>
+</pre></div>
+
+
+<p>Now...once you know these quirks, you can exploit them to use vectorization instead of looping (as my advisor suggested)! The three bullet points above imply that a length-k vector times a k-row matrix returns another matrix, where each row of that matrix is multiplied by the corresponding number in the vector. (That's exactly what I wanted).</p>
+<p>Here are the timings for my example scenario:</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">normedcounts</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">(</span><span class="nx">runif</span><span class="p">(</span><span class="mi">1000000</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="nx">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="nx">nrow</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nx">lengths</span> <span class="o">=</span> <span class="nx">sample</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">100</span><span class="p">,</span> <span class="nx">size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="nx">replace</span><span class="o">=</span><span class="nx">TRUE</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">lapply</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="nx">nrow</span><span class="p">(</span><span class="nx">normedcounts</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+<span class="o">+</span>   <span class="p">(</span><span class="nx">lengths</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="nx">normedcounts</span><span class="cp">[</span><span class="nx">i</span><span class="p">,</span><span class="cp">]</span>
+<span class="o">+</span> <span class="p">}))</span>
+   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
+  <span class="mf">7.213</span>   <span class="mf">0.323</span>   <span class="mf">7.535</span> 
+<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">lengths</span><span class="o">/</span><span class="mi">1000</span> <span class="o">*</span> <span class="nx">normedcounts</span><span class="p">)</span>
+   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
+  <span class="mf">0.342</span>   <span class="mf">0.225</span>   <span class="mf">0.567</span> 
+</pre></div>
+
+
+<p>If you want to practice the principles of lesson 2, take the <strong>super fun puzzle challenge for readers</strong>: and using no loops or apply statements, given a matrix M, find the number of outliers in each row of M. An outlier for row <em>k</em> is defined as an entry that is more than 3 standard deviations above the mean of row <em>k</em>. </p>
+<h2>lesson 3: methods for S3/S4 class "foo" are often vectorized for class "fooList"</h2>
+<p>I've been doing a lot of work with the <a href="http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html">GenomicRanges</a> library lately. An object of class <code>GRanges</code> looks like this:</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">x</span>   <span class="vi">#x</span> <span class="nx">is</span> <span class="nx">of</span> <span class="nb">class</span> <span class="nx">GRanges</span>
+<span class="nx">GRanges</span> <span class="k">with</span> <span class="mi">5</span> <span class="nx">ranges</span> <span class="ow">and</span> <span class="mi">2</span> <span class="nx">metadata</span> <span class="nx">columns</span><span class="p">:</span>
+      <span class="nx">seqnames</span>               <span class="nx">ranges</span> <span class="nx">strand</span> <span class="o">|</span>        <span class="nb">id</span> <span class="nx">transcripts</span>
+         <span class="o">&lt;</span><span class="nx">Rle</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="nx">IRanges</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="nx">Rle</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="kt">integer</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">character</span><span class="o">&gt;</span>
+  <span class="err">[</span><span class="mi">1</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16187163</span><span class="p">,</span> <span class="mi">16187278</span><span class="cp">]</span>      - |        15          13
+  <span class="cp">[</span><span class="mi">2</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16189032</span><span class="p">,</span> <span class="mi">16189143</span><span class="cp">]</span>      - |        16          13
+  <span class="cp">[</span><span class="mi">3</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16189264</span><span class="p">,</span> <span class="mi">16189411</span><span class="cp">]</span>      - |        17          13
+  <span class="cp">[</span><span class="mi">4</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16190681</span><span class="p">,</span> <span class="mi">16190791</span><span class="cp">]</span>      - |        18          13
+  <span class="cp">[</span><span class="mi">5</span><span class="cp">]</span>       22 <span class="cp">[</span><span class="mi">16192906</span><span class="p">,</span> <span class="mi">16193047</span><span class="cp">]</span>      - |        19          13
+  ---
+  seqlengths:
+    1 11 12 13 14 18 19  2 22  4  6  7  8  X
+   NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+</pre></div>
+
+
+<p>This is basically a set of intervals ("ranges"), where each range has some associated metadata. </p>
+<p>You can extract the width of each interval with the <code>width()</code> function:</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">width</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">116</span> <span class="mi">112</span> <span class="mi">148</span> <span class="mi">111</span> <span class="mi">142</span>
+</pre></div>
+
+
+<p>I had written a piece of code to operate on a list of 1296 <code>GRanges</code> objects. This type of list is conveniently classed as a <code>GRangesList</code>. Because <code>width</code> is a <code>GRanges</code> function, my immediate thought was that I would need to write an <code>lapply</code> statement to get a list of range widths for each of the <code>GRanges</code> objects in my <code>GRangesList</code>:</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="err">#</span> <span class="n">grl</span> <span class="n">is</span> <span class="n">my</span> <span class="n">GRangesList</span>
+<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">grl</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
+  <span class="mf">9.481</span>   <span class="mf">0.010</span>   <span class="mf">9.490</span> 
+</pre></div>
+
+
+<p>This is pretty slow for a list of length 1296, so I did a bit of documentation-reading and found out that the <code>width()</code> method is <em>vectorized</em>: you can call it on a <code>GRangesList</code>...</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">width</span><span class="p">(</span><span class="n">grl</span><span class="p">))</span>
+   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
+  <span class="mf">0.001</span>   <span class="mf">0.000</span>   <span class="mf">0.001</span> 
+</pre></div>
+
+
+<p>...WITH AMAZING RESULTS. 9000X SPEEDUP, BABY. </p>
+<h2>lesson 4: sometimes you really do need a loop</h2>
+<p>Alas, vectorized functions can't solve all of our problems. For example, loops with dependent iterations, like Gibbs samplers and Hidden Markov Models, will probably need to stay loops. All is not lost, however: if you (or your friends!) know a lower-level language, you (all) can write the functions yourself, perhaps using a tool like <a href="http://www.rcpp.org/">Rcpp</a> to interface with R. </p>
+<h2>footnotes</h2>
+<ol>
+<li>The R Inferno is hilarious and informative reading for anyone who loves and/or hates R.</li>
+<li>R takes heat from the hacker community for a number of other reasons as well. We can (maybe) talk abou tthis another day, but what I'll say now is this: I don't like when people that have never used R go on and on about how terrible it is. The way I feel about R is how I imagine I'd feel about my dorky little brother (if I had one): he's quirky and weird and not the best athlete ever, but <em>you</em> don't get to make fun of him because he's <em>my</em> brother, not yours. Incidentally, this is also the way I feel when people hate on Baltimore. </li>
+<li>I find myself writing loops and apply statements embarrassingly often. I suspect this happens for two reasons: 1. I find loops more intuitive/expressive: they more closely match how I conceptualize the code in my head, and 2. the programming language I learned first, and the only one I ever learned in a formal classroom setting, is C++. </li>
+</ol>
+          </div><!-- /.entry-content -->
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
+        var disqus_identifier = "vectorization.html";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+    <!-- Emojis -->
+    <script> emojify.setConfig({ 
+      people_enabled: true, 
+      nature_enabled: true, 
+      objects_enabled: true, 
+      places_enabled: true, 
+      symbols_enabled: true 
+    }); 
+    emojify.run(); 
+    </script>
+  </body>
+</html>
