@@ -72,11 +72,21 @@
 <p>I made this into a web app (rather than leaving it as a script) beause I wanted to learn to use <a href="http://www.rstudio.com/shiny/">Shiny</a>, a tool for building interactive web apps with R. Committee Checker 2.0 doesn't require any plots or data visualizations, so I'm not sure it was the ideal Shiny app, but it's up and it works and it doesn't look awful! Given that I'm a statistician, not a web programmer (and certainly not a designer), I'm really happy with the result.</p>
 <p>Some thoughts about the building process:</p>
 <ul>
-<li>Shiny is still pretty new, so it felt like the creators and I (the user) were going on a learning adventure together. I liked that.</li>
-<li>I liked the documentation a lot: I was able to find answers to most of the questions I had.</li>
-<li>There's both an <a href="https://github.com/rstudio/shiny">official GitHub repo</a> and an <a href="https://github.com/rstudio/shiny-incubator">unofficial GitHub repo</a> for ideas and stuff. I think that's really cool. </li>
-<li>Shiny is a little less flexible than I had hoped. Let me be clear: you can <em>definitely</em> get flexibility with a Shiny app, but you have to write your own HTML. I didn't want to do that, so that was my limitation (not Shiny's). But I think there's a happy middle ground that hasn't yet been reached: somewhere between "all visual elements decided for you" and "write your own HTML."  For example, could there be a <code>color</code> argument to <code>actionButton()</code> so I could make my "check!" button red without writing the whole UI in HTML?</li>
-<li>The setup made it hard to write app code that doesn't violate the "don't repeat yourself" (DRY) principle. Each input element has a unique identifier, and I couldn't figure out a way to get those identifiers into some kind of data structure so I could loop through them. I ended up working around this by either copy/pasting code, or by using non-standard evaluation + leaky scope (on purpose) to loop through identifiers for other pieces. In other words, I <em>really</em> need a code review: my source code for this app is not great, it's completely possible that I missed something fundamental about how to organize the input.</li>
+<li>
+<p>Shiny is still pretty new, so it felt like the creators and I (the user) were going on a learning adventure together. I liked that.</p>
+</li>
+<li>
+<p>I liked the documentation a lot: I was able to find answers to most of the questions I had.</p>
+</li>
+<li>
+<p>There's both an <a href="https://github.com/rstudio/shiny">official GitHub repo</a> and an <a href="https://github.com/rstudio/shiny-incubator">unofficial GitHub repo</a> for ideas and stuff. I think that's really cool. </p>
+</li>
+<li>
+<p>Shiny is a little less flexible than I had hoped. Let me be clear: you can <em>definitely</em> get flexibility with a Shiny app, but you have to write your own HTML. I didn't want to do that, so that was my limitation (not Shiny's). But I think there's a happy middle ground that hasn't yet been reached: somewhere between "all visual elements decided for you" and "write your own HTML."  For example, could there be a <code>color</code> argument to <code>actionButton()</code> so I could make my "check!" button red without writing the whole UI in HTML?</p>
+</li>
+<li>
+<p>The setup made it hard to write app code that doesn't violate the "don't repeat yourself" (DRY) principle. Each input element has a unique identifier, and I couldn't figure out a way to get those identifiers into some kind of data structure so I could loop through them. I ended up working around this by either copy/pasting code, or by using non-standard evaluation + leaky scope (on purpose) to loop through identifiers for other pieces. In other words, I <em>really</em> need a code review: my source code for this app is not great, it's completely possible that I missed something fundamental about how to organize the input.</p>
+</li>
 <li>
 <p>Deployment is still in development. Currently there are 3 ways to deploy Shiny apps:  </p>
 <ol>
@@ -89,7 +99,9 @@
 <li>
 <p>Commas and parens-matching were really thorny for me while writing these scripts. The error messages didn't help much. I'm actually really impressed that <a href="https://github.com/rstudio/shiny/issues/216">"more informative error messages" is a GitHub issue</a> in the shiny repo!!</p>
 </li>
-<li>User interfaces are hard!  For any non-trivial app, there are a LOT of decisions to make. I probably need help from somebody who thinks often and intentionally about good design (like my housemate, who's getting her PhD in interaction design). For this app, I spent a lot time thinking about whether the faculty should go in rows or columns and where to put the "check!" button. </li>
+<li>
+<p>User interfaces are hard!  For any non-trivial app, there are a LOT of decisions to make. I probably need help from somebody who thinks often and intentionally about good design (like my housemate, who's getting her PhD in interaction design). For this app, I spent a lot time thinking about whether the faculty should go in rows or columns and where to put the "check!" button. </p>
+</li>
 </ul>
 <p>Overall, I'm glad I learned how Shiny works, and I'd love to use it in the future. I'm not sure it was the best fit for <em>this</em> particular project: I think it's better-suited for apps involving data and graphics. Committee Checker doesn't, so I might have been able to have nicer source code if I had made it a Flask app instead. Of course, this might not be a web-app-framework issue but a language issue: I think <em>R</em> is better-suited than <em>Python</em> to projects involving data and graphics, but <em>Python</em> might have been the better choice for <em>this</em> project. That being said, I loved how easy it was to build a web app that was simple, functional, and reasonably attractive while writing only R code. </p>
           </div><!-- /.entry-content -->
