@@ -3,6 +3,7 @@ Date: 2014-01-21 23:13
 Slug: namespaces
 
 Writing R packages is fun. Some people say you should start making your R code into a package [as soon as you have two functions](https://github.com/jtleek/rpackages) (just two!!). Making a package involves:
+
 1.  Putting your function definitions into separate files and putting those files in a folder called `R`
 2.  Documenting your functions in .Rd files and putting those doc files in a folder called `man`
 3.  Making `DESCRIPTION` and `NAMESPACE` files
@@ -20,6 +21,7 @@ diagnosis: failure to export. If you want a package function to be directly call
 ### symptom: error(s) when I use my function, but not when I run its lines to debug
 
 The following frustrating sequence of events has happened to me lots of times (including earlier this afternoon):
+
 1.  I load my brand new package
 2.  I call one of its functions
 3.  There's an error

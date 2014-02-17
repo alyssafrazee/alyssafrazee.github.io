@@ -24,7 +24,7 @@ Now I have two years of experience with this type of workload/schedule, and I've
 
 * **becoming accountable**: Sometimes I call up a work friend and ask them on an early-morning breakfast date: let's get [bagels at 8am](http://belvederebagelsandgrill.com/) and then head in to work together! Or sometimes I make plans with a friend to go to a [coffee shop](http://www.yelp.com/biz/tribeca-coffee-roasters-baltimore) at 3pm - together we can fight temptation to call it a day at 2:30!
 
-* **finding a real deadline**: I've written two papers _amazingly quickly_ because I've was entering them into student paper competitions for travel awards to conferences. These were real deadlines, so there was definitely pressure to finish, and it forces me to do the hardest part of paper-writing: _getting words on the page_. There isn't enough time to fret about every little detail - just get the ideas across, then edit later. (As they say, "write drunk, edit sober" - while I don't advocate writing drunk, I think letting go of some inhibitions while writing a first draft is important.) SADLY I didn't win the awards - but I did get a lot of work done in the days leading up to the deadlines :) 
+* **finding a real deadline**: I've written two papers _amazingly quickly_ because I was entering them into student paper competitions for travel awards to conferences. These were real deadlines, so there was definitely pressure to finish, and it forces me to do the hardest part of paper-writing: _getting words on the page_. There isn't enough time to fret about every little detail - just get the ideas across, then edit later. (As they say, "write drunk, edit sober" - while I don't advocate writing drunk, I think letting go of some inhibitions while writing a first draft is important.) SADLY I didn't win the awards - but I did get a lot of work done in the days leading up to the deadlines :) 
 
 #### Ideas I've heard from other people but haven't tried myself
 * Reading a book about productivity: I've heard a bit about [Getting Things Done](http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280), but the only actual experience I have with it is looking up that Amazon link for this post.
@@ -33,3 +33,5 @@ Now I have two years of experience with this type of workload/schedule, and I've
 
 #### Final thoughts
 Know thyself, as they say. If you're more introverted than I am, coffee with a friend might not be as energizing for you as it is for me. If you excel at working under a lot of pressure, maybe task-oriented goals will work for you. It took a long time for me to figure out what worked for me, and I'm still learning - I'm ALWAYS looking for new strategies that have worked, so if you have a brilliant motivational idea, please share!
+
+{**update, 1/22/14:**} Peter Hickey shares! Here's his [follow-up post](http://peterhickey.me/2014/01/21/getting-shit-done/) with some more suggestions.

@@ -16,18 +16,17 @@ the website if you want to know more).
 
 I'm really excited about this, for many reasons.
 
-1.   I'm guessing I'll meet some amazing, smart, friendly, enthusiastic
+1.  I'm guessing I'll meet some amazing, smart, friendly, enthusiastic
     people who like learning stuff, which I look forward to because I'm
     pretty passionate about learning stuff too, and I really like
     meeting people who share that passion.  
 2.  I really like coding/programming, but rarely have the time during
-    research to think very hard about the best way to program my methods
-    - it seems like getting the results quickly is always more important
+    research to think very hard about the best way to program my methods - it seems like getting the results quickly is always more important
     than getting the results in the optimal, most organized, most
     efficient way.  I figure that practicing programming will make it
     easier to write good code faster.  This is becoming a huge challenge
     for statisticians, since new statistical methods are being deemed
-    [useless without good software][] -- so I'm excited to   really dig
+    [useless without good software][] -- so I'm excited to really dig
     in to coding!
 3.  Some [pretty famous people][] are going to be at Hacker School...I'm
     a little star struck.  I'm beyond excited to meet them, and also to
