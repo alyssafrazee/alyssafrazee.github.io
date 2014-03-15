@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>alyssa frazee</title>
+
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
+    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/emojify.min.css" type="text/css" /> 
+    <script src="http://alyssafrazee.com/theme/js/emojify.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45776614-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
+        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
+        <div class="sub-title"></div>
+
+        <p>
+      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/blog-roll.html">blog roll</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/contact.html">contact</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>follow me</h4>
+<ul>
+    <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+  </ul>
+</div>
+
+      </header>
+      <section>
+      <section id="content" class="body">
+  <article>
+      <div class="article-title">
+        My first pull request (or: the silver lining of a bad OS upgrade)
+      </div>
+
+    <div class="entry-content">
+      <p>
+<small>
+<abbr class="published" title="2014-03-15T13:13:00">
+  Sat 15 March 2014
+</abbr> | 
+ -- (<a href="http://alyssafrazee.com/dangit-mavericks.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>This is the story of a rabbit hole I went down on Thursday night. The unexpected consequence of this long journey was that I got brave enough to submit a pull request to a popular Python project!  It was my first attempt at contributing to a large-ish open-source project, and I consider that a tiny victory.</p>
+<p>The story begins when I received my beta invite to try out <a href="https://atom.io/">Atom</a>, a text editor made by GitHub. Turns out that if you're on a Mac, you need Mountain Lion or Mavericks to run Atom. I was running Lion. "No problem!" I thought. I've been meaning to upgrade for a few months. So I upgraded.</p>
+<p>This turned out to be a <a href="http://www.youtube.com/watch?v=eFmuO6xJ36g">mistake</a>.</p>
+<p>I wish I would have just waited to use the new OS until I got a new laptop, because here is a (probably-incomplete) list of things that broke when I upgraded:</p>
+<ul>
+<li>my R installation</li>
+<li>my TeX distribution</li>
+<li>the <a href="https://www.sublimetext.com/docs/2/osx_command_line.html">subl utility</a></li>
+<li>X11 </li>
+<li><a href="https://www.irradiatedsoftware.com/sizeup/">SizeUp</a></li>
+<li>Command Line Tools</li>
+<li>distutils (a crucial component of Python package installation)</li>
+</ul>
+<p>I'm working on a biostatistics dissertation, which means I was filled with rage when R, TeX, my text editor's command-line tool, my remote-data-graphics-viewer, my window manager, and my Python package installer all died at the same time. (I think there was a common issue for many of these things: Mavericks seems to have messed with <code>/usr/local/bin</code>.)</p>
+<p>So I charged forward, fixing all the broken things! Many solutions were straightforward:</p>
+<ul>
+<li>reinstall R from <a href="http://www.r-project.org/">the main page</a> (also. Can we talk about how the new version of R is called "warm puppy"? Hilarious.)</li>
+<li>reinstall <a href="http://tug.org/mactex/">MacTeX</a> </li>
+<li><a href="http://hopstat.wordpress.com/2013/10/29/sizeup-and-mavericks/">change the required system preference for SizeUp</a></li>
+<li>install <a href="http://xquartz.macosforge.org/landing/">XQuartz</a> to replace X11, and then "log out" and log back in to get the <code>$DISPLAY</code> environment variable to recognize XQuartz</li>
+</ul>
+<p>But some of the solutions were more problematic. For example: reinstalling Command Line Tools was kind of tricky. There were many problems:<br />
+1.  I didn't want to install the entire XCode IDE
+2.  The command-line installation option failed for me (as in <a href="http://stackoverflow.com/questions/20366125/xcode-select-install-failing">this post</a>, and I did not already have the file the answerer referenced)
+3.  You have to register as an Apple developer to access the webpage where you can click and download the tools. (I have too many internet accounts.)</p>
+<p>But, finally, after registering as an Apple developer, I got my Command Line Tools <a href="https://developer.apple.com/downloads/index.action">from here</a>, so, problem solved. </p>
+<p>The only thing left to do was to fix distutils, and that one turned out to be a doozy.  </p>
+<p>Part of the reason this was so hard was that it took me a very, very long time to figure out that I had a <em>problem</em> with distutils.  The <em>symptom</em> was that my usual Python module installation process was failing for some, but not all, packages. Whether I was using <code>pip install</code>, <code>easy_install</code>, or <code>python setup.py install</code>, installation would sometimes fail with this final message:</p>
+<div class="highlight"><pre><span class="n">Command</span> <span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">egg_info</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">error</span> <span class="n">code</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>What.</p>
+<p>There were more logs, so I read those as well:</p>
+<div class="highlight"><pre><span class="n">distutils</span><span class="p">.</span><span class="n">errors</span><span class="p">.</span><span class="n">DistutilsError</span><span class="o">:</span> <span class="n">Setup</span> <span class="n">script</span> <span class="n">exited</span> <span class="n">with</span> <span class="n">error</span><span class="o">:</span> <span class="n">command</span> <span class="err">&#39;</span><span class="n">cc</span><span class="err">&#39;</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">status</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>and a bit further back:</p>
+<div class="highlight"><pre><span class="n">OS</span><span class="o">/</span><span class="n">X</span><span class="o">:</span> <span class="n">confusion</span> <span class="n">between</span> <span class="err">&#39;</span><span class="n">cc</span><span class="err">&#39;</span> <span class="n">versus</span> <span class="err">&#39;</span><span class="n">gcc</span><span class="err">&#39;</span> <span class="p">(</span><span class="n">see</span> <span class="n">issue</span> <span class="mi">123</span><span class="p">)</span>
+
+<span class="n">will</span> <span class="n">not</span> <span class="n">use</span> <span class="err">&#39;</span><span class="n">__thread</span><span class="err">&#39;</span> <span class="n">in</span> <span class="n">the</span> <span class="n">C</span> <span class="n">code</span>
+
+<span class="nl">clang:</span> <span class="n">error</span><span class="o">:</span> <span class="n">unknown</span> <span class="n">argument</span><span class="o">:</span> <span class="err">&#39;</span><span class="o">-</span><span class="n">mno</span><span class="o">-</span><span class="n">fused</span><span class="o">-</span><span class="n">madd</span><span class="err">&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wunused</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">argument</span><span class="o">-</span><span class="n">hard</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">future</span><span class="p">]</span>
+
+<span class="nl">clang:</span> <span class="n">note</span><span class="o">:</span> <span class="n">this</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">hard</span> <span class="n">error</span> <span class="p">(</span><span class="n">cannot</span> <span class="n">be</span> <span class="n">downgraded</span> <span class="n">to</span> <span class="n">a</span> <span class="n">warning</span><span class="p">)</span> <span class="n">in</span> <span class="n">the</span> <span class="n">future</span>
+</pre></div>
+
+
+<p>I repeat: What. </p>
+<p>So I tried my usual approach at error diagnostics: Google that sucker!  I did some hardcore internet searching for about an hour, only to find that the overwhelming majority of the internet says that the solution to <code>clang</code> Python compilation errors is "oh yeah, you just have to install Command Line Tools!  Just run <code>xcode-select --install</code> and you'll be good to go!" WRONG. You may recall that earlier in the story, I installed the Command Line Tools. Just in case I had done it wrong, I deleted my new Command Line Tools and reinstalled.  Again, the command-line installation option failed. And again, my package installation failed, with the same error. Brick wall here.</p>
+<p>I decided to focus a bit more on this <code>-mno-fused-madd</code> situation. I'm not really in the compiling business, so I needed some more information about this elusive compiler argument.  BUT ALAS. Googling "-mno-fused-madd" <a href="https://www.google.com/search?btnG=1&amp;pws=0&amp;q=-mno-fused-madd">RETURNED LITERALLY ZERO RESULTS</a>. WHAT. </p>
+<p>A brief interlude from the narrative: if Google doesn't know about something, a version of me from a few years ago would assume that it was something fundamentally unknowable.  So at this point in the story, earlier-version Alyssa would have given up and gone to sleep and stopped hacking on a fundamentally unknowable thing.  But 2014 Alyssa is a Hacker School alum.  A cool thing about Hacker School is that it widened my circle of "things I believe possible," by orders of magnitude. This problem wouldn't have been in my realm of possibility two years ago, but it was <em>well</em> within my realm on Thursday night, <em>despite</em> being ungoogleable.  This means I was mentally fired up about this weird bug and as a result, I couldn't sleep, so I kept hacking.  </p>
+<p>Back to the story: since <code>-mno-fused-madd</code> was ungoogleable, I Googled the larger phrase containing this mysterious compiler flag, and found <a href="http://stackoverflow.com/questions/22352838/ruby-gem-install-json-fails-on-mavericks-and-xcode-5-1-unknown-argument-mul">this SO question</a>, which, despite being about a Ruby gem, led me to this <a href="https://developer.apple.com/library/ios/releasenotes/DeveloperTools/RN-Xcode/Introduction/Introduction.html">XCode 5.1 Release Page</a>.  From there I was able to figure out a WORKAROUND! Instead of <code>pip install thePythonPackage</code>, I was able to do:</p>
+<div class="highlight"><pre><span class="n">ARCHFLAGS</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">unused</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">argument</span><span class="o">-</span><span class="n">hard</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">future</span> <span class="n">easy_install</span> <span class="n">thePythonPackage</span>
+</pre></div>
+
+
+<p>I was overjoyed for many reasons:
+<em> THE PACKAGE GOT INSTALLED. I USED IT. :tada:
+</em> Mavericks hadn't broken <code>easy_install</code> 
+* Mavericks hadn't broken my virtualenv setup</p>
+<p>I was sad for some reasons as well:
+<em> <code>ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future</code> is a long thing 
+</em> They're going to take away this workaround ANY MINUTE NOW so then I will be back to square one.</p>
+<p>So I wasn't completely satisfied with this workaround, so I kept charging forward.</p>
+<p>By this point, I had read enough internet to know that my package install was failing because somewhere in the installation process, the package was getting compiled, and the compiler was being passed this flag (the unknowable <code>-mno-fused-madd</code>) that it didn't recognize, and that was making it angry. </p>
+<p>THEN I remembered two important things: (1) the package I was trying to install is open-source, and the source is on GitHub, and (2) I actually know how to read and write Python, and <code>setup.py</code> is written in Python.  These two things made me think this thought: <em>maybe I could modify <code>setup.py</code> and take -mno-fused-madd out of the compiler flags myself</em>!  </p>
+<p>So I cloned the GitHub repo and, with bated breath, searched <code>setup.py</code> for <code>-mno-fused-madd</code>. But I came up with nothing. What?! Then I went back to GitHub, where you can run full-repo code searches, and I did one for <code>-mno-fused-madd</code> on the project repo.  NOTHING!  <em>Then</em> I realized you can do a <em>full GitHub code search</em>, so I searched all of GitHub for <code>-mno-fused-madd</code>.</p>
+<p>And I found it.</p>
+<p>I found the answer.</p>
+<p>It was in a few lines of code and comments in the setup.py file of <a href="https://github.com/mongodb/mongo-python-driver">PyMongo</a>. Whatever genius put those lines of code in their setup file wrote this:  </p>
+<div class="highlight"><pre><span class="c"># PYTHON-654 - Clang doesn&#39;t support -mno-fused-madd but the pythons Apple</span>
+<span class="c"># ships are built with it. This is a problem starting with Xcode 5.1</span>
+<span class="c"># since clang 3.4 errors out when it encounters unrecognized compiler</span>
+<span class="c"># flags. This hack removes -mno-fused-madd from the CFLAGS automatically</span>
+<span class="c"># generated by distutils for Apple provided pythons, allowing C extension</span>
+<span class="c"># builds to complete without error. The inspiration comes from older</span>
+<span class="c"># versions of distutils.sysconfig.get_config_vars.</span>
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s">&#39;darwin&#39;</span> <span class="ow">and</span> <span class="s">&#39;clang&#39;</span> <span class="ow">in</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_compiler</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">distutils.sysconfig</span> <span class="kn">import</span> <span class="n">get_config_vars</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">get_config_vars</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;CFLAGS&#39;</span><span class="p">,</span> <span class="s">&#39;PY_CFLAGS&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">flags</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">flags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;-mno-fused-madd&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">flags</span>
+</pre></div>
+
+
+<p>I pasted this block, plus some import statements, in the <code>setup.py</code> file of my clone of the project repo, ran <code>python setup.py install</code>, and BOOYA. PACKAGE INSTALLED. AND ALSO IT WAS USABLE. </p>
+<p>ALYSSA (and the internet) 1, MAVERICKS 0. You think you can best me, you crazy OS upgrade, and you think you can mess with my <code>/usr/local/bin</code> folder and my C compilers and my R installation. You are wrong.</p>
+<p>Finally, the pull request: I put those magical PyMongo lines of code into the <code>setup.py</code> file of the project that I originally wanted to install, hoping to help others avoid all the craziness that made up my Thursday night.  Boom.  First ever pull request.  Tiny victory.</p>
+<p>I realized this morning that there's probably a larger issue here: given the explanation of the problem, it seems as though <code>distutils</code> is not playing nicely with Xcode 5.1 (i.e. the new version of Command Line Tools), which I think means the problem is going to happen with <em>every package relying on distutils</em>.  Is this right?  I drank a bunch of coffee this morning and tried for about 15 minutes to find and read the distutils source code, but I was pretty unsuccessful at that. Another day!</p>
+<p>P.S. Remember how this entire saga began with me upgrading to Mavericks because I wanted to use Atom? Turns out Atom doesn't have syntax highlighting for R, my most-used language. </p>
+<p>:weary: :joy:</p>
+          </div><!-- /.entry-content -->
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
+        var disqus_identifier = "dangit-mavericks.html";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+    <!-- Emojis -->
+    <script> emojify.setConfig({ 
+      people_enabled: true, 
+      nature_enabled: true, 
+      objects_enabled: true, 
+      places_enabled: true, 
+      symbols_enabled: true 
+    }); 
+    emojify.run(); 
+    </script>
+  </body>
+</html>
