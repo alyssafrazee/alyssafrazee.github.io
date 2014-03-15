@@ -139,7 +139,7 @@
 <li><code>ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future</code> is a long thing </li>
 <li>They're going to take away this workaround ANY MINUTE NOW so then I will be back to square one.</li>
 </ul>
-<p>So I wasn't completely satisfied with this workaround, so I kept charging forward.</p>
+<p>So I decided to keep looking for a more permanent solution.</p>
 <p>By this point, I had read enough internet to know that my package install was failing because somewhere in the installation process, the package was getting compiled, and the compiler was being passed this flag (the unknowable <code>-mno-fused-madd</code>) that it didn't recognize, and that was making it angry. </p>
 <p>THEN I remembered two important things: (1) the package I was trying to install is open-source, and the source is on GitHub, and (2) I actually know how to read and write Python, and <code>setup.py</code> is written in Python.  These two things made me think this thought: <em>maybe I could modify <code>setup.py</code> and take -mno-fused-madd out of the compiler flags myself</em>!  </p>
 <p>So I cloned the GitHub repo and, with bated breath, searched <code>setup.py</code> for <code>-mno-fused-madd</code>. But I came up with nothing. What?! Then I went back to GitHub, where you can run full-repo code searches, and I did one for <code>-mno-fused-madd</code> on the project repo.  NOTHING!  <em>Then</em> I realized you can do a <em>full GitHub code search</em>, so I searched all of GitHub for <code>-mno-fused-madd</code>.</p>
@@ -164,7 +164,7 @@
 </pre></div>
 
 
-<p>I pasted this block, plus some import statements, in the <code>setup.py</code> file of my clone of the project repo, ran <code>python setup.py install</code>, and BOOYA. PACKAGE INSTALLED. AND ALSO IT WAS USABLE. </p>
+<p>After playing around with this in the REPL, so I kind of knew what was going on, I pasted this block, plus some import statements, in the <code>setup.py</code> file of my clone of the project repo, ran <code>python setup.py install</code>, and: BOOYA. PACKAGE INSTALLED. AND ALSO IT WAS USABLE. </p>
 <p>ALYSSA (and the internet) 1, MAVERICKS 0. You think you can best me, you crazy OS upgrade, and you think you can mess with my <code>/usr/local/bin</code> folder and my C compilers and my R installation. You are wrong.</p>
 <p>Finally, the pull request: I put those magical PyMongo lines of code into the <code>setup.py</code> file of the project that I originally wanted to install, hoping to help others avoid all the craziness that made up my Thursday night.  Boom.  First ever pull request.  Tiny victory.</p>
 <p>I realized this morning that there's probably a larger issue here: given the explanation of the problem, it seems as though <code>distutils</code> is not playing nicely with Xcode 5.1 (i.e. the new version of Command Line Tools), which I think means the problem is going to happen with <em>every package relying on distutils</em>.  Is this right?  I drank a bunch of coffee this morning and tried for about 15 minutes to find and read the distutils source code, but I was pretty unsuccessful at that. Another day!</p>

@@ -70,7 +70,7 @@
 &lt;li&gt;&lt;code&gt;ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future&lt;/code&gt; is a long thing &lt;/li&gt;
 &lt;li&gt;They're going to take away this workaround ANY MINUTE NOW so then I will be back to square one.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;So I wasn't completely satisfied with this workaround, so I kept charging forward.&lt;/p&gt;
+&lt;p&gt;So I decided to keep looking for a more permanent solution.&lt;/p&gt;
 &lt;p&gt;By this point, I had read enough internet to know that my package install was failing because somewhere in the installation process, the package was getting compiled, and the compiler was being passed this flag (the unknowable &lt;code&gt;-mno-fused-madd&lt;/code&gt;) that it didn't recognize, and that was making it angry. &lt;/p&gt;
 &lt;p&gt;THEN I remembered two important things: (1) the package I was trying to install is open-source, and the source is on GitHub, and (2) I actually know how to read and write Python, and &lt;code&gt;setup.py&lt;/code&gt; is written in Python.  These two things made me think this thought: &lt;em&gt;maybe I could modify &lt;code&gt;setup.py&lt;/code&gt; and take -mno-fused-madd out of the compiler flags myself&lt;/em&gt;!  &lt;/p&gt;
 &lt;p&gt;So I cloned the GitHub repo and, with bated breath, searched &lt;code&gt;setup.py&lt;/code&gt; for &lt;code&gt;-mno-fused-madd&lt;/code&gt;. But I came up with nothing. What?! Then I went back to GitHub, where you can run full-repo code searches, and I did one for &lt;code&gt;-mno-fused-madd&lt;/code&gt; on the project repo.  NOTHING!  &lt;em&gt;Then&lt;/em&gt; I realized you can do a &lt;em&gt;full GitHub code search&lt;/em&gt;, so I searched all of GitHub for &lt;code&gt;-mno-fused-madd&lt;/code&gt;.&lt;/p&gt;
@@ -95,7 +95,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;I pasted this block, plus some import statements, in the &lt;code&gt;setup.py&lt;/code&gt; file of my clone of the project repo, ran &lt;code&gt;python setup.py install&lt;/code&gt;, and BOOYA. PACKAGE INSTALLED. AND ALSO IT WAS USABLE. &lt;/p&gt;
+&lt;p&gt;After playing around with this in the REPL, so I kind of knew what was going on, I pasted this block, plus some import statements, in the &lt;code&gt;setup.py&lt;/code&gt; file of my clone of the project repo, ran &lt;code&gt;python setup.py install&lt;/code&gt;, and: BOOYA. PACKAGE INSTALLED. AND ALSO IT WAS USABLE. &lt;/p&gt;
 &lt;p&gt;ALYSSA (and the internet) 1, MAVERICKS 0. You think you can best me, you crazy OS upgrade, and you think you can mess with my &lt;code&gt;/usr/local/bin&lt;/code&gt; folder and my C compilers and my R installation. You are wrong.&lt;/p&gt;
 &lt;p&gt;Finally, the pull request: I put those magical PyMongo lines of code into the &lt;code&gt;setup.py&lt;/code&gt; file of the project that I originally wanted to install, hoping to help others avoid all the craziness that made up my Thursday night.  Boom.  First ever pull request.  Tiny victory.&lt;/p&gt;
 &lt;p&gt;I realized this morning that there's probably a larger issue here: given the explanation of the problem, it seems as though &lt;code&gt;distutils&lt;/code&gt; is not playing nicely with Xcode 5.1 (i.e. the new version of Command Line Tools), which I think means the problem is going to happen with &lt;em&gt;every package relying on distutils&lt;/em&gt;.  Is this right?  I drank a bunch of coffee this morning and tried for about 15 minutes to find and read the distutils source code, but I was pretty unsuccessful at that. Another day!&lt;/p&gt;
