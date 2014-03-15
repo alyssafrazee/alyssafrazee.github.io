@@ -89,10 +89,12 @@
 <li><a href="http://hopstat.wordpress.com/2013/10/29/sizeup-and-mavericks/">change the required system preference for SizeUp</a></li>
 <li>install <a href="http://xquartz.macosforge.org/landing/">XQuartz</a> to replace X11, and then "log out" and log back in to get the <code>$DISPLAY</code> environment variable to recognize XQuartz</li>
 </ul>
-<p>But some of the solutions were more problematic. For example: reinstalling Command Line Tools was kind of tricky. There were many problems:<br />
-1.  I didn't want to install the entire XCode IDE
-2.  The command-line installation option failed for me (as in <a href="http://stackoverflow.com/questions/20366125/xcode-select-install-failing">this post</a>, and I did not already have the file the answerer referenced)
-3.  You have to register as an Apple developer to access the webpage where you can click and download the tools. (I have too many internet accounts.)</p>
+<p>But some of the solutions were more problematic. For example: reinstalling Command Line Tools was kind of tricky. There were many problems:  </p>
+<ol>
+<li>I didn't want to install the entire XCode IDE</li>
+<li>The command-line installation option failed for me (as in <a href="http://stackoverflow.com/questions/20366125/xcode-select-install-failing">this post</a>, and I did not already have the file the answerer referenced)</li>
+<li>You have to register as an Apple developer to access the webpage where you can click and download the tools. (I have too many internet accounts.)</li>
+</ol>
 <p>But, finally, after registering as an Apple developer, I got my Command Line Tools <a href="https://developer.apple.com/downloads/index.action">from here</a>, so, problem solved. </p>
 <p>The only thing left to do was to fix distutils, and that one turned out to be a doozy.  </p>
 <p>Part of the reason this was so hard was that it took me a very, very long time to figure out that I had a <em>problem</em> with distutils.  The <em>symptom</em> was that my usual Python module installation process was failing for some, but not all, packages. Whether I was using <code>pip install</code>, <code>easy_install</code>, or <code>python setup.py install</code>, installation would sometimes fail with this final message:</p>
@@ -126,13 +128,17 @@
 </pre></div>
 
 
-<p>I was overjoyed for many reasons:
-<em> THE PACKAGE GOT INSTALLED. I USED IT. :tada:
-</em> Mavericks hadn't broken <code>easy_install</code> 
-* Mavericks hadn't broken my virtualenv setup</p>
-<p>I was sad for some reasons as well:
-<em> <code>ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future</code> is a long thing 
-</em> They're going to take away this workaround ANY MINUTE NOW so then I will be back to square one.</p>
+<p>I was overjoyed for many reasons:</p>
+<ul>
+<li>THE PACKAGE GOT INSTALLED. I USED IT. :tada:</li>
+<li>Mavericks hadn't broken <code>easy_install</code> </li>
+<li>Mavericks hadn't broken my virtualenv setup</li>
+</ul>
+<p>I was sad for some reasons as well:</p>
+<ul>
+<li><code>ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future</code> is a long thing </li>
+<li>They're going to take away this workaround ANY MINUTE NOW so then I will be back to square one.</li>
+</ul>
 <p>So I wasn't completely satisfied with this workaround, so I kept charging forward.</p>
 <p>By this point, I had read enough internet to know that my package install was failing because somewhere in the installation process, the package was getting compiled, and the compiler was being passed this flag (the unknowable <code>-mno-fused-madd</code>) that it didn't recognize, and that was making it angry. </p>
 <p>THEN I remembered two important things: (1) the package I was trying to install is open-source, and the source is on GitHub, and (2) I actually know how to read and write Python, and <code>setup.py</code> is written in Python.  These two things made me think this thought: <em>maybe I could modify <code>setup.py</code> and take -mno-fused-madd out of the compiler flags myself</em>!  </p>

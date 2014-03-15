@@ -20,10 +20,12 @@
 &lt;li&gt;&lt;a href="http://hopstat.wordpress.com/2013/10/29/sizeup-and-mavericks/"&gt;change the required system preference for SizeUp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;install &lt;a href="http://xquartz.macosforge.org/landing/"&gt;XQuartz&lt;/a&gt; to replace X11, and then "log out" and log back in to get the &lt;code&gt;$DISPLAY&lt;/code&gt; environment variable to recognize XQuartz&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;But some of the solutions were more problematic. For example: reinstalling Command Line Tools was kind of tricky. There were many problems:&lt;br /&gt;
-1.  I didn't want to install the entire XCode IDE
-2.  The command-line installation option failed for me (as in &lt;a href="http://stackoverflow.com/questions/20366125/xcode-select-install-failing"&gt;this post&lt;/a&gt;, and I did not already have the file the answerer referenced)
-3.  You have to register as an Apple developer to access the webpage where you can click and download the tools. (I have too many internet accounts.)&lt;/p&gt;
+&lt;p&gt;But some of the solutions were more problematic. For example: reinstalling Command Line Tools was kind of tricky. There were many problems:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I didn't want to install the entire XCode IDE&lt;/li&gt;
+&lt;li&gt;The command-line installation option failed for me (as in &lt;a href="http://stackoverflow.com/questions/20366125/xcode-select-install-failing"&gt;this post&lt;/a&gt;, and I did not already have the file the answerer referenced)&lt;/li&gt;
+&lt;li&gt;You have to register as an Apple developer to access the webpage where you can click and download the tools. (I have too many internet accounts.)&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;But, finally, after registering as an Apple developer, I got my Command Line Tools &lt;a href="https://developer.apple.com/downloads/index.action"&gt;from here&lt;/a&gt;, so, problem solved. &lt;/p&gt;
 &lt;p&gt;The only thing left to do was to fix distutils, and that one turned out to be a doozy.  &lt;/p&gt;
 &lt;p&gt;Part of the reason this was so hard was that it took me a very, very long time to figure out that I had a &lt;em&gt;problem&lt;/em&gt; with distutils.  The &lt;em&gt;symptom&lt;/em&gt; was that my usual Python module installation process was failing for some, but not all, packages. Whether I was using &lt;code&gt;pip install&lt;/code&gt;, &lt;code&gt;easy_install&lt;/code&gt;, or &lt;code&gt;python setup.py install&lt;/code&gt;, installation would sometimes fail with this final message:&lt;/p&gt;
@@ -57,13 +59,17 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;I was overjoyed for many reasons:
-&lt;em&gt; THE PACKAGE GOT INSTALLED. I USED IT. :tada:
-&lt;/em&gt; Mavericks hadn't broken &lt;code&gt;easy_install&lt;/code&gt; 
-* Mavericks hadn't broken my virtualenv setup&lt;/p&gt;
-&lt;p&gt;I was sad for some reasons as well:
-&lt;em&gt; &lt;code&gt;ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future&lt;/code&gt; is a long thing 
-&lt;/em&gt; They're going to take away this workaround ANY MINUTE NOW so then I will be back to square one.&lt;/p&gt;
+&lt;p&gt;I was overjoyed for many reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;THE PACKAGE GOT INSTALLED. I USED IT. :tada:&lt;/li&gt;
+&lt;li&gt;Mavericks hadn't broken &lt;code&gt;easy_install&lt;/code&gt; &lt;/li&gt;
+&lt;li&gt;Mavericks hadn't broken my virtualenv setup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I was sad for some reasons as well:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future&lt;/code&gt; is a long thing &lt;/li&gt;
+&lt;li&gt;They're going to take away this workaround ANY MINUTE NOW so then I will be back to square one.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;So I wasn't completely satisfied with this workaround, so I kept charging forward.&lt;/p&gt;
 &lt;p&gt;By this point, I had read enough internet to know that my package install was failing because somewhere in the installation process, the package was getting compiled, and the compiler was being passed this flag (the unknowable &lt;code&gt;-mno-fused-madd&lt;/code&gt;) that it didn't recognize, and that was making it angry. &lt;/p&gt;
 &lt;p&gt;THEN I remembered two important things: (1) the package I was trying to install is open-source, and the source is on GitHub, and (2) I actually know how to read and write Python, and &lt;code&gt;setup.py&lt;/code&gt; is written in Python.  These two things made me think this thought: &lt;em&gt;maybe I could modify &lt;code&gt;setup.py&lt;/code&gt; and take -mno-fused-madd out of the compiler flags myself&lt;/em&gt;!  &lt;/p&gt;
