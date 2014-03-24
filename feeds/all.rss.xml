@@ -18,13 +18,15 @@
 &lt;/ul&gt;
 &lt;p&gt;So my idea for contributed talks is to bill them as &lt;a href="http://en.wikipedia.org/wiki/Lightning_talk"&gt;lightning talks&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Instead of having folks submit 25-page proposals and giving them a 15-minute slot for a research talk, have people submit abstracts or proposals &lt;em&gt;specifically for&lt;/em&gt; lightning talks. Proposals would not be accepted if the scope of the talk is too large or detailed for five minutes of speaking time. I think taking away the "this is a research talk!" mentality might help speakers prepare better for a short talk. Maybe thinking of the presentation as a quick overview of their work rather than a full-on research talk would help presenters think intentionally about the big-picture impact of their projects and how to communicate that.&lt;/p&gt;
-&lt;p&gt;There would be some rules for the lightning talks:
-&lt;em&gt; slides optional
-&lt;/em&gt; only one slide can contain equations
-&lt;em&gt; no tables with all numeric entries
-&lt;/em&gt; no proofs, unless the entire talk is a proof
-&lt;em&gt; talks must end with a one-sentence "take-home message"
-&lt;/em&gt; other ideas?&lt;/p&gt;
+&lt;p&gt;There would be some rules for the lightning talks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;slides optional&lt;/li&gt;
+&lt;li&gt;only one slide can contain equations&lt;/li&gt;
+&lt;li&gt;no tables with all numeric entries&lt;/li&gt;
+&lt;li&gt;no proofs, unless the entire talk is a proof&lt;/li&gt;
+&lt;li&gt;talks must end with a one-sentence "take-home message"&lt;/li&gt;
+&lt;li&gt;other ideas?&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Each lightning talk session could be 100 minutes long and could include 10 lightning talks, each of which would be strictly limited to five minutes. There would be five minutes for audience questions and presenter-switching between each talk. (Compare this to the current format of seven 15-minute talks in a 105-minute session, with no built-in time for questions). You would need lots of friendly-but-firm session chairs to keep the presenters on time.  Only the contributed sessions would be these lightning talk rounds; the invited sessions could still be the longer 25-30 minute research talks. (I think that's a much more reasonable time frame for a research presentation).&lt;/p&gt;
 &lt;p&gt;I've heard of lightning talks being done at places like &lt;a href="https://us.pycon.org/2014/"&gt;PyCon&lt;/a&gt;, &lt;a href="http://strataconf.com/"&gt;StrataConf&lt;/a&gt;, and &lt;a href="https://www.hackerschool.com/"&gt;Hacker School&lt;/a&gt;, but never at a statistics conference. I'm pretty interested in seeing if the format would help speakers with short talks give clearer, more memorable presentations.  If that were the effect, I think the whole conference would be more enjoyable, for audiences and speakers alike! &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alyssa Frazee</dc:creator><pubDate>Mon, 24 Mar 2014 00:45:00 -0400</pubDate><guid>tag:alyssafrazee.com,2014-03-24:lightning-talks.html</guid></item><item><title>My first pull request (or: the silver lining of a bad OS upgrade)</title><link>http://alyssafrazee.com/dangit-mavericks.html</link><description>&lt;p&gt;This is the story of a rabbit hole I went down on Thursday night. The unexpected consequence of this long journey was that I got brave enough to submit a pull request to a popular Python project!  It was my first attempt at contributing to a large-ish open-source project, and I consider that a tiny victory.&lt;/p&gt;
 &lt;p&gt;The story begins when I received my beta invite to try out &lt;a href="https://atom.io/"&gt;Atom&lt;/a&gt;, a text editor made by GitHub. Turns out that if you're on a Mac, you need Mountain Lion or Mavericks to run Atom. I was running Lion. "No problem!" I thought. I've been meaning to upgrade for a few months. So I upgraded.&lt;/p&gt;
