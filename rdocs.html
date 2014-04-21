@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>alyssa frazee</title>
+
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
+    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/emojify.min.css" type="text/css" /> 
+    <script src="http://alyssafrazee.com/theme/js/emojify.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45776614-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
+        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
+        <div class="sub-title"></div>
+
+        <p>
+      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/blog-roll.html">blog roll</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/contact.html">contact</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>follow me</h4>
+<ul>
+    <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+  </ul>
+</div>
+
+      </header>
+      <section>
+      <section id="content" class="body">
+  <article>
+      <div class="article-title">
+        Some internet wisdom on R documentation
+      </div>
+
+    <div class="entry-content">
+      <p>
+<small>
+<abbr class="published" title="2014-04-20T23:40:00">
+  Sun 20 April 2014
+</abbr> | 
+ -- (<a href="http://alyssafrazee.com/rdocs.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>I spent a lot of last week documenting an R package. I'm still learning how to write good user-facing features (including documentation) in my software, so I asked Twitter for advice on two things: (1) what are some R packages with stellar documentation?, and (2) is there a documentation style guide? </p>
+<p>I got some great responses! <a href="https://twitter.com/acfrazee/status/455912492120961024">Here's the full Twitter conversation</a>. And here are some of the cool things I learned over the course of the week:</p>
+<h3>structure</h3>
+<p>The documentation for an R package is broken down into a few different parts:
+<em> Documentation for each function in the package (this is pretty structured): <a href="http://adv-r.had.co.nz/Documenting-functions.html">Hadley Wickham's function docs page</a>
+</em> A few brief overview pages for the whole package (also fairly structured): <a href="http://adv-r.had.co.nz/Documenting-packages.html">Hadley Wickham's package docs page</a>
+* A package vignette, which is what I usually read when I'm learning to use a new package. The vignette is basically a "getting started" guide with lots of example code in it. </p>
+<p>You can write almost all of this documentation into your source code files and use <a href="http://cran.r-project.org/package=roxygen2">roxygen2</a> and <a href="http://cran.r-project.org/web/packages/devtools/index.html">devtools</a> to automatically generate the properly-formatted, properly-organized, tex-like documentation files you'll need to publish a package. </p>
+<p>I use Sublime Text + Terminal on a Mac, and these little tricks made the documentation process even easier with those tools: 
+<em> The <a href="https://github.com/karthik/Rtools">RTools</a> plugin for ST2 will automatically populate the roxygen documentation template above your function if you highlight the first line of the function and hit command-shift-alt-R. Super cool, props to Karthik for that. (Since RTools is designed to run code in <code>R.app</code>, I also added the feature to the <a href="https://github.com/alyssafrazee/Line-by-line">Sublime plugin I usually use</a> for Terminal work).
+</em> I added this line to my .bashrc file: <code>alias doc='R -q -e "devtools::document()"'</code>. This means that when I'm in the package directory in the Terminal, I can just type "doc" to generate the documentation files.
+* Since CRAN might get angry if your source files contain lines longer than 100 characters (<a href="https://github.com/alyssafrazee/ballgown/issues/29">thanks Scott</a>), I added a vertical line at 100 characters in Sublime, so I can see all the lines that are too long. <a href="http://stackoverflow.com/a/11319526/3155073">Here's how to do that</a>. </p>
+<h3>content</h3>
+<p>My original tweet was really meant to get at documentation <em>content</em>: there's lots of good information out there on how to structure the documentation and which things need to be documented, but what should I actually <em>write</em> in the documentation files so that users will understand the function/package? Is there a standard (written or unwritten) about how R documentation files should read? An example of a well-documented package would also help answer the content question. Here's what the internet seemed to think about this:</p>
+<ul>
+<li>The function-specific documentation is not nearly as important as the vignette/web documentation (thanks <a href="https://twitter.com/kwbroman">Karl</a> and <a href="https://twitter.com/cpsievert">Carson</a>). </li>
+<li>Try not to document things in two different places (thanks <a href="https://twitter.com/davidjayharris">Dave</a>), unless a parameter description is getting <em>extremely</em> long (like, to the point of using <code>\itemize</code>) (thanks <a href="https://twitter.com/kwbroman">Karl</a> and <a href="https://github.com/alyssafrazee/ballgown/issues/29">Scott</a>)</li>
+<li>There don't seem to be rules about declaring argument types in the <code>@param</code> field, or always using the present tense, or nitty gritty things like that (please correct me if that's wrong)</li>
+<li>Try to give good/illustrative examples</li>
+<li>But really it's all a matter of personal preference. In the end, that meant my strategy was to go ahead and write the docs as I thought they should be, taking care to write a detailed vignette, and commit to taking user feedback super seriously. </li>
+</ul>
+<h3>shining examples</h3>
+<p>People mentioned the following packages when asked for particularly well-documented ones:
+<em> all the packages on <a href="http://www.bioconductor.org/">Bioconductor</a>, especially <a href="http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html"><code>GenomicRanges</code></a> (vote from <a href="https://twitter.com/vsbuffalo">Vince</a>)
+</em> <a href="http://cran.r-project.org/web/packages/mice/mice.pdf"><code>mice</code></a> + <a href="">descriptive paper</a>, (vote from <a href="https://twitter.com/statsepi">@statsepi</a>)
+<em> <a href="http://cran.r-project.org/web/packages/lme4/index.html"><code>lme4</code></a> (vote from <a href="https://twitter.com/vbacak">Valerio</a>)
+</em> <a href="http://www.biostat.jhsph.edu/~rpeng/software/index.html">anything by Roger</a>, especially <a href="http://cran.r-project.org/web/packages/filehash/filehash.pdf"><code>filehash</code></a> (vote from <a href="https://twitter.com/kwbroman">Karl</a>)</p>
+<h3>R internet community &lt;3</h3>
+<p>All this info from the Twitter conversation was super helpful to me. I even got a little <a href="https://github.com/alyssafrazee/ballgown/issues/29">code/doc review from Scott</a> - how awesome is that!? Thanks, all, for your input. If you have more documentation suggestions, please share!</p>
+          </div><!-- /.entry-content -->
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
+        var disqus_identifier = "rdocs.html";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+    <!-- Emojis -->
+    <script> emojify.setConfig({ 
+      people_enabled: true, 
+      nature_enabled: true, 
+      objects_enabled: true, 
+      places_enabled: true, 
+      symbols_enabled: true 
+    }); 
+    emojify.run(); 
+    </script>
+  </body>
+</html>
