@@ -71,15 +71,19 @@
 </p>      <p>I spent a lot of last week documenting an R package. I'm still learning how to write good user-facing features (including documentation) in my software, so I asked Twitter for advice on two things: (1) what are some R packages with stellar documentation?, and (2) is there a documentation style guide? </p>
 <p>I got some great responses! <a href="https://twitter.com/acfrazee/status/455912492120961024">Here's the full Twitter conversation</a>. And here are some of the cool things I learned over the course of the week:</p>
 <h3>structure</h3>
-<p>The documentation for an R package is broken down into a few different parts:<br />
-<em> Documentation for each function in the package (this is pretty structured): <a href="http://adv-r.had.co.nz/Documenting-functions.html">Hadley Wickham's function docs page</a>
-</em> A few brief overview pages for the whole package (also fairly structured): <a href="http://adv-r.had.co.nz/Documenting-packages.html">Hadley Wickham's package docs page</a>
-* A package vignette, which is what I usually read when I'm learning to use a new package. The vignette is basically a "getting started" guide with lots of example code in it. </p>
+<p>The documentation for an R package is broken down into a few different parts:</p>
+<ul>
+<li>Documentation for each function in the package (this is pretty structured): <a href="http://adv-r.had.co.nz/Documenting-functions.html">Hadley Wickham's function docs page</a></li>
+<li>A few brief overview pages for the whole package (also fairly structured): <a href="http://adv-r.had.co.nz/Documenting-packages.html">Hadley Wickham's package docs page</a></li>
+<li>A package vignette, which is what I usually read when I'm learning to use a new package. The vignette is basically a "getting started" guide with lots of example code in it. </li>
+</ul>
 <p>You can write almost all of this documentation into your source code files and use <a href="http://cran.r-project.org/package=roxygen2">roxygen2</a> and <a href="http://cran.r-project.org/web/packages/devtools/index.html">devtools</a> to automatically generate the properly-formatted, properly-organized, tex-like documentation files you'll need to publish a package. </p>
-<p>I use Sublime Text + Terminal on a Mac, and these little tricks made the documentation process even easier with those tools:<br />
-<em> The <a href="https://github.com/karthik/Rtools">RTools</a> plugin for ST2 will automatically populate the roxygen documentation template above your function if you highlight the first line of the function and hit command-shift-alt-R. Super cool, props to Karthik for that. (Since RTools is designed to run code in <code>R.app</code>, I also added the feature to the <a href="https://github.com/alyssafrazee/Line-by-line">Sublime plugin I usually use</a> for Terminal work).
-</em> I added this line to my .bashrc file: <code>alias doc='R -q -e "devtools::document()"'</code>. This means that when I'm in the package directory in the Terminal, I can just type "doc" to generate the documentation files.
-* Since CRAN might get angry if your source files contain lines longer than 100 characters (<a href="https://github.com/alyssafrazee/ballgown/issues/29">thanks Scott</a>), I added a vertical line at 100 characters in Sublime, so I can see all the lines that are too long. <a href="http://stackoverflow.com/a/11319526/3155073">Here's how to do that</a>. </p>
+<p>I use Sublime Text + Terminal on a Mac, and these little tricks made the documentation process even easier with those tools:  </p>
+<ul>
+<li>The <a href="https://github.com/karthik/Rtools">RTools</a> plugin for ST2 will automatically populate the roxygen documentation template above your function if you highlight the first line of the function and hit command-shift-alt-R. Super cool, props to Karthik for that. (Since RTools is designed to run code in <code>R.app</code>, I also added the feature to the <a href="https://github.com/alyssafrazee/Line-by-line">Sublime plugin I usually use</a> for Terminal work).</li>
+<li>I added this line to my .bashrc file: <code>alias doc='R -q -e "devtools::document()"'</code>. This means that when I'm in the package directory in the Terminal, I can just type "doc" to generate the documentation files.</li>
+<li>Since CRAN might get angry if your source files contain lines longer than 100 characters (<a href="https://github.com/alyssafrazee/ballgown/issues/29">thanks Scott</a>), I added a vertical line at 100 characters in Sublime, so I can see all the lines that are too long. <a href="http://stackoverflow.com/a/11319526/3155073">Here's how to do that</a>. </li>
+</ul>
 <h3>content</h3>
 <p>My original tweet was really meant to get at documentation <em>content</em>: there's lots of good information out there on how to structure the documentation and which things need to be documented, but what should I actually <em>write</em> in the documentation files so that users will understand the function/package? Is there a standard (written or unwritten) about how R documentation files should read? An example of a well-documented package would also help answer the content question. Here's what the internet seemed to think about this:</p>
 <ul>
