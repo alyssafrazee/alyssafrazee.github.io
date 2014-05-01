@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>alyssa frazee</title>
+
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
+    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/emojify.min.css" type="text/css" /> 
+    <script src="http://alyssafrazee.com/theme/js/emojify.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45776614-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
+        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
+        <div class="sub-title"></div>
+
+        <p>
+      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/blog-roll.html">blog roll</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/contact.html">contact</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>follow me</h4>
+<ul>
+    <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+  </ul>
+</div>
+
+      </header>
+      <section>
+      <section id="content" class="body">
+  <article>
+      <div class="article-title">
+        fun with git: making a subdirectory into a new repository
+      </div>
+
+    <div class="entry-content">
+      <p>
+<small>
+<abbr class="published" title="2014-05-01T15:42:00">
+  Thu 01 May 2014
+</abbr> | 
+ -- (<a href="http://alyssafrazee.com/popping-a-subdirectory.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>Today I wanted to make a new GitHub repository from a subdirectory of an existing repository, preserving the commit history. There's a <a href="https://help.github.com/articles/splitting-a-subpath-out-into-a-new-repository">nice help article</a> on how to do this, but I had to do a bit of exploration (read: break a few things) to learn what would happen when I followed those instructions. Here are the details on what I ended up doing! </p>
+<p>The goal: pop the <code>polyester</code> subdirectory of my <code>ballgown</code> repository into its own repository. </p>
+<p>First we will need to clone the <code>ballgown</code> repository:</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="n">alyssafrazee</span><span class="o">/</span><span class="n">ballgown</span><span class="p">.</span><span class="n">git</span>
+</pre></div>
+
+
+<p>I got confused for a minute and thought I should just <code>cd</code> to my existing local copy of this repository, but no! We need a <em>second</em> local copy of the original repository.</p>
+<p>Now let's rename the folder that was just created to the subdirectory name (i.e., what our new repo will be called), and change to that folder:</p>
+<div class="highlight"><pre><span class="n">mv</span> <span class="n">ballgown</span> <span class="n">polyester</span>
+<span class="n">cd</span> <span class="n">polyester</span>
+</pre></div>
+
+
+<p>Here's where the magic happens: use the <code>filter-branch</code> command to bring the subdirectory contents (and history of non-empty commits) into this folder and onto the master branch:</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">filter</span><span class="o">-</span><span class="n">branch</span> <span class="o">--</span><span class="n">prune</span><span class="o">-</span><span class="n">empty</span> <span class="o">--</span><span class="n">subdirectory</span><span class="o">-</span><span class="n">filter</span> <span class="n">polyester</span> <span class="n">master</span>
+</pre></div>
+
+
+<p>Our current directory has just been overwritten with the contents of the subdirectory! This is a good thing. This is also why we didn't just do this in our original local copy of the <code>ballgown</code> repository. Now we just need to push this stuff into a new GitHub repo.</p>
+<p>To do this, we'll create the new GitHub repository online. It will have the same name as the subdirectory we just popped out (<code>polyester</code>). I initialized the new repository without a <code>README</code>, <code>.gitignore</code>, or <code>LICENSE</code>, since I already had a README in my subfolder, and I wanted to avoid pulling and/or merge conflicts.</p>
+<p>Finally, to push the contents to the new repository, we'll have to change the origin: we initially cloned from <code>ballgown</code> but now want to push to <code>polyester</code>.</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">remote</span> <span class="n">rm</span> <span class="n">origin</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="n">alyssafrazee</span><span class="o">/</span><span class="n">polyester</span><span class="p">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+
+
+<p>The last thing I did was delete the <code>polyester</code> subdirectory from the original <code>ballgown</code> repository. And that's all! Now what used to be in the <code>polyester</code> subdirectory of my <code>ballgown</code> repo now lives in its <em>own</em> GitHub repo, and it still has the whole commit history in it. Cool.</p>
+          </div><!-- /.entry-content -->
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
+        var disqus_identifier = "popping-a-subdirectory.html";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+    <!-- Emojis -->
+    <script> emojify.setConfig({ 
+      people_enabled: true, 
+      nature_enabled: true, 
+      objects_enabled: true, 
+      places_enabled: true, 
+      symbols_enabled: true 
+    }); 
+    emojify.run(); 
+    </script>
+  </body>
+</html>
