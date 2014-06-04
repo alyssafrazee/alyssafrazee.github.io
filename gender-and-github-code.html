@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>alyssa frazee</title>
+
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
+    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/emojify.min.css" type="text/css" /> 
+    <script src="http://alyssafrazee.com/theme/js/emojify.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45776614-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
+        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
+        <div class="sub-title"></div>
+
+        <p>
+      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/blog-roll.html">blog roll</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/contact.html">contact</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>follow me</h4>
+<ul>
+    <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+  </ul>
+</div>
+
+      </header>
+      <section>
+      <section id="content" class="body">
+  <article>
+      <div class="article-title">
+        Exploring the data on gender and GitHub repo ownership
+      </div>
+
+    <div class="entry-content">
+      <p>
+<small>
+<abbr class="published" title="2014-06-04T12:10:00">
+  Wed 04 June 2014
+</abbr> | 
+ -- (<a href="http://alyssafrazee.com/gender-and-github-code.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <h3>an interesting graph</h3>
+<p>For several popular programming languages, this chart shows the gender breakdown of the owners of public GitHub repositories. Each owner's gender was <a href="https://pypi.python.org/pypi/SexMachine/">algorithmically predicted</a> from the first name they choose to display on their GitHub profile.</p>
+<p align="center">
+  <img src="static/images/bargraph.png" alt="Image"/>
+</p>
+
+<p><a href="http://alyssafrazee.com/plgender.html">The interactive version is here!</a> You can sort by any gender category by clicking on the corresponding box in the legend.</p>
+<h3>a short back story</h3>
+<p>I've read a lot of internet things lately about data and women in programming/STEM. Google released its <a href="http://www.google.com/diversity/at-google.html#tab=tech">diversity stats</a> last week: 17% of its technical employees are female. Last year, <a href="https://medium.com/grace-hopper-2013/where-are-the-numbers-cb997a57252">this piece came out</a> seeking (<a href="https://github.com/triketora/women-in-software-eng">and finding</a>) data on how many women work in the industry. And then I saw <a href="https://twitter.com/gdequeiroz/statuses/449677189277945856">this tweet</a> from Gabriela de Quieroz, asking for numbers on the gender breakdown of R programmers specifically. This really caught my attention: I wonder whether the gender breakdown differs for programmers of different languages? "There <em>has</em> to be data for that," I thought to myself (I think that thought a lot). And then I remembered that GitHub has an API...and GitHub users can identify themselves with a first name, and first names are often gendered. DATA! </p>
+<p>Collecting data on GitHub repository owners seemed like a fun project for several reasons:</p>
+<ul>
+<li>it could answer the language-specific gender breakdown question</li>
+<li>it would give some insight about who's writing open-source code -- a slightly different question than "who's currently working as a software engineer in industry?"</li>
+<li>it involved the entire data analysis pipeline (data collection, processing, analysis, and visualization) and would give me a chance to learn a bunch of new things!</li>
+</ul>
+<p>So I went ahead with the project! I collected the data in mid-April, and I finished most of the project during <a href="https://www.hackerschool.com/">Hacker School</a> reunion week in May, which was a five-day collaborative programming retreat for Hacker School alums. There, my friend <a href="https://twitter.com/alexandrinaNYC">Alex</a> and I worked together to make the interactive bar chart with D3. Major thanks to her for a whole bunch of JavaScript help.</p>
+<p>So let's get down to brass tacks: </p>
+<h3>the data and code</h3>
+<p>I used <a href="https://developer.github.com/v3/">GitHub's API</a> and the <a href="http://jacquev6.github.io/PyGithub/v1/index.html">PyGithub</a> Python wrapper for said API to collect data on all public, non-fork GitHub repositories created between May 30, 2010 and April 18, 2014, with at least 5 stars (as of 4/18/14). For each of these repos, I recorded the repo name, the repo owner's name (if provided), the repo's main programming language, the stargazer count, and the creation date. I didn't collect data on repositories owned by organizations. <a href="https://github.com/alyssafrazee/github_analysis/blob/master/get_github_info_byday.py">Here's the code I used</a>. Fair warning: this code takes a long time (about 60 hours) to run. <a href="https://developer.github.com/v3/#rate-limiting">Rate limiting</a>, what a drag. I ended up with a dataset of 168,235 repositories in total.</p>
+<p>In an attempt to infer gender from first name, I used the Python package <a href="https://pypi.python.org/pypi/SexMachine/">SexMachine</a>, which classifies first names as "male", "mostly male", "neutral", "mostly female", or "female" based on how they have historically been used. Any name that isn't recognized by the classifier, including <code>None</code> (the value I recorded if a repo owner chose not to make their name public), is assigned to the "neutral" category. </p>
+<p>After I collected the data, I cleaned it with a <a href="https://github.com/alyssafrazee/github_analysis/blob/master/merge_files.sh">small shell script</a> and <a href="https://github.com/alyssafrazee/github_analysis/blob/master/make_database.R">dumped it into a SQL database</a>, because I wanted to develop mad SQL query skillz. I played around with Pandas and Matplotlib and got the data ready for D3 using <a href="https://github.com/alyssafrazee/github_analysis/blob/master/analyze_data.py">this Python code</a>. The JavaScript/D3 code for the graph is <a href="https://github.com/alyssafrazee/github_analysis/blob/master/bargraph.js">here</a>.</p>
+<h3>the results</h3>
+<p>The graph at the beginning of the post tells most of the story. The main things I noticed were:</p>
+<ul>
+<li>A pretty small percentage of starred GitHub repositories are owned by women</li>
+<li>There isn't a whole lot of difference in gender breakdown between languages</li>
+<li>There are a lot of repositories owned by users who don't provide a first name or whose first name is gender-neutral.</li>
+</ul>
+<p>The second point gets at my original question the best: I think the data shows that the gender breakdown across languages is pretty similar. Though the different programming languages showed some variation in the absolute percentages of owners with male, female, and neutral names, the <em>relative</em> gender distribution was pretty consistent across languages. No language showed a pattern deviating from: majority of starred repositories owned by users with male names, a good number of starred repos owned by users with neutral names, and a very small minority of repos owned by users with female names. </p>
+<p>Some specifics: R had the highest percent of &gt;=5star repos with female owners (5.5%!), while Erlang had the lowest, at 0.6%. Erlang also had the highest percent of &gt;=5star repos with male owners (74.6%), while C++ had the lowest (55.6%). The owners of Clojure repos are most likely to have identifiably gendered names: only 14% of &gt;=5star Clojure repos have owners with neutral names. (Compare that to C++, where 38% of the owners have neutral names). </p>
+<p>When I showed this graphic to people, they were often surprised that R had the highest percentage of female-owned repositories. Most of them hypothesized it was because of a sample size issue. It's not: there are 452 R repositories in this dataset. (You can get a sense of each language's presence in the dataset with the  <a href="http://alyssafrazee.com/plgender.html">interactive graphic</a> by clicking on the "Raw Repo Counts" checkbox on the right, which changes the y-axis to "number of repositories" instead of "percentage of repositories"). No, the real reason R wins the female percentage game is that Hadley Wickham's first name is misclassified as female, and he owns 18 highly-starred R repositories. Misclassifying the name "Hadley" in a study of R programmers' genders is a pretty unfortunate and impactful error. The story speaks to how important it is to follow up on the details of interesting analysis results. To quickly investigate this issure further, I looked at the female-classified Clojure repositories, since Clojure had the second-highest percent of female-owned repos (2.6%...) and guessed that around 12 of those 48 repositories aren't actually owned by females. In contrast, I found zero obviously misclassified male-owned R repositories. So my preliminary look into the misclassification problem suggests that it might actually be making the female percentages look <em>higher</em> than they really are :/ To be more certain, I'd like some data on SexMachine and whether it's more prone to misclassify in one direction (i.e. misclassify more male names as female names, or vice versa). </p>
+<h3>so what?</h3>
+<p>The main message I took away is that a <em>surprisingly</em> small percentage of starred GitHub repositories are owned by women. A priori, I expected maybe 20% of these repositories to have female owners. That expectation was a hunch / guesstimate / feeling. It wasn't based on any data, and I imagine it was highly influenced by my (female) vantage point. That said, available data suggests that probably more than 5% of the code out there today is written by women: <a href="https://github.com/triketora/women-in-software-eng">preliminary data</a> estimates that <a href="http://qz.com/143967/the-tech-industrys-woman-problem-statistics-show-its-worse-than-you-think/">12.3% of software engineers are women</a>, <a href="http://www.google.com/diversity/at-google.html#tab=tech">Google's number is 17%</a>, and <a href="http://economix.blogs.nytimes.com/2013/11/15/women-gain-in-some-stem-fields-but-not-computer-science/">just under 20% of B.A.s in CS were awarded to women in 2010</a>. So what's happening with this data? Why are such a small percentage of these repositories identified as having female owners? I have several unresearched explanations:  </p>
+<ul>
+<li>Really only ~5% of the somewhat-starred repositories on GitHub are written by women</li>
+<li>Lots of the authors falling in the "neutral" category identify as women. (I'd say this is pretty likely. But even unreasonably assuming that <em>all</em> the neutral classifications are women still leaves us with a majority-male-authored set of repositories).</li>
+<li>Women are using gender-neutral or male names on their public profiles on purpose to avoid harassment or exclusivity (<a href="http://bura.brunel.ac.uk/bitstream/2438/7110/2/main-6pages.pdf">there's research on this</a>; thanks <a href="https://twitter.com/kelseyinnis">Kelsey</a> for pointing me toward this)</li>
+<li>Women aren't publicizing their code by putting it on GitHub at the same rate men are</li>
+<li>Repositories with female authors get starred at lower frequencies</li>
+<li>There were misclassification issues with the algorithm used to predict gender (though this would only skew results if misclassifications in one direction, i.e., incorrectly labeling female names as male, were more common than misclassifications in the other direction)</li>
+<li>??? (I'm sure there are more theories to be researched)</li>
+</ul>
+<p>I'm in the process of investigating the star issue with another dataset: last week I collected a large random sample of <em>all</em> public GitHub repositories (regardless of fork status or stargazer count). I'm also interested in seeing if the gender patterns have changed at all over time. Analysis coming soon!</p>
+<h3>the bigger picture</h3>
+<p>Most of the starred repositories on GitHub are owned by men, regardless of language.</p>
+<p>I'd like this to change. I want more folks identifying as women to write code and put it up on GitHub and have it out there being used by other people. There are so, so many reasons I want to see this:</p>
+<ul>
+<li><a href="http://adainitiative.org/faq/#why-focus-on-women-in-open-technology-and-culture">As said by the Ada Initiative</a>: Open technology is a powerful social force. I want women to be a visible part of that force. </li>
+<li><a href="https://twitter.com/kelseyinnis/status/459703243237371907">As said by Kelsey Gilmore-Innis</a>: Jobs in programming pay well, and I think it's important to broaden the base of economic power in terms of gender and race and a whole lot of other things. While a programming job is a few steps beyond putting code up on GitHub, writing and publicizing code is definitely a part of developing a tech career.</li>
+<li><a href="http://plastic-idolatry.com/erik/log.html">Inspired by this 2/21/14 post</a>: I value radical inclusivity, and I want it in science and technology. I think diversity encourages radical inclusivity while monocultures (along almost any dimension) discourage it. </li>
+</ul>
+<p>Digging into the data on who is doing programming was fun, and I learned a lot. But I wish the results had been different.</p>
+          </div><!-- /.entry-content -->
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
+        var disqus_identifier = "gender-and-github-code.html";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+    <!-- Emojis -->
+    <script> emojify.setConfig({ 
+      people_enabled: true, 
+      nature_enabled: true, 
+      objects_enabled: true, 
+      places_enabled: true, 
+      symbols_enabled: true 
+    }); 
+    emojify.run(); 
+    </script>
+  </body>
+</html>
