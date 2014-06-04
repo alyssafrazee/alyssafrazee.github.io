@@ -42,8 +42,8 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
   y.domain([0, 100]);
   data.forEach(function(d) {
     d.genders.forEach(function(e){
-      e.y0 = e.y0/d.total*100; 
-      e.y1 = e.y1/d.total*100; 
+      e.y0 = Math.round(e.y0/d.total*100*100)/100; 
+      e.y1 = Math.round(e.y1/d.total*100*100)/100; 
       })
   })
 
@@ -83,7 +83,7 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
         current_rectangle_data = d3.select(this).datum();
         bar_data = d3.select(this.parentNode).datum();
         factor = normalized ? bar_data.total/100 : 1;
-        tooltip.text(bar_data[current_rectangle_data.name]/factor);
+        tooltip.text(Math.round(bar_data[current_rectangle_data.name]/factor*100)/100);
         return tooltip.style("visibility", "visible");
       })
       .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
@@ -152,8 +152,8 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
           d3.select(".y_label").text("Percentage of repositories per category");
           data.forEach(function(d) {
             d.genders.forEach(function(e){
-              e.y0 = e.y0/d.total*100; 
-              e.y1 = e.y1/d.total*100; 
+              e.y0 = Math.round(e.y0/d.total*100*100)/100; 
+              e.y1 = Math.round(e.y1/d.total*100*100)/100; 
             })
           }) 
         } else {
