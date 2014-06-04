@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>alyssa frazee</title><link>http://alyssafrazee.com/</link><description></description><atom:link href="alyssafrazee.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 04 Jun 2014 12:10:00 -0400</lastBuildDate><item><title>Exploring the data on gender and GitHub repo ownership</title><link>http://alyssafrazee.com/gender-and-github-code.html</link><description>&lt;h3&gt;an interesting graph&lt;/h3&gt;
 &lt;p&gt;For several popular programming languages, this chart shows the gender breakdown of the owners of public GitHub repositories. Each owner's gender was &lt;a href="https://pypi.python.org/pypi/SexMachine/"&gt;algorithmically predicted&lt;/a&gt; from the first name they choose to display on their GitHub profile. (Click it to see a larger static version).&lt;/p&gt;
 &lt;p align="center"&gt;
-  &lt;a href='alyssafrazee.com/bargraph.png'&gt;&lt;img src="static/images/bargraph.png" alt="Image"/&gt;&lt;/a&gt;
+  &lt;a href='bargraph.png'&gt;&lt;img src="static/images/bargraph.png" alt="Image"/&gt;&lt;/a&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://alyssafrazee.com/plgender.html"&gt;The interactive version is here!&lt;/a&gt; You can sort by any gender category by clicking on the corresponding box in the legend.&lt;/p&gt;
