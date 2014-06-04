@@ -1,5 +1,5 @@
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 20, bottom: 60, left: 40},
     width = window.innerWidth - margin.left - margin.right - 250,
     height = window.innerHeight - margin.top - margin.bottom - 50;
 
@@ -56,19 +56,8 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
             .attr("transform", function(d) {
-                return "rotate(-20)" 
+                return "rotate(-35)" 
                 });
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .attr("class", "y_label")
-      .text("Percentage of repositories per category");
   
   var tooltip = d3.select("body")
       .append("div")
@@ -100,6 +89,16 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
       .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
       .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .attr("class", "y_label")
+      .text("Percentage of repositories per category");
 
   var legend = svg.selectAll(".legend")
       .data(color.domain().slice().reverse())
