@@ -50,6 +50,7 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "rotate(-20)")
       .call(xAxis);
 
   svg.append("g")
