@@ -14,7 +14,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-        <script type="text/javascript">
+    <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-45776614-1']);
     _gaq.push(['_trackPageview']);
@@ -32,12 +32,12 @@
         <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
         <div class="sub-title"></div>
 
-        <p>
-      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+<p>
+    <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+  <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
 </p>
 
 <!-- Social links -->
@@ -45,23 +45,23 @@
 <h4>follow me</h4>
 <ul>
     <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
-      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
-      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
-  </ul>
+    <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+    <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+</ul>
 </div>
 
       </header>
       <section>
-      <section id="content" class="body">
+<section id="content" class="body">
   <article>
       <div class="article-title">
         let's talk about vectorization
       </div>
 
     <div class="entry-content">
-      <p>
+<p>
 <small>
-<abbr class="published" title="2014-02-09T21:10:00">
+<abbr class="published" title="2014-02-09T21:10:00-05:00">
   Sun 09 February 2014
 </abbr> | 
  -- (<a href="http://alyssafrazee.com/vectorization.html" rel="bookmark">permalink</a>)
@@ -105,12 +105,12 @@
 <p>If you are acting as an <em>R user</em>, you don't need to worry about WRITING vectorized functions. But if you'd like to write R code that will run in a reasonable amount of time on large dataset (memory issues aside), it's good to think about USING vectorized functions, which consequently means learning where and when to look for them. If, on the other hand, you are acting as an <em>R developer</em>, you might have to implement your own vectorized function, which will probably involve writing some C or Fortan.</p>
 <h3>how about those "apply" functions?</h3>
 <p>The <a href="http://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/">apply family of functions</a> provides some fairly clean syntax for <em>apply</em>-ing a function (any function) to each element of some data structure. The point I want to emphasize is this: <strong>apply functions are basically equivalent to loops in terms of speed</strong>. As the R Inferno puts it: apply "is not vectorization, it is loop-hiding." So using apply instead of loops might make for nicer/shorter code, but it won't make for <em>faster</em> code. </p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">sapply</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">log</span><span class="p">))</span>
-   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
-  <span class="mf">1.847</span>   <span class="mf">0.025</span>   <span class="mf">1.871</span> 
-<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">vapply</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
-  <span class="mf">0.781</span>   <span class="mf">0.001</span>   <span class="mf">0.781</span>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span><span class="kp">sapply</span><span class="p">(</span>nums<span class="p">,</span> <span class="kp">log</span><span class="p">))</span>
+   user  system elapsed 
+  <span class="m">1.847</span>   <span class="m">0.025</span>   <span class="m">1.871</span> 
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span><span class="kp">vapply</span><span class="p">(</span>nums<span class="p">,</span> <span class="kp">log</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+   user  system elapsed 
+  <span class="m">0.781</span>   <span class="m">0.001</span>   <span class="m">0.781</span>
 </pre></div>
 
 
@@ -125,27 +125,27 @@
 <blockquote class="twitter-tweet" lang="en"><p>Compute row sums of a matrix, M, with apply(M, 1, sum) <a href="https://twitter.com/search?q=%23rstats&amp;src=hash">#rstats</a> <a href="http://t.co/Uqc5xgS5Im">http://t.co/Uqc5xgS5Im</a></p>&mdash; One R Tip a Day (@RLangTip) <a href="https://twitter.com/RLangTip/statuses/428212686359629824">January 28, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 because, on a 10,000 x 10,000 matrix:</p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mat</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">TRUE</span><span class="p">),</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sum</span><span class="p">))</span>
-   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
-  <span class="mf">2.191</span>   <span class="mf">0.343</span>   <span class="mf">2.534</span> 
-<span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">rowSums</span><span class="p">(</span><span class="n">mat</span><span class="p">))</span>
-   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
-  <span class="mf">0.388</span>   <span class="mf">0.001</span>   <span class="mf">0.388</span> 
+<div class="highlight"><pre><span class="o">&gt;</span> mat <span class="o">=</span> <span class="kt">matrix</span><span class="p">(</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> size<span class="o">=</span><span class="m">100000000</span><span class="p">,</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span> nrow<span class="o">=</span><span class="m">10000</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span><span class="kp">apply</span><span class="p">(</span>mat<span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="kp">sum</span><span class="p">))</span>
+   user  system elapsed 
+  <span class="m">2.191</span>   <span class="m">0.343</span>   <span class="m">2.534</span> 
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span><span class="kp">rowSums</span><span class="p">(</span>mat<span class="p">))</span>
+   user  system elapsed 
+  <span class="m">0.388</span>   <span class="m">0.001</span>   <span class="m">0.388</span> 
 </pre></div>
 
 
 <h4>way 2: matrices get converted to vectors when you call vector functions on them</h4>
 <p>Here's a line of code that was bottlenecking one of my functions a few weeks ago: </p>
-<div class="highlight"><pre><span class="nx">counts</span> <span class="o">=</span> <span class="nx">lapply</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="nx">nrow</span><span class="p">(</span><span class="nx">normedcounts</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
-        <span class="p">(</span><span class="nx">lengths</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="nx">normedcounts</span><span class="cp">[</span><span class="nx">i</span><span class="p">,</span><span class="cp">]</span>
+<div class="highlight"><pre>counts <span class="o">=</span> <span class="kp">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>normedcounts<span class="p">),</span> <span class="kr">function</span><span class="p">(</span>i<span class="p">){</span>
+        <span class="p">(</span>lengths<span class="p">[</span>i<span class="p">]</span><span class="o">/</span><span class="m">1000</span><span class="p">)</span> <span class="o">*</span> normedcounts<span class="p">[</span>i<span class="p">,]</span>
 <span class="p">})</span>
-<span class="nx">counts</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">(</span><span class="nx">unlist</span><span class="p">(</span><span class="nx">counts</span><span class="p">,</span> <span class="nx">use</span><span class="p">.</span><span class="nx">names</span><span class="o">=</span><span class="nx">FALSE</span><span class="p">),</span> <span class="nx">nrow</span><span class="o">=</span><span class="nx">length</span><span class="p">(</span><span class="nx">counts</span><span class="p">),</span> <span class="nx">byrow</span><span class="o">=</span><span class="nx">TRUE</span><span class="p">)</span>
+counts <span class="o">=</span> <span class="kt">matrix</span><span class="p">(</span><span class="kp">unlist</span><span class="p">(</span>counts<span class="p">,</span> use.names<span class="o">=</span><span class="kc">FALSE</span><span class="p">),</span> nrow<span class="o">=</span><span class="kp">length</span><span class="p">(</span>counts<span class="p">),</span> byrow<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 
 
 <p>I had a matrix, <code>normedcounts</code>, where each row had been normalized by a constant. I had stored that constant (times 1000) in the vector <code>lengths</code>. I wanted to generate the matrix of raw (un-normalized) counts. Upon seeing this code, my advisor said "wait...are you just multiplying each row of this matrix by a number? You can just use:"</p>
-<div class="highlight"><pre><span class="n">counts</span> <span class="o">=</span> <span class="n">lengths</span><span class="o">/</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">normedcounts</span>
+<div class="highlight"><pre>counts <span class="o">=</span> lengths<span class="o">/</span><span class="m">1000</span> <span class="o">*</span> normedcounts
 </pre></div>
 
 
@@ -153,29 +153,29 @@ because, on a 10,000 x 10,000 matrix:</p>
 <ul>
 <li><strong>matrices get turned into vectors by column:</strong></li>
 </ul>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mat</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">mat</span>
-     <span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="p">[,</span><span class="mi">2</span><span class="p">]</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,]</span>    <span class="mi">1</span>    <span class="mi">2</span>
-<span class="p">[</span><span class="mi">2</span><span class="p">,]</span>    <span class="mi">3</span>    <span class="mi">4</span>
-<span class="o">&gt;</span> <span class="n">as</span><span class="p">.</span><span class="n">vector</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">4</span>
+<div class="highlight"><pre><span class="o">&gt;</span> mat <span class="o">=</span> <span class="kt">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> byrow<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="o">&gt;</span> mat
+     <span class="p">[,</span><span class="m">1</span><span class="p">]</span> <span class="p">[,</span><span class="m">2</span><span class="p">]</span>
+<span class="p">[</span><span class="m">1</span><span class="p">,]</span>    <span class="m">1</span>    <span class="m">2</span>
+<span class="p">[</span><span class="m">2</span><span class="p">,]</span>    <span class="m">3</span>    <span class="m">4</span>
+<span class="o">&gt;</span> <span class="kp">as.vector</span><span class="p">(</span>mat<span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">1</span> <span class="m">3</span> <span class="m">2</span> <span class="m">4</span>
 </pre></div>
 
 
 <ul>
 <li><strong>RECYCLING</strong> (a blessing and a curse): Here's an illustration of recycling, just with vectors:</li>
 </ul>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">10</span>
-<span class="o">&gt;</span> <span class="n">v1</span><span class="o">*</span><span class="n">v2</span>
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="mi">2</span>  <span class="mi">6</span>  <span class="mi">6</span> <span class="mi">12</span> <span class="mi">10</span> <span class="mi">18</span> <span class="mi">14</span> <span class="mi">24</span> <span class="mi">18</span> <span class="mi">30</span>
-<span class="o">&gt;</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">v3</span><span class="o">*</span><span class="n">v2</span>
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="mi">2</span>  <span class="mi">6</span> <span class="mi">12</span>  <span class="mi">8</span> <span class="mi">15</span> <span class="mi">24</span> <span class="mi">14</span> <span class="mi">24</span> <span class="mi">36</span> <span class="mi">20</span>
-<span class="n">Warning</span> <span class="n">message</span><span class="o">:</span>
-<span class="n">In</span> <span class="n">v3</span> <span class="o">*</span> <span class="n">v2</span> <span class="o">:</span>
-  <span class="n">longer</span> <span class="n">object</span> <span class="n">length</span> <span class="n">is</span> <span class="n">not</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">shorter</span> <span class="n">object</span> <span class="n">length</span>
+<div class="highlight"><pre><span class="o">&gt;</span> v1 <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="o">&gt;</span> v2 <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span>
+<span class="o">&gt;</span> v1<span class="o">*</span>v2
+ <span class="p">[</span><span class="m">1</span><span class="p">]</span>  <span class="m">2</span>  <span class="m">6</span>  <span class="m">6</span> <span class="m">12</span> <span class="m">10</span> <span class="m">18</span> <span class="m">14</span> <span class="m">24</span> <span class="m">18</span> <span class="m">30</span>
+<span class="o">&gt;</span> v3 <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+<span class="o">&gt;</span> v3<span class="o">*</span>v2
+ <span class="p">[</span><span class="m">1</span><span class="p">]</span>  <span class="m">2</span>  <span class="m">6</span> <span class="m">12</span>  <span class="m">8</span> <span class="m">15</span> <span class="m">24</span> <span class="m">14</span> <span class="m">24</span> <span class="m">36</span> <span class="m">20</span>
+Warning <span class="kp">message</span><span class="o">:</span>
+In v3 <span class="o">*</span> v2 <span class="o">:</span>
+  longer object length is not a multiple of shorter object <span class="kp">length</span>
 </pre></div>
 
 
@@ -183,32 +183,32 @@ because, on a 10,000 x 10,000 matrix:</p>
 <ul>
 <li><strong>if the longer "vector" was actually a matrix, a matrix gets returned</strong>:</li>
 </ul>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">mat</span>
-     <span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="p">[,</span><span class="mi">2</span><span class="p">]</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,]</span>    <span class="mi">1</span>    <span class="mi">2</span>
-<span class="p">[</span><span class="mi">2</span><span class="p">,]</span>    <span class="mi">3</span>    <span class="mi">4</span>
-<span class="o">&gt;</span> <span class="n">c</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">mat</span>
-     <span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="p">[,</span><span class="mi">2</span><span class="p">]</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,]</span>  <span class="mi">100</span>    <span class="mi">6</span>
-<span class="p">[</span><span class="mi">2</span><span class="p">,]</span>  <span class="mi">150</span>  <span class="mi">400</span>
-<span class="n">Warning</span> <span class="n">message</span><span class="o">:</span>
-<span class="n">In</span> <span class="n">c</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">mat</span> <span class="o">:</span>
-  <span class="n">longer</span> <span class="n">object</span> <span class="n">length</span> <span class="n">is</span> <span class="n">not</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">shorter</span> <span class="n">object</span> <span class="n">length</span>
+<div class="highlight"><pre><span class="o">&gt;</span> mat
+     <span class="p">[,</span><span class="m">1</span><span class="p">]</span> <span class="p">[,</span><span class="m">2</span><span class="p">]</span>
+<span class="p">[</span><span class="m">1</span><span class="p">,]</span>    <span class="m">1</span>    <span class="m">2</span>
+<span class="p">[</span><span class="m">2</span><span class="p">,]</span>    <span class="m">3</span>    <span class="m">4</span>
+<span class="o">&gt;</span> <span class="kt">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span><span class="o">*</span>mat
+     <span class="p">[,</span><span class="m">1</span><span class="p">]</span> <span class="p">[,</span><span class="m">2</span><span class="p">]</span>
+<span class="p">[</span><span class="m">1</span><span class="p">,]</span>  <span class="m">100</span>    <span class="m">6</span>
+<span class="p">[</span><span class="m">2</span><span class="p">,]</span>  <span class="m">150</span>  <span class="m">400</span>
+Warning <span class="kp">message</span><span class="o">:</span>
+In <span class="kt">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span> <span class="o">*</span> mat <span class="o">:</span>
+  longer object length is not a multiple of shorter object <span class="kp">length</span>
 </pre></div>
 
 
 <p>Now...once you know these quirks, you can exploit them to use vectorization instead of looping (as my advisor suggested)! The three bullet points above imply that a length-k vector times a k-row matrix returns another matrix, where each row of that matrix is multiplied by the corresponding number in the vector. (That's exactly what I wanted).</p>
 <p>Here are the timings for my example scenario:</p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">normedcounts</span> <span class="o">=</span> <span class="nx">matrix</span><span class="p">(</span><span class="nx">runif</span><span class="p">(</span><span class="mi">1000000</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="nx">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="nx">nrow</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="nx">lengths</span> <span class="o">=</span> <span class="nx">sample</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">100</span><span class="p">,</span> <span class="nx">size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="nx">replace</span><span class="o">=</span><span class="nx">TRUE</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">lapply</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="nx">nrow</span><span class="p">(</span><span class="nx">normedcounts</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
-<span class="o">+</span>   <span class="p">(</span><span class="nx">lengths</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="nx">normedcounts</span><span class="cp">[</span><span class="nx">i</span><span class="p">,</span><span class="cp">]</span>
+<div class="highlight"><pre><span class="o">&gt;</span> normedcounts <span class="o">=</span> <span class="kt">matrix</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1000000</span><span class="o">*</span><span class="m">100</span><span class="p">,</span> min<span class="o">=</span><span class="m">0</span><span class="p">,</span> max<span class="o">=</span><span class="m">5</span><span class="p">),</span> nrow<span class="o">=</span><span class="m">1000000</span><span class="p">)</span>
+<span class="o">&gt;</span> lengths <span class="o">=</span> <span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span> size<span class="o">=</span><span class="m">1000000</span><span class="p">,</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span><span class="kp">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>normedcounts<span class="p">),</span> <span class="kr">function</span><span class="p">(</span>i<span class="p">){</span>
+<span class="o">+</span>   <span class="p">(</span>lengths<span class="p">[</span>i<span class="p">]</span><span class="o">/</span><span class="m">1000</span><span class="p">)</span> <span class="o">*</span> normedcounts<span class="p">[</span>i<span class="p">,]</span>
 <span class="o">+</span> <span class="p">}))</span>
-   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
-  <span class="mf">7.213</span>   <span class="mf">0.323</span>   <span class="mf">7.535</span> 
-<span class="o">&gt;</span> <span class="nx">system</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="nx">lengths</span><span class="o">/</span><span class="mi">1000</span> <span class="o">*</span> <span class="nx">normedcounts</span><span class="p">)</span>
-   <span class="nx">user</span>  <span class="nx">system</span> <span class="nx">elapsed</span> 
-  <span class="mf">0.342</span>   <span class="mf">0.225</span>   <span class="mf">0.567</span> 
+   user  system elapsed 
+  <span class="m">7.213</span>   <span class="m">0.323</span>   <span class="m">7.535</span> 
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span>lengths<span class="o">/</span><span class="m">1000</span> <span class="o">*</span> normedcounts<span class="p">)</span>
+   user  system elapsed 
+  <span class="m">0.342</span>   <span class="m">0.225</span>   <span class="m">0.567</span> 
 </pre></div>
 
 
@@ -233,8 +233,8 @@ because, on a 10,000 x 10,000 matrix:</p>
 
 <p>This is basically a set of intervals ("ranges"), where each range has some associated metadata. </p>
 <p>You can extract the width of each interval with the <code>width()</code> function:</p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">width</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">116</span> <span class="mi">112</span> <span class="mi">148</span> <span class="mi">111</span> <span class="mi">142</span>
+<div class="highlight"><pre><span class="o">&gt;</span> width<span class="p">(</span>x<span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">116</span> <span class="m">112</span> <span class="m">148</span> <span class="m">111</span> <span class="m">142</span>
 </pre></div>
 
 
@@ -247,9 +247,9 @@ because, on a 10,000 x 10,000 matrix:</p>
 
 
 <p>This is pretty slow for a list of length 1296, so I did a bit of documentation-reading and found out that the <code>width()</code> method is <em>vectorized</em>: you can call it on a <code>GRangesList</code>...</p>
-<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">width</span><span class="p">(</span><span class="n">grl</span><span class="p">))</span>
-   <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span> 
-  <span class="mf">0.001</span>   <span class="mf">0.000</span>   <span class="mf">0.001</span> 
+<div class="highlight"><pre>&gt; system.time(width(grl))
+   user  system elapsed 
+  0.001   0.000   0.001 
 </pre></div>
 
 
@@ -262,8 +262,8 @@ because, on a 10,000 x 10,000 matrix:</p>
 <li>R takes heat from the hacker community for a number of other reasons as well. We can (maybe) talk about this another day, but what I'll say now is this: I don't like when people that have never used R go on and on about how terrible it is. The way I feel about R is how I imagine I'd feel about my dorky little brother (if I had one): he's quirky and weird and not the best athlete ever, but <em>you</em> don't get to make fun of him because he's <em>my</em> brother, not yours. Incidentally, this is also the way I feel when people hate on Baltimore. </li>
 <li>I find myself writing loops and apply statements embarrassingly often. I suspect this happens for two reasons: 1. I find loops more intuitive/expressive: they more closely match how I conceptualize the code in my head, and 2. the programming language I learned first, and the only one I ever learned in a formal classroom setting, is C++. </li>
 </ol>
-          </div><!-- /.entry-content -->
-    <div id="disqus_thread"></div>
+    </div><!-- /.entry-content -->
+<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname

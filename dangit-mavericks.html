@@ -14,7 +14,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-        <script type="text/javascript">
+    <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-45776614-1']);
     _gaq.push(['_trackPageview']);
@@ -32,12 +32,12 @@
         <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
         <div class="sub-title"></div>
 
-        <p>
-      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+<p>
+    <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+  <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
 </p>
 
 <!-- Social links -->
@@ -45,23 +45,23 @@
 <h4>follow me</h4>
 <ul>
     <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
-      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
-      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
-  </ul>
+    <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+    <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+</ul>
 </div>
 
       </header>
       <section>
-      <section id="content" class="body">
+<section id="content" class="body">
   <article>
       <div class="article-title">
         My first pull request (or: the silver lining of a bad OS upgrade)
       </div>
 
     <div class="entry-content">
-      <p>
+<p>
 <small>
-<abbr class="published" title="2014-03-15T13:13:00">
+<abbr class="published" title="2014-03-15T13:13:00-04:00">
   Sat 15 March 2014
 </abbr> | 
  -- (<a href="http://alyssafrazee.com/dangit-mavericks.html" rel="bookmark">permalink</a>)
@@ -96,24 +96,24 @@
 <p>But, finally, after registering as an Apple developer, I got my Command Line Tools <a href="https://developer.apple.com/downloads/index.action">from here</a>, so, problem solved. </p>
 <p>The only thing left to do was to fix distutils, and that one turned out to be a doozy.  </p>
 <p>Part of the reason this was so hard was that it took me a very, very long time to figure out that I had a <em>problem</em> with distutils.  The <em>symptom</em> was that my usual Python module installation process was failing for some, but not all, packages. Whether I was using <code>pip install</code>, <code>easy_install</code>, or <code>python setup.py install</code>, installation would sometimes fail with this final message:</p>
-<div class="highlight"><pre><span class="n">Command</span> <span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">egg_info</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">error</span> <span class="n">code</span> <span class="mi">1</span>
+<div class="highlight"><pre>Command python setup.py egg_info failed with error code 1
 </pre></div>
 
 
 <p>What.</p>
 <p>There were more logs, so I read those as well:</p>
-<div class="highlight"><pre><span class="n">distutils</span><span class="p">.</span><span class="n">errors</span><span class="p">.</span><span class="n">DistutilsError</span><span class="o">:</span> <span class="n">Setup</span> <span class="n">script</span> <span class="n">exited</span> <span class="n">with</span> <span class="n">error</span><span class="o">:</span> <span class="n">command</span> <span class="err">&#39;</span><span class="n">cc</span><span class="err">&#39;</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">status</span> <span class="mi">1</span>
+<div class="highlight"><pre>distutils.errors.DistutilsError: Setup script exited with error: command &#39;cc&#39; failed with exit status 1
 </pre></div>
 
 
 <p>and a bit further back:</p>
-<div class="highlight"><pre><span class="n">OS</span><span class="o">/</span><span class="n">X</span><span class="o">:</span> <span class="n">confusion</span> <span class="n">between</span> <span class="err">&#39;</span><span class="n">cc</span><span class="err">&#39;</span> <span class="n">versus</span> <span class="err">&#39;</span><span class="n">gcc</span><span class="err">&#39;</span> <span class="p">(</span><span class="n">see</span> <span class="n">issue</span> <span class="mi">123</span><span class="p">)</span>
+<div class="highlight"><pre>OS/X: confusion between &#39;cc&#39; versus &#39;gcc&#39; (see issue 123)
 
-<span class="n">will</span> <span class="n">not</span> <span class="n">use</span> <span class="err">&#39;</span><span class="n">__thread</span><span class="err">&#39;</span> <span class="n">in</span> <span class="n">the</span> <span class="n">C</span> <span class="n">code</span>
+will not use &#39;__thread&#39; in the C code
 
-<span class="nl">clang:</span> <span class="n">error</span><span class="o">:</span> <span class="n">unknown</span> <span class="n">argument</span><span class="o">:</span> <span class="err">&#39;</span><span class="o">-</span><span class="n">mno</span><span class="o">-</span><span class="n">fused</span><span class="o">-</span><span class="n">madd</span><span class="err">&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wunused</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">argument</span><span class="o">-</span><span class="n">hard</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">future</span><span class="p">]</span>
+clang: error: unknown argument: &#39;-mno-fused-madd&#39; [-Wunused-command-line-argument-hard-error-in-future]
 
-<span class="nl">clang:</span> <span class="n">note</span><span class="o">:</span> <span class="n">this</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">hard</span> <span class="n">error</span> <span class="p">(</span><span class="n">cannot</span> <span class="n">be</span> <span class="n">downgraded</span> <span class="n">to</span> <span class="n">a</span> <span class="n">warning</span><span class="p">)</span> <span class="n">in</span> <span class="n">the</span> <span class="n">future</span>
+clang: note: this will be a hard error (cannot be downgraded to a warning) in the future
 </pre></div>
 
 
@@ -122,7 +122,7 @@
 <p>I decided to focus a bit more on this <code>-mno-fused-madd</code> situation. I'm not really in the compiling business, so I needed some more information about this elusive compiler argument.  BUT ALAS. Googling "-mno-fused-madd" <a href="https://www.google.com/search?btnG=1&amp;pws=0&amp;q=-mno-fused-madd">RETURNED LITERALLY ZERO RESULTS</a>. WHAT. </p>
 <p>A brief interlude from the narrative: if Google doesn't know about something, a version of me from a few years ago would assume that it was something fundamentally unknowable.  So at this point in the story, earlier-version Alyssa would have given up and gone to sleep and stopped hacking on a fundamentally unknowable thing.  But 2014 Alyssa is a Hacker School alum.  A cool thing about Hacker School is that it widened my circle of "things I believe possible," by orders of magnitude. This problem wouldn't have been in my realm of possibility two years ago, but it was <em>well</em> within my realm on Thursday night, <em>despite</em> being ungoogleable.  This means I was mentally fired up about this weird bug and as a result, I couldn't sleep, so I kept hacking.  </p>
 <p>Back to the story: since <code>-mno-fused-madd</code> was ungoogleable, I Googled the larger phrase containing this mysterious compiler flag, and found <a href="http://stackoverflow.com/questions/22352838/ruby-gem-install-json-fails-on-mavericks-and-xcode-5-1-unknown-argument-mul">this SO question</a>, which, despite being about a Ruby gem, led me to this <a href="https://developer.apple.com/library/ios/releasenotes/DeveloperTools/RN-Xcode/Introduction/Introduction.html">XCode 5.1 Release Page</a>.  From there I was able to figure out a WORKAROUND! Instead of <code>pip install thePythonPackage</code>, I was able to do:</p>
-<div class="highlight"><pre><span class="n">ARCHFLAGS</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">unused</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">argument</span><span class="o">-</span><span class="n">hard</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">future</span> <span class="n">easy_install</span> <span class="n">thePythonPackage</span>
+<div class="highlight"><pre>ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future easy_install thePythonPackage
 </pre></div>
 
 
@@ -170,8 +170,8 @@
 <p>:weary: :joy:</p>
 <hr />
 <p><strong>update, 3/16/14</strong>: It turns out that "-mno-fused-madd" is, in fact, Googleable!  I had forgotten that the dash ("-") is Google's operator for "don't include this term in search results."  When Googling command-line flags, leave out the leading dash and you're good to go! Another option is to use duckduckgo.com, which doesn't use the dash operator in the same way. (Thanks to the awesome folks in the Hacker School IRC channel for teaching me these things!)</p>
-          </div><!-- /.entry-content -->
-    <div id="disqus_thread"></div>
+    </div><!-- /.entry-content -->
+<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname

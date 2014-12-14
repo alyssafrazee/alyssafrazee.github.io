@@ -14,7 +14,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-        <script type="text/javascript">
+    <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-45776614-1']);
     _gaq.push(['_trackPageview']);
@@ -32,12 +32,12 @@
         <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
         <div class="sub-title"></div>
 
-        <p>
-      <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
-      <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
+<p>
+    <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
+    <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
+  <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
 </p>
 
 <!-- Social links -->
@@ -45,23 +45,23 @@
 <h4>follow me</h4>
 <ul>
     <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
-      <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
-      <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
-  </ul>
+    <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
+    <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
+</ul>
 </div>
 
       </header>
       <section>
-      <section id="content" class="body">
+<section id="content" class="body">
   <article>
       <div class="article-title">
         smells like a NAMESPACE problem
       </div>
 
     <div class="entry-content">
-      <p>
+<p>
 <small>
-<abbr class="published" title="2014-01-21T23:13:00">
+<abbr class="published" title="2014-01-21T23:13:00-05:00">
   Tue 21 January 2014
 </abbr> | 
  -- (<a href="http://alyssafrazee.com/namespaces.html" rel="bookmark">permalink</a>)
@@ -95,8 +95,8 @@
 <h3>symptom: you're fixing bugs by calling functions with the :: operator</h3>
 <p>You can force your package to use functions from a specific package (say <code>foo</code>) by using <code>::</code> -- e.g., to call <code>foo</code>'s <code>unlist</code> function, you can do <code>foo::unlist(x)</code>. However, if I'm doing this inside a function I've written because I'm getting errors otherwise, and I don't need the <code>::</code> operator when I'm operating outside my package, it's sometimes an indicator I've forgotten to put either <code>import(foo)</code> or <code>importFrom(foo, unlist)</code> in my package's <code>NAMESPACE</code>.</p>
 <p>Did I miss anything? What are your lingering unanswered questions? One of mine: can I put a package in both <code>Depends</code> AND <code>Imports</code>? If, say, I want a correct search path AND I want said package to be available interactively?</p>
-          </div><!-- /.entry-content -->
-    <div id="disqus_thread"></div>
+    </div><!-- /.entry-content -->
+<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
