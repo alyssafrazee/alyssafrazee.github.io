@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "An unconvential path to efficiency analytics"
+title:  "An unconventional path to efficiency analytics"
 date:   2013-11-14
 ---
 
