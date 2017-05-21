@@ -1,6 +1,5 @@
 source for alyssafrazee.com
 ===========================
 
-Most of these pages were generated with [Pelican](http://blog.getpelican.com/).
-
+The site was built with [Jekyll](http://jekyllrb.com/) and a modified version of the [Gravity theme](http://github.com/hemangsk/Gravity).
 
