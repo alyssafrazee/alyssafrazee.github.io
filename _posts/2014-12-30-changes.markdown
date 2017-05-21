@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "JOB"
+date:   2014-12-30
+---
+
+Hi! It's been a while. How's it going? 
+
+Around here, things are _moving_. They're moving quickly. I've heard my professors say that a PhD is a weird time in life, because nothing really _happens_ or _changes_ for years in the middle of it, and then at the end EVERYTHING HAPPENS AT ONCE. Based on my last three months, I vouch 100% for the truth of that statement. 
+
+The first big thing is that I'm looking at a finished copy of my thesis. It's done. It's printed for my committee. The feeling of having it right here is strange. It's like seeing the last 4.5 years of my life _concretely materialize_ into a very thick document. 
+
+The second big thing is that I have a job! I recently accepted an offer to join the data team at [Stripe](https://stripe.com/) in San Francisco, so I'm heading west in March. I'm thrilled :) I'm also really thankful to the people who made it possible: [Jeff](http://jtleek.com/), [Hacker School](https://www.hackerschool.com/), [my future colleagues](https://stripe.com/about), to name a few. You're awesome.  
+
+Finally, since my job hunt and thesis writing are now basically wrapped up, I'll have a bit more time for blogging. I have some posts queued up, and I'll try not to let 7 months go by before my next post, so stay tuned!
+
+Onwards and upwards to 2015 :heart:
+
+
+
+
