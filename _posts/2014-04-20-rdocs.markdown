@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Some internet wisdom on R documentation"
+date:   2014-04-20
+---
+
+
+I spent a lot of last week documenting an R package. I'm still learning how to write good user-facing features (including documentation) in my software, so I asked Twitter for advice on two things: (1) what are some R packages with stellar documentation?, and (2) is there a documentation style guide? 
+
+I got some great responses! [Here's the full Twitter conversation](https://twitter.com/acfrazee/status/455912492120961024). And here are some of the cool things I learned over the course of the week:
+
+### structure 
+The documentation for an R package is broken down into a few different parts:
+
+* Documentation for each function in the package (this is pretty structured): [Hadley Wickham's function docs page](http://adv-r.had.co.nz/Documenting-functions.html)
+* A few brief overview pages for the whole package (also fairly structured): [Hadley Wickham's package docs page](http://adv-r.had.co.nz/Documenting-packages.html)
+* A package vignette, which is what I usually read when I'm learning to use a new package. The vignette is basically a "getting started" guide with lots of example code in it. 
+
+You can write almost all of this documentation into your source code files and use [roxygen2](http://cran.r-project.org/package=roxygen2) and [devtools](http://cran.r-project.org/web/packages/devtools/index.html) to automatically generate the properly-formatted, properly-organized, tex-like documentation files you'll need to publish a package. 
+
+I use Sublime Text + Terminal on a Mac, and these little tricks made the documentation process even easier with those tools:  
+
+* The [RTools](https://github.com/karthik/Rtools) plugin for ST2 will automatically populate the roxygen documentation template above your function if you highlight the first line of the function and hit command-shift-alt-R. Super cool, props to Karthik for that. (Since RTools is designed to run code in `R.app`, I also added the feature to the [Sublime plugin I usually use](https://github.com/alyssafrazee/Line-by-line) for Terminal work).
+* I added this line to my .bashrc file: `alias doc='R -q -e "devtools::document()"'`. This means that when I'm in the package directory in the Terminal, I can just type "doc" to generate the documentation files.
+* Since CRAN might get angry if your source files contain lines longer than 100 characters ([thanks Scott](https://github.com/alyssafrazee/ballgown/issues/29)), I added a vertical line at 100 characters in Sublime, so I can see all the lines that are too long. [Here's how to do that](http://stackoverflow.com/a/11319526/3155073). 
+
+### content
+My original tweet was really meant to get at documentation _content_: there's lots of good information out there on how to structure the documentation and which things need to be documented, but what should I actually _write_ in the documentation files so that users will understand the function/package? Is there a standard (written or unwritten) about how R documentation files should read? An example of a well-documented package would also help answer the content question. Here's what the internet seemed to think about this:
+
+* The function-specific documentation is not nearly as important as the vignette/web documentation (thanks [Karl](https://twitter.com/kwbroman) and [Carson](https://twitter.com/cpsievert)). 
+* Try not to document things in two different places (thanks [Dave](https://twitter.com/davidjayharris)), unless a parameter description is getting _extremely_ long (like, to the point of using `\itemize`) (thanks [Karl](https://twitter.com/kwbroman) and [Scott](https://github.com/alyssafrazee/ballgown/issues/29))
+* There don't seem to be rules about declaring argument types in the `@param` field, or always using the present tense, or nitty gritty things like that (please correct me if that's wrong)
+* Try to give good/illustrative examples
+* But really it's all a matter of personal preference. In the end, that meant my strategy was to go ahead and write the docs as I thought they should be, taking care to write a detailed vignette, and commit to taking user feedback super seriously. 
+
+### shining examples
+People mentioned the following packages when asked for particularly well-documented ones:
+
+* all the packages on [Bioconductor](http://www.bioconductor.org/), especially [`GenomicRanges`](http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html) (vote from [Vince](https://twitter.com/vsbuffalo))
+* [`mice`](http://cran.r-project.org/web/packages/mice/mice.pdf) + [descriptive paper](), (vote from [@statsepi](https://twitter.com/statsepi))
+* [`lme4`](http://cran.r-project.org/web/packages/lme4/index.html) (vote from [Valerio](https://twitter.com/vbacak))
+* [anything by Roger](http://www.biostat.jhsph.edu/~rpeng/software/index.html), especially [`filehash`](http://cran.r-project.org/web/packages/filehash/filehash.pdf) (vote from [Karl](https://twitter.com/kwbroman))
+
+### R internet community `<3`
+All this info from the Twitter conversation was super helpful to me. I even got a little [code/doc review from Scott](https://github.com/alyssafrazee/ballgown/issues/29) - how awesome is that!? Thanks, all, for your input. If you have more documentation suggestions, please share!
