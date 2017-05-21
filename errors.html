@@ -1,145 +1,15 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>alyssa frazee</title>
-
-    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
-    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
-    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/emojify.min.css" type="text/css" /> 
-    <script src="http://alyssafrazee.com/theme/js/emojify.js"></script>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-45776614-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
-        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
-        <div class="sub-title"></div>
-
-<p>
-    <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/talks.html">talks</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
-  <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
-</p>
-
-<!-- Social links -->
-<div class="social">
-<h4>follow me</h4>
-<ul>
-    <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
-    <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
-    <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
-</ul>
-</div>
-
-      </header>
-      <section>
-<section id="content" class="body">
-  <article>
-      <div class="article-title">
-        thoughts on error messages
-      </div>
-
-    <div class="entry-content">
-<p>
-<small>
-<abbr class="published" title="2014-03-02T10:30:00-05:00">
-  Sun 02 March 2014
-</abbr> | 
- -- (<a href="http://alyssafrazee.com/errors.html" rel="bookmark">permalink</a>)
-</small>
-</p>      <p>I've encountered a few hilariously useless error messages while coding recently.  They got me thinking about error messages in general and wondering about the best way to build good error messages into my own software. </p>
-<p>Some hilarious messages I've seen:</p>
-<h4>Error in listClassName("Compressed", class(x)) : Could not find a 'CompressedList' subclass for values of type 'GRangesListCompressedListGenomicRangesListGenomicRangesORGRangesListListVectorAnnotated'</h4>
-<p>Holy long type name, Batman! This is an R error.  I was super confused because I have never EVER created, used, or seen an R object of type GRangesListCompressedListGenomicRangesListGenomicRangesORGRangesListListVectorAnnotated because <em>that's a ridiculous name for a class</em>. The problem was <em>actually</em> that I was trying to call the function <code>split</code> on an object of class <code>GRangesList</code>, but the <code>GRangesList</code> class doesn't have a split method.  It might be hard to implement a better message, since <code>split</code> is a generic function and object-oriented programming in R is not the best, but hey, I like to dream big. </p>
-<h4>Trap 66</h4>
-<p>This is the best/worst error message I've ever gotten in my life. I got it in 2011 when I was fitting an MCMC using <a href="http://www.mrc-bsu.cam.ac.uk/bugs/winbugs/contents.shtml">WinBUGS</a>.  What I love about this error message is that it doesn't say the word ERROR anywhere in it.  It just came up in a little dialog box with an "OK" button, so I clicked OK and results happened.  I didn't even realize anything had gone wrong for like half an hour.  When my friend told me this was an error message, I tried to fix it by <a href="http://aurelienmadouasse.wordpress.com/2011/02/14/the-mysterious-trap-66-postcondition-violated/">changing some of my prior distributions</a>.  When that didn't work, I got really angry and became a frequentist<sup>1</sup>. </p>
-<h4>Error: bad restore file magic number (file may be corrupted) -- no data loaded. In addition: warning message: file 'yourfile' has magic number 'chr1'</h4>
-<p>I had to look up what a "<a href="http://bit.ly/NhwdRt">magic number</a>" is. I don't completely understand it yet. I'd bet that only a tiny proportion of R users know what a magic number is.  The likely problem here is that the user is loading a data file the wrong way.  To be more specific: usually you use <code>load()</code> to load a workspace (a .rda or .RData file), <code>source()</code> to run a previously-saved script, and <code>read.table()</code> to read in data from some delimited file.  The magic number error pops up if you use the wrong one of these commands for your data type. I saw it when a friend of mine ran <code>load()</code> on a data file instead of <code>read.table()</code>. I feel like this error message would be better if it said something like "error: incorrect file type for function, or corrupt file." </p>
-<h4>Error: negative-length vectors not allowed</h4>
-<p>So many questions here!  What on earth is a negative-length vector?  How do I make one?  What would I do with it?  Are they crucial to our existence, like imaginary numbers?  Anyway, joking aside -- <a href="http://lmgtfy.com/?q=negative+length+vectors+are+not+allowed">a quick Google search</a> will tell you that this is the error you get in R when you try to make a vector with a length of 2^31 or more.  Great!  I can fix that.  I probably could have fixed it faster if the error message just said "YO you're making a vector with more than 2^31 - 1 entries" rather than harping on about a negative length.</p>
-<h4>thoughts</h4>
-<p>In addition to making me laugh and really confusing me, these got me thinking about error messages in general, from both from the software-user and software-creator perspective. As a user, I'm frustrated by error messages like these: they tell me about symptoms, but not causes. They tell me that there is a problem, but don't give me clues about how to start solving it<sup>2</sup>. But as a programmer, it's really hard to anticipate every possible thing that might go wrong with a given function and write an informative error message for each of those things. I've often chosen not to built error messages into my own functions, relying instead on my functions' <em>internal</em> functions to throw errors, but I think that's probably how error messages become uninformative in the first place, especially in complex/nested function calls.  </p>
-<p>The problem is that it's hard to have a user mindset for software I've written myself.  I'm too deep in and can't anticipate enough of the ways users might break things.  I'm starting to think that the best way to make user-friendly software is to (a) write the software, (b) brace yourself, (c) recruit some people that weren't involved in the development to use your software and give you feedback, and (d) fix all the problems they have with the software. Let <em>them</em> break things, and then <em>you</em> fix all the broken stuff! This process is described in <a href="http://blog.codinghorror.com/complaint-driven-development/">this blog post about "complaint-driven development"</a>. I've been finding that it works on a smaller scale too: one of my current projects is a software package, and two colleagues have used it for data analysis and told me about all the weird problems they encountered. I never would have anticipated those without them, and I've been able to improve the error messages because of them -- and that's only <em>two test users</em>!  I think that if I really want this project to have great error messages, I just need to get more people to break it and give feedback on the messages. </p>
-<h4>footnotes</h4>
-<ol>
-<li>Just kidding. I don't actually believe in frequentist/Bayesian dogma. And if I were a frequentist, it would only <em>partially</em> be because of how much I dislike WinBUGS.   </li>
-<li>As a user, I'm also appreciative of good error messages. The Python folks at Hacker School were always waxing poetic about how awesome Python error messages are. The more I use Python, the more I agree. I like that Python errors have types, so you at least get one hint as to what's happening. The error types also make it so you can illustrate the Python debugging process with a <a href="http://i.imgur.com/WRuJV6r.png">beautiful flowchart</a>.</li>
-</ol>
-    </div><!-- /.entry-content -->
-<div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
-        var disqus_identifier = "errors.html";
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-  </article>
-</section>
-      </section>
-      <footer>
-        <p><small>Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
-      </footer>
-    </div>
-    <!-- Scale fix -->
-    <script>
-      var metas = document.getElementsByTagName('meta');
-      var i;
-      
-      if (navigator.userAgent.match(/iPhone/i)) {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-          }
-        }
-      
-        document.addEventListener("gesturestart", gestureStart, false);
-      }
-
-      function gestureStart() {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
-          }
-        }
-      }
-    </script>
-    <!-- Emojis -->
-    <script> emojify.setConfig({ 
-      people_enabled: true, 
-      nature_enabled: true, 
-      objects_enabled: true, 
-      places_enabled: true, 
-      symbols_enabled: true 
-    }); 
-    emojify.run(); 
-    </script>
-  </body>
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="1; url=http://alyssafrazee.com/2014/03/02/errors.html">
+        <script type="text/javascript">
+            window.location.href = "http://alyssafrazee.com/2014/03/02/errors.html"
+        </script>
+        <title>redirecting</title>
+    </head>
+    <body>
+        <!-- Note: don't tell people to `click` the link, just tell them that it is a link. -->
+        If you are not redirected automatically, follow this <a href='http://alyssafrazee.com/2014/03/02/errors.html'>link</a> to the post's new location.
+    </body>
 </html>

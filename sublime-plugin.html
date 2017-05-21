@@ -1,145 +1,15 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>alyssa frazee</title>
-
-    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/main.css">
-    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/pygment_trac.css">
-    <link rel="alternate" type="application/rss+xml" title="Alyssa Frazee" href="http://alyssafrazee.com/feeds/all.rss.xml">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="http://alyssafrazee.com/theme/css/emojify.min.css" type="text/css" /> 
-    <script src="http://alyssafrazee.com/theme/js/emojify.js"></script>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-45776614-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <div><img src="http://www.gravatar.com/avatar/567d15666cd2891a4e6c49e007f30a08.png" class="grv-img"/></div>
-        <div class="title"><a href="http://alyssafrazee.com/">alyssa frazee </a></div>
-        <div class="sub-title"></div>
-
-<p>
-    <div class="view"><a href="http://alyssafrazee.com/pages/about.html">about</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/projects.html">projects</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/publications.html">publications</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/talks.html">talks</a></div>
-    <div class="view"><a href="http://alyssafrazee.com/pages/teaching.html">teaching</a></div>
-  <div class="view"><a href="http://alyssafrazee.com/archives.html">post archives</a></div>
-</p>
-
-<!-- Social links -->
-<div class="social">
-<h4>follow me</h4>
-<ul>
-    <li><a href="http://alyssafrazee.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
-    <li><a href="https://twitter.com/acfrazee">Twitter</a></li>
-    <li><a href="https://github.com/alyssafrazee">GitHub</a></li>
-</ul>
-</div>
-
-      </header>
-      <section>
-<section id="content" class="body">
-  <article>
-      <div class="article-title">
-        finally: my ideal text editor setup
-      </div>
-
-    <div class="entry-content">
-<p>
-<small>
-<abbr class="published" title="2013-08-13T12:14:00-04:00">
-  Tue 13 August 2013
-</abbr> | 
- -- (<a href="http://alyssafrazee.com/sublime-plugin.html" rel="bookmark">permalink</a>)
-</small>
-</p>      <p>Ever since I bought a Mac two years ago, I've been dreaming of a text editor that compares to the Windows-only <a href="http://notepad-plus-plus.org/">Notepad++</a>.  What a delight.  My favorite thing about Notepad++ was how easy it was to run code in a REPL with a keyboard shortcut (e.g., F8 would run the current line/selection of R code on your local machine, F9 would run code in a Putty SSH session...). I searched high and low for something similar for OSX.  The best I could come up with was a rather involved <a href="working-interactively-on-a-remote-computer.html">Emacs configuration</a>.  It was fine, just fine.  I settled.  It worked.</p>
-<p>But I've found/made/hacked something better. Here is <a href="https://github.com/alyssafrazee/Line-by-line">line-by-line</a>, a <a href="http://www.sublimetext.com/2">Sublime Text 2</a> plugin for OSX that executes the current line/selection in whatever REPL is running in the Terminal, with the keystroke Command-Enter.  It's <a href="http://www.youtube.com/watch?v=is6gtilerPk">all I ever wanted</a> (in a text editor).  With this plugin, I'd say Sublime is at least equivalent to, and possibly better than, Notepad++, because the keystroke isn't specific to any coding language.  It just runs whatever's highlighted in Terminal.  It also works with iTerm, if you're into that kind of thing.  It's up to you to decide what REPL is running in the Terminal - which means you have the flexibility to run things in ipython, bpython, R, any REPL in an SSH session...the possibilities are endless!</p>
-<p>All I did was <em>slightly</em> modify Randy Lai's <a href="https://github.com/randy3k/Enhanced-R">Enhanced-R</a> Sublime plugin - he's the real brains behind this operation. I mostly just removed the part where Enhanced-R specifies that it's only active in R mode.  </p>
-<p>Please download/use/enjoy if you, like me, were searching for something like this!  </p>
-<h4>hey, you could just use Emacs for that!</h4>
-<p>Of course I could. You can pretty much use Emacs to do anything and everything; <a href="http://en.wikipedia.org/wiki/Editor_war">it's an operating system</a>.  But I already have an OS, I just want a text editor that sends lines of code to the Terminal.  Also, I don't know very much Lisp, so properly customizing Emacs is totally possible but pretty painful.  And I don't want to have to configure my editor separately for each language of code I'm writing.  </p>
-<h4>hey, you could just use Vim for that!</h4>
-<p>Please.  I'm nowhere near hardcore enough to use Vim.  </p>
-<h4>hey, Sublime Text 2 isn't free.</h4>
-<p>And it isn't open source either.  Huge bummer.  This doesn't change the fact that it's a beautiful piece of software.  If it helps, they offer an unlimited free trial period.  </p>
-<h4>will my R graphics look as awesome as if I made them using the default OSX IDE? Or <a href="http://www.rstudio.com/">RStudio</a>?</h4>
-<p>Totally.  If you issue a Terminal session of R a plot command, graphics are rendered in Quartz by default.  I'm a fan of Quartz.  Also, now that you mention RStudio, that was another inspiration for this plugin: one of my favorite things about R IDEs is that you can just send the code directly from your script to the REPL with Command-Enter.  Line-by-line effectively gives you something like "*Studio".  </p>
-<h4>How does Line-by-line work?</h4>
-<p>The one-sentence version: Just like Enhanced-R, Line-by-line calls <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/osascript.1.html">Applescript</a> from Python to execute the given line of code in the front-most Terminal window.</p>
-<h4>How do I install a Sublime plugin?</h4>
-<p>Just stick the folder with all the plugin's files in it into <code>~/Library/Application Support/Sublime Text 2/Packages/</code>.  You can also install <a href="https://sublime.wbond.net/">Package Control</a>, which gives you point-and-click menu options from inside Sublime.  If you have Package Control installed, you can just do Sublime Text 2 &gt; Preferences &gt; Package Control &gt; Install Packages, and click the name of the package you want.  (This works for all ST2 plugins that have been made public on the Package Control website.  Line-by-line is not there.  Yet.)  </p>
-<h4>How do I write a Sublime plugin?</h4>
-<p>I'm planning to write another post about this soon, because I found the documentation to be kind of scattered.  The gist of it is that you write some Python (for what you want your thing to do) and some JSON (for defining keyboard shortcuts and other menu-ish things).  Being able to write/understand little extensions like this is one of the reasons I'm glad I spent a bunch of time with Python this summer.  Anyway, stay tuned!</p>
-    </div><!-- /.entry-content -->
-<div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'alyssafrazee'; // required: replace example with your forum shortname
-        var disqus_identifier = "sublime-plugin.html";
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-  </article>
-</section>
-      </section>
-      <footer>
-        <p><small>Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a>.  Site powered by <a href="http://docs.getpelican.com/en/3.2/">Pelican</a>.</small></p>
-      </footer>
-    </div>
-    <!-- Scale fix -->
-    <script>
-      var metas = document.getElementsByTagName('meta');
-      var i;
-      
-      if (navigator.userAgent.match(/iPhone/i)) {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-          }
-        }
-      
-        document.addEventListener("gesturestart", gestureStart, false);
-      }
-
-      function gestureStart() {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
-          }
-        }
-      }
-    </script>
-    <!-- Emojis -->
-    <script> emojify.setConfig({ 
-      people_enabled: true, 
-      nature_enabled: true, 
-      objects_enabled: true, 
-      places_enabled: true, 
-      symbols_enabled: true 
-    }); 
-    emojify.run(); 
-    </script>
-  </body>
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="1; url=http://alyssafrazee.com/2013/08/13/sublime-plugin.html">
+        <script type="text/javascript">
+            window.location.href = "http://alyssafrazee.com/2013/08/13/sublime-plugin.html"
+        </script>
+        <title>redirecting</title>
+    </head>
+    <body>
+        <!-- Note: don't tell people to `click` the link, just tell them that it is a link. -->
+        If you are not redirected automatically, follow this <a href='http://alyssafrazee.com/2013/08/13/sublime-plugin.html'>link</a> to the post's new location.
+    </body>
 </html>
