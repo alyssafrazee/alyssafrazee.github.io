@@ -7,6 +7,8 @@ permalink: /talks/
   <li><a href="https://docs.google.com/presentation/d/1rZHPDqDFEOcEQhqm3lTKD7Cf5XGvj4iB04W8KA4ar5w/edit?usp=sharing">Explaining a black-box model's decisions</a></li>
   <ul style="list-style-type:none">
     <li>Stripe Data Science Open House, SF (May 4, 2017)</li>
+    <li><a href="https://www.meetup.com/Bay-Area-Women-in-Machine-Learning-and-Data-Science">Bay Area Women in ML and Data Science Meetup</a>, SF (June 22, 2017)</li>
+    <li><a href="http://girlgeek.io/dinner-stripe-2017/">Girl Geek Dinner</a>, SF (December 12, 2017)</li>
   </ul>
   <li><a href="https://docs.google.com/presentation/d/1K_uJAMAxMPtcgZ5QuR6MwdMec1zDxIn1ObbzWJuQQkQ/edit?usp=sharing">Practical solutions to annoying machine learning problems</a></li>
   <ul style="list-style-type:none">
@@ -19,6 +21,7 @@ permalink: /talks/
   <li><a href="https://docs.google.com/presentation/d/16pX0xKg_UrfIhVqIc-6atSH1hMh3ghsXjFnaCnMlMkU/edit?usp=sharing">Fighting fraud with machine learning</a></li>
     <ul style="list-style-type:circle">
       <li>Deflect Risk Conference, SF (May 18, 2017) - also included parts of other talks linked here.</li>
+      <li>Coinbase HQ, SF (July 28, 2017)</li>
       <li>Stripe Machine Learning Meetup, London (March 20, 2017)</li>
       <li>StitchFix Multithreaded speaker series, SF (August 23, 2016)</li>
       <li>Joint Statistical Meetings, in a poster session on the "extraordinary power of statistics," Chicago (July 31, 2016)</li>
