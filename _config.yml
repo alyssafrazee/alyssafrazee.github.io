@@ -14,6 +14,6 @@ url: "http://alyssafrazee.com" # the base hostname & protocol for your site
 twitter_username: acfrazee
 github_username:  alyssafrazee
 
-gems: [kramdown]
+plugins: [kramdown]
 # Build settings
 markdown: kramdown
