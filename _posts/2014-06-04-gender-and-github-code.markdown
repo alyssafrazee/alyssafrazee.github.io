@@ -9,7 +9,7 @@ date:   2014-06-04
 For several popular programming languages, this chart shows the gender breakdown of the owners of public GitHub repositories. Each owner's gender was [algorithmically predicted](https://pypi.python.org/pypi/SexMachine/) from the first name they choose to display on their GitHub profile. (Click it to see a larger static version).
 
 <p align="center">
-  <a href='bargraph.png'><img src="{{site.url}}/static/images/bargraph.png" alt="Image"/></a>
+  <a href='http://alyssafrazee.com/bargraph.png'><img src="{{site.url}}/static/images/bargraph.png" alt="Image"/></a>
 </p>
 
 [The interactive version is here!](http://alyssafrazee.com/plgender.html) You can sort by any gender category by clicking on the corresponding box in the legend.
