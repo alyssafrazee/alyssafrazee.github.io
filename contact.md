@@ -4,4 +4,4 @@ title : contact
 permalink: /contact/
 ---
 
-<p>You can get in touch with me publicly on <a href="https://twitter.com/acfrazee">Twitter</a>, or you can email me! I'm alyssa.frazee at gmail. There are a few questions I get a lot of emails about, so I put together some answers <a href="{{site.url}}/faq">here on my website!</a> Feel free to check there before emailing.</p>
+<p>Email me! I'm alyssa.frazee at gmail dot com. In particular, I'm happy to chat via email about career paths with anyone asking, even if we don't know each other, so do feel free to reach out. I've had an unusual but enjoyable path so far and love chatting about stuff like jobs in industry after a PhD, data jobs in tech, engineering / statistics / "data science", <a href="https://www.recurse.com/">Recurse Center</a>, carving out a career path as a generalist, etc etc!</p>

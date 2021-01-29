@@ -5,6 +5,7 @@ permalink: /writing/
 ---
 
 <h4><b>blog posts</b></h4>
+<p>I wrote several blog posts while I was in grad school, and I've kept them around for posterity! I don't write much publicly anymore, though I tell myself that could change at any moment.</p>
 <ul style="list-style-type:none">
   {% for post in site.posts %}
     <li>{{ post.date | date: "%Y-%m-%d" }} - 

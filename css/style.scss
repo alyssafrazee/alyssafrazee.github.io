@@ -6,7 +6,7 @@
 
 
 // Our variables
-$base-font-family: "PT Sans", Helvetica, Arial, sans-serif;
+$base-font-family: "Nanum Gothic", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
@@ -399,7 +399,7 @@ pre {
   font-size: 14px;
   letter-spacing: 2px;
 //  text-indent: 6px;
-  font-family: 'PT Sans';
+  font-family: 'Nanum Gothic';
   font-weight: 300;
   padding-top: 3em;
   text-align: center;
@@ -408,13 +408,13 @@ pre {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-indent: 2px;
-  font-family: "PT Sans";
+  font-family: "Nanum Gothic";
   font-size: 12px;
   text-align:center;
 }
 .page-tagline {
   font-size: 18px;
-  font-family: "PT Sans";
+  font-family: "Nanum Gothic";
   color: rgb(170, 170, 170);
   text-align: center;
   text-transform: lowercase;
@@ -499,7 +499,7 @@ pre {
   @extend %clearfix;
 }
 .footer-content {
-  font-family: "PT Sans";
+  font-family: "Nanum Gothic";
   font-weight: 300;
   letter-spacing: 1px;
 }
@@ -573,7 +573,7 @@ pre {
 .post-title {
   font-size: 30px;
   text-align: center;
-  font-family: "PT Sans";
+  font-family: "Nanum Gothic";
   color: black;
   padding-top: 3em;
   @include media-query($on-laptop) {
