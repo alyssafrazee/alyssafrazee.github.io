@@ -6,8 +6,8 @@
 
 
 // Our variables
-$base-font-family: "Nanum Gothic", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$base-font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+$base-font-size:   18px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -15,8 +15,8 @@ $base-line-height: 1.5;
 $spacing-unit:     30px;
 
 $text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+$background-color: #000000;
+$brand-color:      #FF33D5;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
@@ -146,7 +146,7 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: #2eb8b8 !important;
+    color: $brand-color !important;
     text-decoration: none;
 
     &:visited {
@@ -154,36 +154,36 @@ a {
     }
 
     &:hover {
-        color: black !important;
-        border-bottom: 1px dotted black ;
+        color: white !important;
+        border-bottom: 1px dotted white ;
     }
 
     &.page-link{
       &:hover {
           color: $text-color;
-          border-bottom: 1px dotted black ;
+          border-bottom: 1px dotted white ;
       }
     }
     &.postLink{
-      color: black !important;
+      color: white !important;
       &:hover {
 
-          border-bottom: 1px dotted black ;
+          border-bottom: 1px dotted white ;
       }
 
       &:visited {
-          color: #2eb8b8 !important;
+          color: $brand-color !important;
       }
     }
     &.post-title-link{
-      color: black !important;
+      color: white !important;
       &:hover {
 
-          border-bottom: 1px dotted black !important ;
+          border-bottom: 1px dotted white !important ;
       }
 
       &:visited {
-          color: #2eb8b8 !important;
+          color: $brand-color !important;
       }
     }
 }
@@ -214,9 +214,9 @@ blockquote {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
+    border: 1px solid $grey-color-dark;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: $grey-color-dark;
 }
 
 code {
@@ -291,7 +291,7 @@ pre {
 
 .post {
   font-family: $base-font-family;
-  font-size: 16px;
+  font-size: $base-font-size;
   padding-top: 0;
 }
 .home{
@@ -366,7 +366,7 @@ pre {
  */
 .site-header {
   border-top: 5px solid $grey-color-dark;
-  border-bottom: 1px solid $grey-color-light;
+  border-bottom: 1px solid $grey-color-dark;
   min-height: 56px;
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -380,26 +380,26 @@ pre {
   margin-top: 2em;
   &,
   &:visited {
-    color: #2eb8b8;
+    color: $brand-color;
   }
 }
 .site-description {
   font-size: 14px;
   letter-spacing: 2px;
   text-indent: 6px;
-  font-family: 'Josefin Sans';
+  font-family: 'Source Sans Pro';
 }
 .exclamationMark {
   padding-left: 1em;
   padding-right: 1em;
 }
 .site-navigation {
-  color: #aaa;
+  color: $grey-color-dark;
   text-transform: none;
   font-size: 14px;
   letter-spacing: 2px;
 //  text-indent: 6px;
-  font-family: 'Nanum Gothic';
+  font-family: 'Source Sans Pro';
   font-weight: 300;
   padding-top: 3em;
   text-align: center;
@@ -408,19 +408,19 @@ pre {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-indent: 2px;
-  font-family: "Nanum Gothic";
+  font-family: "Source Sans Pro";
   font-size: 12px;
   text-align:center;
 }
 .page-tagline {
   font-size: 18px;
-  font-family: "Nanum Gothic";
+  font-family: "Source Sans Pro";
   color: rgb(170, 170, 170);
   text-align: center;
   text-transform: lowercase;
 }
 .page-link {
-  color: rgb(170, 170, 170);
+  color: $grey-color-light;
 }
 .site-nav {
   .page-link {
@@ -477,7 +477,7 @@ pre {
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid $grey-color-light;
+  border-top: 1px solid $grey-color-dark;
   padding: $spacing-unit 0;
 }
 .footer-heading {
@@ -494,12 +494,12 @@ pre {
 }
 .footer-col-wrapper {
   font-size: 15px;
-  color: $grey-color;
+  color: $grey-color-light;
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
 }
 .footer-content {
-  font-family: "Nanum Gothic";
+  font-family: "Source Sans Pro";
   font-weight: 300;
   letter-spacing: 1px;
 }
@@ -543,6 +543,7 @@ pre {
  */
 .page-content {
   padding: 0;
+  color: $grey-color-light;
 }
 .page-heading {
   font-size: 20px;
@@ -573,7 +574,7 @@ pre {
 .post-title {
   font-size: 30px;
   text-align: center;
-  font-family: "Nanum Gothic";
+  font-family: "Source Sans Pro";
   color: black;
   padding-top: 3em;
   @include media-query($on-laptop) {
@@ -584,7 +585,7 @@ pre {
   margin-bottom: $spacing-unit;
   padding-bottom: 3em !important;
   p {
-    font-size: 16px;
+    font-size: $base-font-size;
   }
   h2 {
     font-size: 26px;
